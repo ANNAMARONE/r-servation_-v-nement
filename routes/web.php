@@ -16,7 +16,7 @@ Route::get('/reservations/liste', [ReservationController::class, 'listeReservati
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
+Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
