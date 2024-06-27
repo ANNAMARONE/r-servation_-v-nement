@@ -10,7 +10,7 @@
         <div class="row">
             <!-- Widget 1 - Nombre d'événements -->
             <div class="col-md-4">
-                <div class="card">
+                <div class="card widget1">
                     <div class="card-body">
                         <h5 class="card-title">Nombre d'événements</h5>
                         <p class="card-text">{{ $totalEvenements }}</p>
@@ -19,8 +19,8 @@
             </div>
         
             <!-- Widget 2 - Nombre de participants -->
-            <div class="col-md-4">
-                <div class="card">
+            <div class="col-md-4 ">
+                <div class="card widget2">
                     <div class="card-body">
                         <h5 class="card-title">Nombre de participants</h5>
                         <p class="card-text">{{ $totalParticipants }}</p>
@@ -30,7 +30,7 @@
         
             <!-- Widget 3 - Nombre de réservations -->
             <div class="col-md-4">
-                <div class="card">
+                <div class="card widget1">
                     <div class="card-body">
                         <h5 class="card-title">Nombre de réservations</h5>
                         <p class="card-text">{{ $totalReservations }}</p>
@@ -43,31 +43,26 @@
 
     <div class="contenu">
         <div class="tables">
+            <h3 class="mt-2">Listes Événements récents</h3>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nom de l'Événement</th>
-                            <th>Lieu</th>
+                            <th>Image</th>
+                            <th>Nom</th>
                             <th>Nombre de Places</th>
                             <th>Date</th>
-                            <th>Actions</th>
+                            <th>Lieu</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($evenements as $evenement)
                             <tr>
+                                <td>{{ $evenement->image }}</td>
                                 <td>{{ $evenement->nom_evenement }}</td>
-                                <td>{{ $evenement->lieu }}</td>
                                 <td>{{ $evenement->nbr_place }}</td>
                                 <td>{{ $evenement->date }}</td>
-                                <td>
-                                    <!-- Liens d'action avec des icônes -->
-                                    <a href="#" class="btn btn-sm btn-primary" title="Modifier"><i class="fas fa-edit"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger" title="Supprimer"><i class="fas fa-trash-alt"></i></a>
-                                    <a href="#" class="btn btn-sm btn-info" title="Voir les réservations"><i class="fas fa-list"></i></a>
-                                    <a href="#" class="btn btn-sm btn-secondary" title="Voir les détails"><i class="fas fa-info-circle"></i></a>
-                                </td>
+                                <td>{{ $evenement->lieu }}</td>
                             </tr>
                         @endforeach
                     </tbody>
