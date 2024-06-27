@@ -13,3 +13,15 @@ Route::get('/sidebar', function () {
 //route pour la liste des evenements
 Route::get('/evenements/liste', [EvenementController::class, 'listeEvenement']);
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
+
+Route::view('/', 'welcome');
+
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+require __DIR__.'/auth.php';
