@@ -1,0 +1,14 @@
+.contenu{
+    background-color: var(--couleur-principal);
+    width: 98%;
+    margin-top: 8%;
+    height: 100%;
+}
+.tables{
+    background-color: white;
+    width:100%; 
+    height: 100%;
+    border-top-right-radius: 200px;
+    border-top: 8px solid #F53F7B;
+   
+}
