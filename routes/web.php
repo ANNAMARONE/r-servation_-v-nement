@@ -8,14 +8,6 @@ use App\Http\Controllers\ReservationController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/sidebar', function () {
-    return view('layouts/app');
-});
-//route pour la liste des evenements
-Route::get('/evenements/liste', [EvenementController::class, 'listeEvenement']);
-Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
-
-Route::view('/', 'welcome');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -26,3 +18,6 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+Route::get('/sidebar', function () {
+    return view('layouts/app');
+});
