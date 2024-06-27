@@ -11,6 +11,10 @@ class Evenement extends Model
     protected $fillable = [
         'nom_evenement', 'image', 'date', 'lieu', 'description', 'nbr_place', 'date_limite'
     ];
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 
     protected $dates = ['date', 'date_limite']; // Définit les colonnes qui sont des champs de date
 
