@@ -2,7 +2,8 @@
 
 <style>
     /* Styles personnalisés pour le formulaire */
-    .custom-form-container {
+   /* Styles personnalisés pour le formulaire */
+   .custom-form-container {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -10,20 +11,26 @@
     }
 
     .custom-form {
-        max-width: 600px;
+        max-width: 800px; /* Ajustez la largeur maximale selon vos besoins */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 20px;
         border: 2px solid #000;
         border-radius: 8px;
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        display: flex;
     }
 
     .custom-form img {
-        width: 150px;
+        width: 200px; /* Ajustez la taille de l'image */
         height: auto;
-        margin-right: 20px;
         border-radius: 8px;
+    }
+
+    .custom-form .form-section {
+        flex: 1;
+        margin-left: 20px; /* Espace entre l'image et le formulaire */
     }
 
     .custom-form h1 {
@@ -35,35 +42,38 @@
         font-weight: bold;
     }
 
-    .custom-form .btn-primary {
+    .custom-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .custom-form 
+    .btn-primary {
         background-color: #F53F7B;
         color: #fff;
         border: none;
-        margin-top: 10px;
-        margin-left: auto; /* Centre le bouton à droite */
-        display: block; /* Permet au bouton d'occuper toute la largeur disponible */
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+
+        
     }
 
-    .custom-form .btn-primary:hover {
-        background-color: #e0356e;
-    }
-
+    
     .custom-form input[type="text"],
     .custom-form input[type="datetime-local"],
     .custom-form textarea,
     .custom-form input[type="number"] {
-        flex: 1; /* Pour occuper l'espace restant */
+        width: 100%;
         padding: 10px;
-        margin-bottom: 10px;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 8px;
         font-size: 16px;
     }
 </style>
 
 <div class="custom-form-container">
     <div class="custom-form">
-        <img src="images/image1.png" alt="Image de l'événement">
+        <img src="{{ asset('images/image1.png') }}" alt="image bi">
         <div style="flex: 1;">
             <h1>Créer un événement</h1>
 
