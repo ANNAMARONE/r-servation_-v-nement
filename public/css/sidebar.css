@@ -1,0 +1,123 @@
+:root {
+    --couleur-principal: #F53F7B;
+    --couleur-secondaire: #4862C4;
+}
+
+#sidebar-wrapper {
+    width: 200px;
+    height: calc(100vh - 90px);
+    position: fixed;
+    top: 90px; 
+    left: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+#sidebar-wrapper .list-group-item {
+    color: black; 
+    background-color: transparent;
+    border: none; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: var(--couleur-principal); 
+    border-radius: 8px;
+    color: white; 
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: var(--couleur-principal);
+    border-radius: 8px;
+    color: white; 
+}
+.list-group-item i {
+    width: 24px; 
+    text-align: center;
+}
+
+.list-group-item span {
+    margin-left: 8px; 
+}
+
+#page-content-wrapper {
+    flex: 1;
+    width: 100%;
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+.navbar-custom {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
+}
+#wrapper.toggled #sidebar-wrapper {
+    transform: translateX(-250px);
+}
+
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 0;
+}
+
+.navbar {
+    height: 90px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+.navbar-brand img{
+    width: 145px;
+    height: 35px;
+}
+.navbar-nav .nav-item {
+    margin-right: 15px;
+}
+.navbar-nav .nav-item  .nav-link{
+    color: black;
+}
+
+.navbar-toggler-icon.custom-toggler {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 30 30"%3E%3Cpath stroke%3D"%234862C4" stroke-width%3D"2" linecap%3D"round" linejoin%3D"round" d%3D"M4 7h22M4 15h22M4 23h22"%3E%3C/path%3E%3C/svg%3E');
+    background-color: transparent;
+    width: 30px; 
+    height: 30px;
+}
+#menu-toggle {
+    background-color: transparent;
+    border: none; 
+}
+
+ button .btn-primary{
+    color: var(--couleur-principal);
+    background-color: white;
+ }
+.navbar-toggler-icon.custom-toggler {
+    color: var(--couleur-principal);
+}
+
+.list-group-item {
+    position: relative;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list-group-item i {
+    margin-right: 10px;
+}
+
+.list-group-item.active {
+    background-color: var(--couleur-principal);
+    color: white;
+}
+
+#logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
