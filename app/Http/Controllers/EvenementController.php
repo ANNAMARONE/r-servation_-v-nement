@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class EvenementController extends Controller
 {
-    public function listeevement(){
+    public function listeEvenement(){
         $evenements = Evenement::paginate(9);
         return view('evenements.listeEvenements', compact('evenements'));
     }

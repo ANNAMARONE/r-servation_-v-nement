@@ -3,7 +3,7 @@
 @section('title', 'Liste des Evénements')
 
 @section('content')
-    <h1 class="mt-4">La liste des événements</h1>
+    <h1 class="mt-4">La liste des Événements</h1>
 
     <div class="bouton">
         <a href="#" class="btn">Ajouter un événement</a>
