@@ -18,25 +18,5 @@ class ReservationController extends Controller
 
     }
 
-    
-    public function statistiquesOrganismes($organismeId)
-    {
-        // Calculer le nombre total d'événements pour l'organisme spécifié
-        $totalEvenements = Evenement::where('organisme_id', $organismeId)->count();
-
-        // Calculer le nombre total de participants pour l'organisme spécifié
-        $totalParticipants = User::whereHas('reservations', function ($query) use ($organismeId) {
-            $query->whereHas('evenement', function ($query) use ($organismeId) {
-                $query->where('organisme_id', $organismeId);
-            });
-        })->count();
-
-        // Calculer le nombre total de réservations pour l'organisme spécifié
-        $totalReservations = Reservation::whereHas('evenement', function ($query) use ($organismeId) {
-            $query->where('organisme_id', $organismeId);
-        })->count();
-
-        // Retourner les statistiques à la vue
-        return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalReservations'));
-    }
+   
 }

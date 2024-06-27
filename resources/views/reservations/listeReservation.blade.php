@@ -25,7 +25,7 @@
             <tbody>
                 @foreach($reservationsByEvenement as $reservation)
                     <tr>
-                        <td>{{ $reservation->user->nom_utilisateur }}</td>
+                        <td>{{ $reservation->user->name }}</td>
                         <td>{{ $reservation->user->email }}</td>
                         <td>{{ $reservation->user->telephone }}</td>
                         <td>{{ $reservation->created_at }}</td>

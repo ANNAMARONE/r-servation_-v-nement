@@ -1,79 +1,19 @@
-{{-- @extends('layouts.app') --}}
+@extends('layouts.app')
 
-<style>
-    .custom-form-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 20px;
-    }
+@section('title', 'Modifier un Événement')
 
-    .custom-form {
-        max-width: 800px; /* Ajustez la largeur maximale selon vos besoins */
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px;
-        border: 2px solid #000;
-        border-radius: 8px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .custom-form img {
-        width: 200px; /* Ajustez la taille de l'image */
-        height: auto;
-        border-radius: 8px;
-    }
-
-    .custom-form .form-section {
-        flex: 1;
-        margin-left: 20px; /* Espace entre l'image et le formulaire */
-    }
-
-    .custom-form h1 {
-        margin-bottom: 20px;
-    }
-
-    .custom-form label {
-        color: #000;
-        font-weight: bold;
-    }
-
-    .custom-form .form-group {
-        margin-bottom: 20px;
-    }
-
-    .custom-form .btn-primary {
-        background-color: #F53F7B;
-        color: #fff;
-        border: none;
-        width: 100%;
-        padding: 10px;
-        border-radius: 8px;
-        transition: background-color 0.3s;
-    }
-
-    .custom-form .btn-primary:hover {
-        background-color: #e0356e;
-    }
-
-    .custom-form input[type="text"],
-    .custom-form input[type="datetime-local"],
-    .custom-form textarea,
-    .custom-form input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-</style>
+@section('content')
+<div class="bouton">
+    <a href="{{ route('evenements.index') }}" class="btn">Retour</a>
+</div>
 
 <div class="custom-form-container">
-    <div class="custom-form">
-        <img src="{{ asset('images/image1.png') }}" alt="image bi">
-        <div class="form-section">
+    <div class="custom-form row">
+        <!-- Colonne pour l'image -->
+        <div class="col-md-6">
+            <img src="{{ asset('images/ajouterform.jpg') }}" alt="image bi" class="img-fluid">
+        </div>
+        <div class="col-md-6 formulaire">
             <h1>Modifier l'événement</h1>
             <form action="{{ route('evenements.update', $evenement->id) }}" method="POST">
                 @csrf
@@ -81,37 +21,37 @@
 
                 <div class="form-group">
                     <label for="nom_evenement">Nom de l'événement</label>
-                    <input type="text" class="form-control" id="nom_evenement" name="nom_evenement" value="{{ $evenement->nom_evenement }}" required>
+                    <input type="text" class="form-control" id="nom_evenement" name="nom_evenement" value="{{ $evenement->nom_evenement }}" required placeholder="Entrez le nom de l'événement">
                 </div>
 
                 <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="text" class="form-control" id="image" name="image" value="{{ $evenement->image }}">
+                    <input type="text" class="form-control" id="image" name="image" value="{{ $evenement->image }}" placeholder="URL de l'image">
                 </div>
 
                 <div class="form-group">
                     <label for="date">Date</label>
-                    <input type="datetime-local" class="form-control" id="date" name="date" value="{{ $evenement->date->format('Y-m-d\TH:i') }}" required>
+                    <input type="datetime-local" class="form-control" id="date" name="date" value="{{ $evenement->date->format('Y-m-d\TH:i') }}" required placeholder="Sélectionnez la date et l'heure">
                 </div>
 
                 <div class="form-group">
                     <label for="date_limite">Date limite d'inscription</label>
-                    <input type="datetime-local" class="form-control" id="date_limite" name="date_limite" value="{{ $evenement->date_limite->format('Y-m-d\TH:i') }}" required>
+                    <input type="datetime-local" class="form-control" id="date_limite" name="date_limite" value="{{ $evenement->date_limite->format('Y-m-d\TH:i') }}" required placeholder="Sélectionnez la date limite d'inscription">
                 </div>
 
                 <div class="form-group">
                     <label for="lieu">Lieu</label>
-                    <input type="text" class="form-control" id="lieu" name="lieu" value="{{ $evenement->lieu }}" required>
+                    <input type="text" class="form-control" id="lieu" name="lieu" value="{{ $evenement->lieu }}" required placeholder="Entrez le lieu">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" required>{{ $evenement->description }}</textarea>
+                    <textarea class="form-control" id="description" name="description" rows="3" required placeholder="Entrez la description de l'événement">{{ $evenement->description }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="nbr_place">Nombre de places</label>
-                    <input type="number" class="form-control" id="nbr_place" name="nbr_place" value="{{ $evenement->nbr_place }}" required>
+                    <input type="number" class="form-control" id="nbr_place" name="nbr_place" value="{{ $evenement->nbr_place }}" required placeholder="Entrez le nombre de places">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Sauvegarder les modifications</button>
@@ -119,3 +59,12 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+@endsection
+
+@section('scripts')
+<!-- Vous pouvez ajouter des scripts supplémentaires ici -->
+@endsection

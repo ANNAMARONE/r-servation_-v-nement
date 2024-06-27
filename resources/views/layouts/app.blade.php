@@ -22,15 +22,15 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="dashboard" class="list-group-item list-group-item-action d-flex align-items-center">
                     <i class="fas fa-tachometer-alt mr-2"></i> 
                     <span>Tableau de bord</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center">
                     <i class="fas fa-calendar-alt mr-2"></i> 
                     <span>Événements</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="" class="list-group-item list-group-item-action d-flex align-items-center">
                     <i class="fas fa-book mr-2"></i>
                     <span>Réservations</span>
                 </a>
@@ -84,15 +84,20 @@
 
     <!-- js pour cacher le sidebar et gérer les liens actives -->
     <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
+        $(document).ready(function() {
+    // Toggle sidebar
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 
-        $(".list-group-item").click(function() {
-            $(".list-group-item").removeClass("active");
-            $(this).addClass("active");
-        });
+    // Active link handling
+    $(".list-group-item").click(function() {
+        $(".list-group-item").removeClass("active");
+        $(this).addClass("active");
+    });
+});
+
     </script>
     @yield('scripts')
 </body>

@@ -56,4 +56,6 @@ h1{
  .table,.table th,.table td{
     border: none;
  }
-
+.table td img{
+    width: 100px;
+}

@@ -58,7 +58,7 @@
                     <tbody>
                         @foreach($evenements as $evenement)
                             <tr>
-                                <td>{{ $evenement->image }}</td>
+                                <td><img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}"></td>
                                 <td>{{ $evenement->nom_evenement }}</td>
                                 <td>{{ $evenement->nbr_place }}</td>
                                 <td>{{ $evenement->date }}</td>
