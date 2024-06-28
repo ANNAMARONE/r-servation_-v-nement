@@ -15,7 +15,7 @@ Route::get('/sidebar', function () {
 });
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
-
+Route::view('/', 'welcome');
 
 Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
     ->middleware(['auth', 'verified'])
