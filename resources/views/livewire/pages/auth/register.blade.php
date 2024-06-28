@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Models\User;
@@ -84,7 +85,7 @@ $register = function () {
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('envoyer') }}
             </x-primary-button>
         </div>
     </form>
