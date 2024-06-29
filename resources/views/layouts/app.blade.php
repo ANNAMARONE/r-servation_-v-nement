@@ -20,6 +20,7 @@
 <body>
     <div id="wrapper" class="d-flex">
         <!-- Sidebar -->
+         
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
                 <a href="dashboard" class="list-group-item list-group-item-action d-flex align-items-center">
@@ -34,10 +35,14 @@
                     <i class="fas fa-book mr-2"></i>
                     <span>Réservations</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center mt-auto" id="logout">
-                    <i class="fas fa-sign-out-alt mr-2"></i> 
-                    <span>Déconnexion</span>
-                </a>
+             
+                <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
+                    @csrf
+                    <button type="submit" class="btn btn-link p-0 d-flex align-items-center">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span>Déconnexion</span>
+                    </button>
+                </form>
             </div>
         </div>
 
@@ -101,4 +106,6 @@
     </script>
     @yield('scripts')
 </body>
-</html>
+
+
+
