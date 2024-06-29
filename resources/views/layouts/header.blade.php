@@ -29,11 +29,11 @@
                     <a class="nav-link" href="#">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Événements</a>
+                    <a class="nav-link" href="liste/evenements">Événements</a>
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mes réservations</a>
+                        <a class="nav-link" href="/reservations">Mes réservations</a>
                     </li>
                 @endauth
             </ul>

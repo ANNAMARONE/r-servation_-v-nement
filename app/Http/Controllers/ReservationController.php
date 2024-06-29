@@ -37,5 +37,12 @@ class ReservationController extends Controller
     
         return redirect()->route('evenements.liste')->with('reservation_success', true);
     }
+    public function index()
+    {
+        // Récupère les réservations de l'utilisateur connecté
+        $reservations = Reservation::where('user_id', Auth::id())->get();
+
+        return view('reservations.mes_reservations', ['reservations' => $reservations]);
+    }
     
 }
