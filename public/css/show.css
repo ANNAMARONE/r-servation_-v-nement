@@ -12,3 +12,47 @@
     border-top: 8px solid #F53F7B;
    
 }
+ .tables .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+ }
+.tables .image img{
+    width: 350px;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+    border-top-right-radius: 300px;
+}
+.tables  .image-container {
+    position: relative;
+    width: 100%;
+}
+
+.tables .image-container img {
+    width: 75%;
+    height: auto;
+}
+
+.tables .image-text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+   text-align: center;
+
+}
+
+.tables .image-text i {
+    margin-right: 10px;
+}
+
+.places{
+    margin-top: 50px;
+}
+.places i{
+    margin-right: 10px;
+}

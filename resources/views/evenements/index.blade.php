@@ -33,7 +33,7 @@
                                     <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-sm btn-primary" title="Modifier"><i class="fas fa-edit"></i></a>
                                     <a href="{{ route('evenements.destroy', $evenement->id) }}" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')"><i class="fas fa-trash-alt"></i></a>
                                     <a href="/reservations/liste" class="btn btn-sm btn-info" title="Voir les réservations"><i class="fas fa-list"></i></a>
-                                    <a href="#" class="btn btn-sm btn-secondary" title="Voir les détails"><i class="fas fa-info-circle"></i></a>
+                                    <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-sm btn-secondary" title="Voir les détails"><i class="fas fa-info-circle"></i></a>
                                 </td>
                             </tr>
                         @endforeach
