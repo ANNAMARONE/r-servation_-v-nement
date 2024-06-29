@@ -1,5 +1,4 @@
 
-
     @extends('layouts.app')
 
     @section('title', 'Tableau de bord')
@@ -81,3 +80,4 @@
     @section('scripts')
         <!-- Vous pouvez ajouter des scripts supplémentaires ici -->
     @endsection
+
