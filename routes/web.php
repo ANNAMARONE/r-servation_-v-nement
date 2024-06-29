@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -78,3 +79,11 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+// users
+
+
+Route::resource('users', UserController::class);
+
+
+

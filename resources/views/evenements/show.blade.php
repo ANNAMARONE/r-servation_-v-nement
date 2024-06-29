@@ -8,17 +8,25 @@
         <div class="container mt-5">
             <div class="row">
                 <!-- 1ère Colonne -->
+                @auth
                 <div class="col-md-6">
                     <h1>{{ $evenement->nom_evenement }}</h1>
                     <h2>{{ auth()->user()->name }}</h2>
-                    <p>{{ $evenement->description }}</p>
+                    <p>{{ $evenement->description }}</p>  @endauth 
                     <div class="image-container">
                         <img src="{{ asset('images/banner.png') }}" class="img-fluid" alt="Image avec texte">
                         <div class="image-text"><i class="fas fa-calendar-alt"></i> {{ $evenement->date }} à {{ $evenement->lieu }}</div>
                     </div>
                     <p class="places"> <i class="fas fa-users"></i> Nombre de places : {{ $evenement->nbr_place }}</p>
                 </div>
-                <!-- 2ème Colonne -->
+                <!-- 2ème Colonne -->     
+
+                {{-- @auth
+                <span class="navbar-text">
+                    Hello {{ Auth::user()->name }}
+                </span>
+                @endauth  --}}
+
                 <div class="col-md-6">
                     <div class="mb-3 image">
                         <img src="{{ $evenement->image }}" class="img-fluid" alt="Image">

@@ -100,4 +100,7 @@ $evenements = Evenement::paginate(9);
 // Retourner la vue avec toutes les données nécessaires
 return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalReservations', 'evenements'));
 }
+
 }
+
+
