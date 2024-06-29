@@ -8,7 +8,6 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 
-
 Route::get('/', function () {
     // $createAmin= Role ::create(['name'=>'Administrateur']);
     // $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
@@ -49,9 +48,18 @@ Route::get('/', function () {
     
 });
 Route::get('organisme',[OrganismeController::class,'create_organisme']);
-Route::post('organismes',[OrganismeController::class,'storeOrganisme'])->name('organisme');
+Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('organisme');
 
-Route::view('dashboard', 'dashboard')
+Route::resource('evenements', EvenementController::class);
+
+Route::get('/sidebar', function () {
+    return view('layouts/app');
+});
+//route pour la liste des evenements
+Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
+
+
+Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -60,6 +68,3 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
-Route::get('/sidebar', function () {
-    return view('layouts/app');
-});

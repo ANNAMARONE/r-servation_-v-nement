@@ -28,7 +28,7 @@ class OrganismeRequest extends FormRequest
             'password' => 'required|string|min:8|confirmed',
             'description' => 'required|string|max:1000',
             'adresse' => 'required|string|max:255',
-            'logo'=>'required|string|png,jpg|max:20 mo',
+           'logo' => 'required|image|mimes:png,jpg|max:20480', // max is in kilobytes
             'secteur_activité' => 'required|string|max:255',
             'nina' => 'required|string|max:20',
             'roles' => 'required|string',

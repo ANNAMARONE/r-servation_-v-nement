@@ -17,7 +17,8 @@ class OrganismeController extends Controller
     }
 
     public function storeOrganisme(OrganismeRequest $request)
-    {
+{
+    try {
         // Créer l'utilisateur
         $user = User::create([
             'name' => $request->name,
@@ -28,11 +29,11 @@ class OrganismeController extends Controller
         // Gérer le téléchargement du logo
         $logoPath = null;
         if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('logo', 'public');
+            $logoPath = $request->file('logo')->store('logos', 'public'); // Adjusted folder name to 'logos'
         }
 
         // Créer l'organisme
-        $organisme=Organisme::create([
+        $organisme = Organisme::create([
             'user_id' => $user->id,
             'description' => $request->description,
             'adresse' => $request->adresse,
@@ -40,14 +41,19 @@ class OrganismeController extends Controller
             'logo' => $logoPath,
             'nina' => $request->nina,
         ]);
-        dump($organisme);
 
         // Assigner le rôle à l'utilisateur
         $user->assignRole($request->roles);
 
         // Déclencher l'événement Registered
         event(new Registered($user));
-return redirect('/','compt créer avec succé');
+
         // Rediriger avec un message de succès
+        return redirect('/')->with('success', 'Compte créé avec succès');
+    } catch (\Exception $e) {
+        // En cas d'erreur, rediriger vers la page précédente avec le message d'erreur
+        return redirect()->back()->with('error', 'Une erreur s\'est produite : ' . $e->getMessage());
     }
+}
+
 }
