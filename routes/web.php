@@ -20,7 +20,6 @@ Route::view('/', 'welcome');
 Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
