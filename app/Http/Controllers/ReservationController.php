@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Evenement;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -17,6 +18,24 @@ class ReservationController extends Controller
         return view('reservations.listeReservation', compact('reservations'));
 
     }
+    public function create($evenement_id)
+    {
+        $evenement = Evenement::findOrFail($evenement_id);
+        $evenement->nbr_place_restante = $evenement->nbr_place - $evenement->reservations()->count();
+        return view('reservations.create', compact('evenement'));
+    }
 
-   
+    public function store(Request $request, $evenement_id)
+    {
+        $evenement = Evenement::findOrFail($evenement_id);
+    
+        // Logique de création de réservation
+        $reservation = new Reservation();
+        $reservation->user_id = Auth::id();
+        $reservation->evenement_id = $evenement_id;
+        $reservation->save();
+    
+        return redirect()->route('evenements.liste')->with('reservation_success', true);
+    }
+    
 }

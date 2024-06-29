@@ -56,7 +56,10 @@ Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('orga
 
 
 Route::resource('evenements', EvenementController::class);
-Route::get('liste/evenements', [EvenementController::class, 'listeEvenements']);
+Route::get('liste/evenements', [EvenementController::class, 'listeEvenements'])->name('evenements.liste');
+Route::get('/reservation/create/{evenement}', [ReservationController::class, 'create'])->name('reservation.create');
+Route::post('/reservation/store/{evenement}', [ReservationController::class, 'store'])->name('reservation.store');
+
 
 Route::get('/sidebar', function () {
     return view('layouts/app');
