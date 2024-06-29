@@ -16,7 +16,10 @@ class EvenementController extends Controller
     $evenements = Evenement::paginate(9);
     return view('evenements.index', compact('evenements'));
  }
-
+public function show($id){
+    $evenement =Evenement::find($id);
+    return view('evenements.show', compact('evenement'));
+}
  // Affiche le formulaire pour créer un nouvel événement
  public function create()
  {
