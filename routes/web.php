@@ -13,6 +13,9 @@ Route::resource('evenements', EvenementController::class);
 Route::get('/sidebar', function () {
     return view('layouts/app');
 });
+Route::get('/header', function () {
+    return view('layouts/header');
+});
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
 Route::view('/', 'welcome');
