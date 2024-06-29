@@ -1,0 +1,102 @@
+.custom-form-container {
+    width: 98%;
+   margin-left: auto;
+   margin-right: auto;
+    margin-top: 20px;
+
+}
+
+.custom-form {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 30px;
+   
+}
+
+.custom-form img {
+    width: 700px;
+    height: 800px;
+}
+
+.formulaire{
+    width: 534px;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.custom-form h1 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #F53F7B;
+}
+
+.custom-form label {
+    color: #000;
+    text-align: left;
+}
+
+.custom-form .form-group {
+    
+    margin-left: auto;
+   margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.custom-form 
+.btn-primary {
+    background-color: #F53F7B;
+    color: #fff;
+    border: none;
+    width: 300px;
+    padding: 8px;
+    border-radius: 8px;
+
+    
+}
+.custom-form input[type="text"],
+.custom-form input[type="datetime-local"],
+.custom-form input[type="number"] {
+    height: 50px;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="datetime-local"],
+.custom-form textarea,
+.custom-form input[type="number"] {
+    
+    width: 300px;
+  
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    
+}
+.bouton {
+    text-align: center; 
+    float: left;
+}
+
+.bouton .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--couleur-principal);
+    color: white; 
+    text-decoration: none; 
+    border-radius: 8px;
+    transition: background-color 0.3s ease; 
+    margin-right: 20px;
+}
+
+.bouton .btn:hover {
+    background-color: var(--couleur-secondaire); 
+}

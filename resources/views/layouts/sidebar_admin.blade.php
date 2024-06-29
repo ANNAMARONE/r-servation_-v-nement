@@ -20,29 +20,28 @@
 <body>
     <div id="wrapper" class="d-flex">
         <!-- Sidebar -->
-         
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="dashboard" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
                     <i class="fas fa-tachometer-alt mr-2"></i> 
                     <span>Tableau de bord</span>
                 </a>
-                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
                     <i class="fas fa-calendar-alt mr-2"></i> 
                     <span>Événements</span>
                 </a>
-                <a href="" class="list-group-item list-group-item-action d-flex align-items-center">
-                    <i class="fas fa-book mr-2"></i>
-                    <span>Réservations</span>
+                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                    <i class="fas fa-users mr-2"></i>
+                    <span>Utilisateurs</span>
                 </a>
-             
-                <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
-                    @csrf
-                    <button type="submit" class="btn btn-link p-0 d-flex align-items-center">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
-                        <span>Déconnexion</span>
-                    </button>
-                </form>
+                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                    <i class="fas fa-users mr-2"></i>
+                    <span>Organismes</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center" id="logout">
+                    <i class="fas fa-sign-out-alt mr-2"></i> 
+                    <span>Déconnexion</span>
+                </a>
             </div>
         </div>
 
@@ -67,9 +66,9 @@
                         </li>
                     </ul>
                      <!-- RÉCUPERER LE NOM DU USER CONNECTÉ -->
-                    <span class="navbar-text">
+                    {{-- <span class="navbar-text">
                         Hello {{ Auth::user()->name }}
-                    </span>
+                    </span> --}}
                     
                 </div>
             </nav>
@@ -106,6 +105,4 @@
     </script>
     @yield('scripts')
 </body>
-
-
-
+</html>
