@@ -48,5 +48,7 @@ class OrganismeController extends Controller
         return redirect()->back()->with('error', 'Une erreur s\'est produite : ' . $e->getMessage());
     }
 }
-
+public function listeorganisme(){
+    return view('admins.ListeOrganisme');
+}
 }

@@ -65,6 +65,7 @@ Route::get('/header', function () {
 Route::get('/sidebar_admin', function () {
     return view('layouts/sidebar_admin');
 });
+Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
 Route::view('/', 'welcome');
