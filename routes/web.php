@@ -16,6 +16,9 @@ Route::get('/sidebar', function () {
 Route::get('/header', function () {
     return view('layouts/header');
 });
+Route::get('/sidebar_admin', function () {
+    return view('layouts/sidebar_admin');
+});
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
 Route::view('/', 'welcome');
