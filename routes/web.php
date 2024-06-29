@@ -9,6 +9,7 @@ use App\Http\Controllers\ReservationController;
 // });
 
 Route::resource('evenements', EvenementController::class);
+Route::get('liste/evenements', [EvenementController::class, 'listeEvenements']);
 
 Route::get('/sidebar', function () {
     return view('layouts/app');

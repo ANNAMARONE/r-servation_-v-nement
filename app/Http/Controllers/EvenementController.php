@@ -16,6 +16,12 @@ class EvenementController extends Controller
     $evenements = Evenement::paginate(9);
     return view('evenements.index', compact('evenements'));
  }
+ public function  listeEvenements()
+ {
+    $evenements = Evenement::paginate(8);
+    return view('evenements.liste_evenements', compact('evenements'));
+ }
+
 public function show($id){
     $evenement =Evenement::find($id);
     return view('evenements.show', compact('evenement'));
