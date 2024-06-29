@@ -101,7 +101,7 @@
             <div>{{ $message }}</div>
         @enderror
     </div>
-   
+    <input type="hidden" id="role" name="role" value="Organismes">
    
   
     </div>

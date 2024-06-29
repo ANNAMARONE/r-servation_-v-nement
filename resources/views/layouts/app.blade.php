@@ -38,6 +38,11 @@
                     <i class="fas fa-sign-out-alt mr-2"></i> 
                     <span>Déconnexion</span>
                 </a>
+                <button wire:click="" class="w-full text-start">
+                    <x-responsive-nav-link>
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </button>
             </div>
         </div>
 
