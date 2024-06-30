@@ -1,0 +1,73 @@
+ .banner{
+    width: 100%;
+    overflow-x: hidden;
+}
+.banner img{
+    height: 650px;
+    width: 100%;
+}
+.container h1{
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--couleur-principal);
+    margin-top: 40px;
+}
+.card {
+    width: 488px;
+    height: 650px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+
+.card img.image {
+    width:488px;
+    height: 461px;
+   border-top-left-radius: 80px;
+   border-bottom-left-radius: 80px;
+   border-top-right-radius: 230.5px;
+}
+.card img.star{
+    width:50px;
+   position: absolute;
+   left: 85%;
+   top: 10px;
+}
+.card h2 {
+    margin-top: 20px;
+    font-size: 26px;
+    font-family: roboto;
+    text-align: center;
+    color: var(--couleur-secondaire);
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.row p{
+    font-size: 18px;
+    font-weight: bold;
+}
+.icons {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icons a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+.icons a i{
+    color: var(--couleur-principal);
+}

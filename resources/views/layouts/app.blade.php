@@ -67,9 +67,11 @@
                         </li>
                     </ul>
                      <!-- RÉCUPERER LE NOM DU USER CONNECTÉ -->
+                     @auth
                     <span class="navbar-text">
                         Hello {{ Auth::user()->name }}
                     </span>
+                    @endauth 
                     
                 </div>
             </nav>

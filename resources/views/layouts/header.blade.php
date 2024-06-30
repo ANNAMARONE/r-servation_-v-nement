@@ -29,11 +29,11 @@
                     <a class="nav-link" href="#">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Événements</a>
+                    <a class="nav-link" href="liste/evenements">Événements</a>
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mes réservations</a>
+                        <a class="nav-link" href="/reservations">Mes réservations</a>
                     </li>
                 @endauth
             </ul>
@@ -52,11 +52,10 @@
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Déconnexion
                     </a>
-                    <form id="logout-form" action="#" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </li>
-                
                 @endguest
             </ul>
         </div>
@@ -64,9 +63,9 @@
     
    </header>
     <div class="main-content">
-        <div class="container-fluid">
+       
             @yield('content')
-        </div>
+       
     </div>  <!-- Bootstrap and jQuery JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
