@@ -9,6 +9,7 @@ use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailsevenementController;
 
 
 Route::get('/', function () {
@@ -99,10 +100,21 @@ Route::resource('users', UserController::class);
 
 // Dashboard evemetement
 Route::resource('dashboardevenements', DashboardController::class);
+
 // footer
 Route::get('/footer-example', function () {
     return view('layouts/footer');
 });
+
+// DetailsEvenement
+// Route pour afficher la liste des événements
+Route::get('evenementsdetails', [DetailsevenementController::class, 'detailsEvenement'])->name('evenements.detailsEvenement');
+
+// Routes pour les autres opérations CRUD sauf 'index'
+Route::resource('evenements', DetailsevenementController::class)->except(['index']);
+
+
+
 
 
 

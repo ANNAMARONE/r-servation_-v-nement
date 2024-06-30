@@ -76,8 +76,11 @@
             </thead>
             <tbody>
                 @foreach($evenements as $evenement)
-                <tr style="color: #000;">
-                    <td><img src="{{ asset('storage/' . $evenement->image) }}" alt="{{ $evenement->nom_evenement }}" style="max-width: 100px;"></td>
+                <tr>
+                    <td> <!-- Affichage de l'image -->
+                        <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" width="100"></td>
+                    
+                   
                     <td>{{ $evenement->nom_evenement }}</td>
                     <td>{{ $evenement->date }}</td>
                     <td>{{ $evenement->lieu }}</td>
@@ -88,7 +91,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')">
-                                <i class="fa fa-trash"></i> Supprimer
+                                <i class="fa fa-trash"></i>
                             </button>
                         </form>
                     </td>
