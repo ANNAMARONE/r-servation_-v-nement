@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrganismeController;
 
+use App\Http\Controllers\PortailController;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
@@ -52,7 +53,11 @@ Route::get('/', function () {
 });
 Route::get('organisme',[OrganismeController::class,'create_organisme']);
 Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('organisme');
-
+Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
+Route::delete('/suprimerOrganisme/{id}',[OrganismeController::class,'SuprimerOrganisme'])->name('SuprimerOrganisme');
+Route::get('/detailOrgenisme/{id}',[OrganismeController::class,'detailOrganisme'])->name('DetailOrganisme');
+Route::get('compte/rejeter/{id}', [OrganismeController::class, 'rejeter'])->name('compte.rejeter'); // Rejeter une candidature
+Route::get('compte/accepter/{id}', [OrganismeController::class, 'accepter'])->name('compte.accepter'); // Accepter une candidature
 
 
 
@@ -75,11 +80,7 @@ Route::get('/header', function () {
 Route::get('/sidebar_admin', function () {
     return view('layouts/sidebar_admin');
 });
-Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
-Route::delete('/suprimerOrganisme/{id}',[OrganismeController::class,'SuprimerOrganisme'])->name('SuprimerOrganisme');
-Route::get('/detailOrgenisme/{id}',[OrganismeController::class,'detailOrganisme'])->name('DetailOrganisme');
-Route::get('compte/rejeter/{id}', [OrganismeController::class, 'rejeter'])->name('compte.rejeter'); // Rejeter une candidature
-Route::get('compte/accepter/{id}', [OrganismeController::class, 'accepter'])->name('compte.accepter'); // Accepter une candidature
+
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
 Route::view('/', 'welcome');
