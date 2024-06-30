@@ -11,9 +11,9 @@ use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
-    // $createAmin= Role ::create(['name'=>'Administrateur']);
-    // $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
-    // $createOrganismes= Role ::create(['name'=>'Organismes']);
+    $createAmin= Role ::create(['name'=>'Administrateur']);
+    $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
+    $createOrganismes= Role ::create(['name'=>'Organismes']);
 
     return view('welcome');
     // $permission_gestionUtili= Permission::create(['name'=>'GestionUtilisateurs']);
