@@ -88,11 +88,22 @@ Route::view('profile', 'profile')
 
 require __DIR__.'/auth.php';
 
+
+
+
+
+
+
 // users
 Route::resource('users', UserController::class);
 
 // Dashboard evemetement
 Route::resource('dashboardevenements', DashboardController::class);
+// footer
+Route::get('/footer-example', function () {
+    return view('layouts/footer');
+});
+
 
 
 
