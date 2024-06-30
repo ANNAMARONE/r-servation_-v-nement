@@ -49,6 +49,17 @@ class OrganismeController extends Controller
     }
 }
 public function listeorganisme(){
-    return view('admins.ListeOrganisme');
+    $organismes = Organisme::with('user')->get();
+    $users = User::role('Organismes')->get();
+    return view('admins.ListeOrganisme',compact('organismes','users'));
+}
+public function SuprimerOrganisme($organisme){
+    $users=User::find($organisme);
+    $users->delete();
+    return redirect()->back();
+}
+public function detailOrganisme($organisme){
+    $organisme=Organisme::find($organisme);
+    return view('admins.detailOrganisme',compact('organisme'));
 }
 }
