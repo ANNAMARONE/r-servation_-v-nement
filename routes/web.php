@@ -59,6 +59,10 @@ Route::resource('evenements', EvenementController::class);
 Route::get('liste/evenements', [EvenementController::class, 'listeEvenements'])->name('evenements.liste');
 Route::get('/reservation/create/{evenement}', [ReservationController::class, 'create'])->name('reservation.create');
 Route::post('/reservation/store/{evenement}', [ReservationController::class, 'store'])->name('reservation.store');
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+Route::put('/reservations/reject/{id}', [ReservationController::class, 'rejectReservation'])->name('reservations.reject');
+
+
 
 
 Route::get('/sidebar', function () {
