@@ -34,14 +34,17 @@
                     <i class="fas fa-users mr-2"></i>
                     <span>Utilisateurs</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{url('/listeorganismes')}}" class="list-group-item list-group-item-action d-flex align-items-center">
                     <i class="fas fa-users mr-2"></i>
                     <span>Organismes</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center" id="logout">
-                    <i class="fas fa-sign-out-alt mr-2"></i> 
-                    <span>Déconnexion</span>
-                </a>
+                <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
+                    @csrf
+                    <button type="submit" class="btn btn-link p-0 d-flex align-items-center">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span>Déconnexion</span>
+                    </button>
+                </form>
             </div>
         </div>
 
