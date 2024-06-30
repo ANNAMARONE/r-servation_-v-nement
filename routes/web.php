@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', function () {
@@ -88,9 +89,11 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 // users
-
-
 Route::resource('users', UserController::class);
+
+// Dashboard evemetement
+Route::resource('dashboardevenements', DashboardController::class);
+
 
 
 
