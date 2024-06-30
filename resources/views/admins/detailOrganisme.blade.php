@@ -21,12 +21,32 @@ border-collapse: collapse;
     #liste{
 margin-left: 80%;
     }
+    #btn1{
+      background-color:#B6DCB8;
+      color: black;
+    }
+    #btn2{
+      background-color:rgb(255, 3, 3,26%);
+      color: black;
+      margin: 10px;
+    }
+    #row2{
+      margin-left: 20px;
+      margin-top: 30px;
+    }
+    .card-title{
+      color: #4862C4;
+      font-weight: bold;
+    }
+    .card-text{
+      color: #63B967;
+    }
 </style>
 @section('content')
 <div class="container">
   <div id="row" class="row">
     <div class="col">
-    <img src="{{('storage/logos/' . $organisme->logo) }}"  width="80">
+    <img src="{{('storage/' . $organisme->logo) }}" alt="" width="100">
      <p>{{ $organisme->description}} </p>
     </div>
     <div class="col">
@@ -43,19 +63,27 @@ margin-left: 80%;
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+     
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <button class="btn btn-success">accepter</button>
-        <button class="btn btn-danger">rejeter</button>
+       
+      <td>
+                        
+                            @if ( $organisme->statut == 'accepter')
+                                <a href="{{ route('compte.rejeter', $organisme->id) }}" id="btn1" class="btn btn-success">valider <i class="fa-solid fa-check" style="color: #29AB30;"></i></a><br>
+                                <a href="{{ route('compte.accepter', $organisme->id) }}" id="btn2" class="btn btn-danger">Rejeter<i class="fa-solid fa-xmark" style="color: #FF0303;"></i></a>
+                            @else
+                                <span>{{ ucfirst( $organisme->statut) }}</span>
+                            @endif
+     </td>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">fermer</button>
       </div>
 
     </div>
@@ -66,9 +94,9 @@ margin-left: 80%;
   <div id="row" class="row">
     <div class="col">
     <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
+  <div class="row g-8">
     <div class="col-md-4">
-      <img src="{{asset('images/Group 1171275842.png')}}" class="img-fluid rounded-start" alt="...">
+      <img id="row2" src="{{asset('images/Group 1171275842.png')}}" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -84,7 +112,7 @@ margin-left: 80%;
     <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{asset('images/Group 1171275843.png')}}" class="img-fluid rounded-start" alt="...">
+      <img id="row2" src="{{asset('images/Group 1171275843.png')}}" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -100,7 +128,7 @@ margin-left: 80%;
     <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{asset('images/Group 1171275844.png')}}" class="img-fluid rounded-start" alt="...">
+      <img id="row2" src="{{asset('images/Group 1171275844.png')}}" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
