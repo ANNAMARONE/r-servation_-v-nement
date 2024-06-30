@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', function () {
@@ -59,6 +60,10 @@ Route::resource('evenements', EvenementController::class);
 Route::get('liste/evenements', [EvenementController::class, 'listeEvenements'])->name('evenements.liste');
 Route::get('/reservation/create/{evenement}', [ReservationController::class, 'create'])->name('reservation.create');
 Route::post('/reservation/store/{evenement}', [ReservationController::class, 'store'])->name('reservation.store');
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+Route::put('/reservations/reject/{id}', [ReservationController::class, 'rejectReservation'])->name('reservations.reject');
+
+
 
 
 Route::get('/sidebar', function () {
@@ -84,9 +89,11 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 // users
-
-
 Route::resource('users', UserController::class);
+
+// Dashboard evemetement
+Route::resource('dashboardevenements', DashboardController::class);
+
 
 
 

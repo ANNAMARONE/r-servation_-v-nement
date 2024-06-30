@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+   
     use HasFactory;
+    protected $fillable = [
+        'statut',
+        // Autres champs fillable de votre modèle
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);

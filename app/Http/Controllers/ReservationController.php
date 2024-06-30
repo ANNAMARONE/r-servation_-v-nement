@@ -37,5 +37,22 @@ class ReservationController extends Controller
     
         return redirect()->route('evenements.liste')->with('reservation_success', true);
     }
-    
+    public function index()
+    {
+        // Récupère les réservations de l'utilisateur connecté
+        $reservations = Reservation::where('user_id', Auth::id())->get();
+
+        return view('reservations.mes_reservations', ['reservations' => $reservations]);
+    }
+    public function rejectReservation(Request $request, $id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        
+        // Mettre à jour le statut de la réservation à 'rejeter'
+        $reservation->update(['statut' => 'rejeter']);
+
+        // Redirection vers la page précédente avec un message de succès
+        return back()->with('success', 'Réservation rejetée avec succès.');
+    }
+
 }
