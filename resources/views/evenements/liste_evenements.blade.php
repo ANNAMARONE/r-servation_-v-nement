@@ -16,8 +16,15 @@
                 <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" class="image">
                 <h2>{{ $evenement->nom_evenement }}</h2>
                 <div class="row">
-                    <p><i class="fas fa-calendar-alt"></i> {{ $evenement->date }}</p>
-                    <p><i class="fas fa-map-marker-alt"></i> {{ $evenement->lieu }}</p>
+                    <p>
+                        <i class="fas fa-calendar-alt"></i> :
+                        {{ \Carbon\Carbon::parse($evenement->date)->format('d-m-Y') }}
+                    </p>
+                    
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i> :
+                         {{ $evenement->lieu }}
+                        </p>
                 </div>
                 <div class="icons">
                     <a href="#" data-toggle="modal" data-target="#eventModal-{{ $evenement->id }}">
@@ -29,35 +36,55 @@
                 </div>
             </div>
 
-            <!-- Modal d'informations -->
-            <div class="modal fade" id="eventModal-{{ $evenement->id }}" tabindex="-1" aria-labelledby="eventModalLabel-{{ $evenement->id }}" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="eventModalLabel-{{ $evenement->id }}">{{ $evenement->nom_evenement }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+             <!-- Modal d'informations -->
+<div class="modal fade informations" id="eventModal-{{ $evenement->id }}" tabindex="-1" aria-labelledby="eventModalLabel-{{ $evenement->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eventModalLabel-{{ $evenement->id }}">{{ $evenement->nom_evenement }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{ asset('images/star.jpg') }}" alt="" class="star">
+                        <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" class="image">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>{{ $evenement->nom_evenement }}</h2>
+                        <p>{{ $evenement->description }}</p>
+                        <div class="date_lieu">
+                            <p class="info-item">
+                                <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
+                                <strong>Date : </strong> {{ \Carbon\Carbon::parse($evenement->date)->format('d-m-Y') }}
+                            </p>
+                            <p class="info-item">
+                                <span class="icon-circle"><i class="fas fa-map-marker-alt"></i></span>
+                                <strong>Lieu : </strong> {{ $evenement->lieu }}
+                            </p>
                         </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img src="{{ $evenement->image }}" class="img-fluid" alt="{{ $evenement->nom_evenement }}">
-                                </div>
-                                <div class="col-md-6">
-                                    <p><strong>Titre :</strong> {{ $evenement->nom_evenement }}</p>
-                                    <p><strong>Description :</strong> {{ $evenement->description }}</p>
-                                    <p><strong>Date :</strong> <i class="fas fa-calendar-alt"></i> {{ $evenement->date }}</p>
-                                    <p><strong>Lieu :</strong> <i class="fas fa-map-marker-alt"></i> {{ $evenement->lieu }}</p>
-                                    <p><strong>Nombre de places :</strong> {{ $evenement->nbr_place }}</p>
-                                    <p><strong>Date limite :</strong> {{ $evenement->date_limite }}</p>
-                                    <a href="#" class="btn btn-primary btn-reserver" data-evenement-id="{{ $evenement->id }}">Réserver</a>
-                                </div>
-                            </div>
+                        <div class="date_lieu">
+                            <p class="info-item">
+                                <span class="icon-circle"><i class="fas fa-users"></i></span>
+                                <strong>Nombre de places :</strong> <br>{{ $evenement->nbr_place }}
+                            </p>
+                            <p class="info-item">
+                                <span class="icon-circle"><i class="fas fa-calendar-times"></i></span>
+                                <strong>Date limite :</strong> <br>{{ \Carbon\Carbon::parse($evenement->date_limite)->format('d-m-Y') }}
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-reserver" data-evenement-id="{{ $evenement->id }}">Réserver</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
 
             <!-- Modal de réservation -->
             <div class="modal fade" id="reservationModal-{{ $evenement->id }}" tabindex="-1" aria-labelledby="reservationModalLabel-{{ $evenement->id }}" aria-hidden="true">
