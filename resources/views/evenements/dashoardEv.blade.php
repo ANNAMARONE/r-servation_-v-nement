@@ -75,19 +75,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($evenements as $evenement)
+                 @foreach($evenements as $evenement)
                 <tr>
-                    <td> <!-- Affichage de l'image -->
-                        <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" width="100"></td>
-                    
-                   
+                    <td> <!-- Affichage de l'image avec lien -->
+                        <a href="{{ route('evenements.detailsEvenement', $evenement->id) }}">
+                            <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" width="100">
+                        </a>
+                    </td>
                     <td>{{ $evenement->nom_evenement }}</td>
                     <td>{{ $evenement->date }}</td>
                     <td>{{ $evenement->lieu }}</td>
                     <td>{{ $evenement->nbr_place }}</td>
                     <td>{{ $evenement->date_limite }}</td>
                     <td>
-                        <form action="{{ route('dashboardevenements.destroy', $evenement->id) }}" method="POST" class="d-inline">
+               <form action="{{ route('dashboardevenements.destroy', $evenement->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')">
@@ -96,7 +97,7 @@
                         </form>
                     </td>
                 </tr>
-                <tr style="border-top: 2px solid #606062;"></tr> <!-- Ligne horizontale -->
+                <tr style="border-top: 2px solid #fff;"></tr> <!-- Ligne horizontale -->
                 @endforeach
             </tbody>
         </table>
@@ -104,20 +105,38 @@
         {{ $evenements->links() }} <!-- Pagination -->
     </div>
 </div>
-@endsection
+{{-- @endsection
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+
+@endsection --}}
+
+
 <style>
-    .widget .card-title {
-        margin-bottom: 0;
-    }
-    .widget.card.widget {
-        background-color: white; /* Changement de couleur de fond du widget */
-    }
+.card{
+    width: 280px;
+    height: 140px;
+    border-radius: 10px;
+    color: white;
+}
+
+h1{
+    font-family: 'Roboto';
+    font-size: 30px;
+    font-weight: bold;
+}
+.bouton .btn:hover {
+    background-color: var(--couleur-secondaire); 
+}
+
+.contenu{
+    background-color: #fffff;
+    width: 98%;
+    margin-top: 8%;
+    height: 100%;
+} 
 </style>
+
 @endsection
 
-@section('scripts')
-<!-- Vous pouvez ajouter des scripts supplémentaires ici -->
-@endsection

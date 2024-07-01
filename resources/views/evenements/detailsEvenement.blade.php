@@ -1,98 +1,71 @@
-
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Tableau de bord')
 
-@section('content') --}}
 
 
-
-
-
-
-
-
+<div class="container">
     <h1>Liste des événements</h1>
     <!-- Lien pour créer un nouvel événement -->
-    <a href="{{ route('evenements.create') }}">Créer un nouvel événement</a>
+    <a href="{{ route('evenements.create') }}" class="btn btn-primary mb-3">Créer un nouvel événement</a>
 
-    <!-- Affichage du message de succès s'il existe -->
-    @if ($message = Session::get('success'))
-        <p>{{ $message }}</p>
-    @endif
-<table>
-        <thead>
-            <tr>
-               
-               <div class="carte1">
-                <th>Image</th>
-                <th>Description</th>
-               </div>
-
-               <div class="carte2">
-                <th>Nom</th>
-                <th>Date</th>
-                <th>Lieu</th>
-                <th>Date limite</th>
-               </div>
-                {{-- <th>Nombre de places</th>
-                <th>ID</th> --}}
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($evenements as $evenement)
-            <tr>
-                <div class="carte1">
-                    <td>
-                        <!-- Affichage de l'image -->
-                        <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" width="100">
-                    </td>
-                    <td>{{ $evenement->description }}</td>
-                </div>
-                
+    <div class="row">
+        @foreach ($evenements as $evenement)
+            <div class="col-md-6 mb-4">
+                <div class="card">
                     
-                    <div class="carte2">
-                        <td>{{ $evenement->nom_evenement }}</td>
-                    <td>{{ $evenement->date }}</td>
-                    <td>{{ $evenement->lieu }}</td>
-                   <td>{{ $evenement->date_limite }}</td>
+                    <img src="{{ $evenement->image }}" class="card-img-top" alt="{{ $evenement->nom_evenement }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $evenement->nom_evenement }}</h5>
+                        <p class="card-text">{{ $evenement->description }}</p>
                     </div>
 
-                   {{-- <td>{{ $evenement->nbr_place }}</td>
-                   <td>{{ $evenement->id }}</td> --}}
-                    
-                    
-                    <td>
-                    <!-- Formulaire pour supprimer l'événement -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Date:</strong> {{ $evenement->date }}</li>
+                        <li class="list-group-item"><strong>Lieu:</strong> {{ $evenement->lieu }}</li>
+                        <li class="list-group-item"><strong>Date limite:</strong> {{ $evenement->date_limite }}</li>
+                    </ul>
+                    <div class="card-body">
+                        <!-- Formulaire pour supprimer l'événement -->
                         <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Supprimer</button>
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
-                    </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
 
-    
-    
-    
-
-
-
-
-
-
-
-    {{-- @endsection
-
-@section('styles')
+ {{-- @section('styles')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-@endsection
-
-@section('scripts')
-    <!-- Vous pouvez ajouter des scripts supplémentaires ici -->
 @endsection --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
