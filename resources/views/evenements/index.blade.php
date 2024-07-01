@@ -31,7 +31,13 @@
                                 <td>
                                     <!-- Liens d'action avec des icônes -->
                                     <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-sm btn-primary" title="Modifier"><i class="fas fa-edit"></i></a>
-                                    <a href="{{ route('evenements.destroy', $evenement->id) }}" class="btn btn-sm btn-danger" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')"><i class="fas fa-trash-alt"></i></a>
+                                    <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Supprimer">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form> 
                                     <a href="/reservations/liste" class="btn btn-sm btn-info" title="Voir les réservations"><i class="fas fa-list"></i></a>
                                     <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-sm btn-secondary" title="Voir les détails"><i class="fas fa-info-circle"></i></a>
                                 </td>

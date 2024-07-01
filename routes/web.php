@@ -12,10 +12,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 
 
+
 Route::get('/',[EvenementController::class,'evenementVenire']); 
     // $createAmin= Role ::create(['name'=>'Administrateur']);
     // $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
     // $createOrganismes= Role ::create(['name'=>'Organismes']);
+
 
     
     // $permission_gestionUtili= Permission::create(['name'=>'GestionUtilisateurs']);
