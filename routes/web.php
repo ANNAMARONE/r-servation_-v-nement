@@ -12,12 +12,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 
 
-Route::get('/', function () {
+Route::get('/',[EvenementController::class,'evenementVenire']); 
     // $createAmin= Role ::create(['name'=>'Administrateur']);
     // $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
     // $createOrganismes= Role ::create(['name'=>'Organismes']);
 
-    return view('welcome');
+    
     // $permission_gestionUtili= Permission::create(['name'=>'GestionUtilisateurs']);
     // $permission_gestionRols= Permission::create(['name'=>'GestionRoles']);
     // $permission_gestionEvenement= Permission::create(['name'=>'GestionEvenements']);
@@ -50,7 +50,7 @@ Route::get('/', function () {
     // dump($rolesUtilisateur);
     // dump($rolesOrganismes);
     
-});
+
 Route::get('organisme',[OrganismeController::class,'create_organisme']);
 Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('organisme');
 Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
@@ -83,7 +83,6 @@ Route::get('/sidebar_admin', function () {
 
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
-Route::view('/', 'welcome');
 
 Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
     ->middleware(['auth', 'verified'])

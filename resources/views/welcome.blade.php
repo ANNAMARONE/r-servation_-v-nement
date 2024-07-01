@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 <body>
@@ -76,55 +77,26 @@
 
 <div class="container">
   <div class="row">
+ 
+@foreach ($evenements as $evenement)
     <div class="col">
     <div class="card" style="width:400px">
-  <img class="card-img-top" src="{{asset('img/Rectangle 4 (1).png')}}" alt="Card image">
+  <img class="card-img-top" src="{{ $evenement->image}}" alt="Card image">
   <div class="card-body">
-    <h4 class="card-title">John Doe</h4>
-    
-    <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-    <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
+  <h4 id="card-title" class="card-title">{{ $evenement->nom_evenement}}</h4>
+    <a href="#" class="card-link"><i class="fa-solid fa-calendar-days" style="color: #4862C4;"></i>: {{ $evenement->date }}</a>
+    <a id="icon"href="#" class="card-link"><i class="fa-solid fa-location-dot" style="color: #4862C4;"></i>{{ $evenement->lieu}}</a>
+    <div id="icon1" class="card-body">
+    <a href="#" class="card-link"><i class="fa-solid fa-eye" style="color:#F53F7B;"></i></a>
+    <a id="icon" href="#" class="card-link"><img src="{{asset('img/Vector (1).png')}}" alt=""></a>
   </div>
   </div>
 </div>
     </div>
-    <div class="col">
-    <div class="card" style="width:400px">
-  <img class="card-img-top" src="{{asset('img/Rectangle 4 (1).png')}}" alt="Card image">
-  <div class="card-body">
-    <h4 class="card-title">John Doe</h4>
-    <p class="card-text">Some example text.</p>
-    <a href="#" class="btn btn-primary">See Profile</a>
+    @endforeach
+
   </div>
-</div>
-    </div>
-    <div class="col">
-    <div class="card" style="width:400px">
-  <img class="card-img-top" src="{{asset('img/Rectangle 4 (1).png')}}" alt="Card image">
-  <div class="card-body">
-    <h4 class="card-title">John Doe</h4>
-    <p class="card-text">Some example text.</p>
-    <a href="#" class="btn btn-primary">See Profile</a>
-  </div>
-</div>
-    </div>
-    <div class="col">
-    <div class="card" style="width:400px">
-  <img class="card-img-top" src="{{asset('img/Rectangle 4 (1).png')}}" alt="Card image">
-  <div class="card-body">
-    <h4 class="card-title">John Doe</h4>
-    <p class="card-text">Some example text.</p>
-    <a href="#" class="btn btn-primary">See Profile</a>
-  </div>
-</div>
-    </div>
-  </div>
-  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" id="voireplus" class="btn btn-primary">Voire plus</button>
 </div>
 </div>
 <div class="scrol">
@@ -135,78 +107,169 @@
     <div class="container">
   <div class="row">
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo1.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo3.png')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo8.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo2.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo5.png')}}" class="d-block w-100" alt="...">
     </div>
   </div>
 </div>
  </div>
     <div class="carousel-item">
+    <div class="container">
     <div class="row">
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo6.jpeg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo9.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo4.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo3.png')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo8.jpg')}}" class="d-block w-100" alt="...">
     </div>
+  </div>
   </div>
     </div>
     <div class="carousel-item">
+    <div class="container">
     <div class="row">
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo3.png')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo8.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo4.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo1.jpg')}}" class="d-block w-100" alt="...">
     </div>
     <div class="col">
-    <img src="{{asset('img/Rectangle 34624657.png')}}" class="d-block w-100" alt="...">
+    <img src="{{asset('img/logo5.png')}}" class="d-block w-100" alt="...">
     </div>
+  </div>
   </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+  <button id="page2" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+    
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+  <button id="page2" class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+   
   </button>
 </div>
+</div>
+<div class="contact">
+  <h1>contact</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+    <div class="container mt-3">
+  <form action="/action_page.php">
+    <div class="mb-3 mt-3">
+      <label for="text">Prenom:</label>
+      <input type="text" class="form-control" id="text" placeholder="Enter prenom" name="email">
+    </div>
+    <div class="mb-3">
+      <label for="text">Nom:</label>
+      <input type="text" class="form-control" id="text" placeholder="Enter nom" name="pswd">
+    </div>
+    <label for="comment">Message:</label>
+    <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+    <button id="contact" type="submit" class="btn btn-primary">envoyer</button>
+  </form>
+</div>
+
+    </div>
+    <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+      <img src="{{asset('img/Rectangle 34624652.png')}}" class="img-fluid" height="50px" alt="...">
+      
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
 </div>
 
 @endsection
 
 @section('styles')
  <style>
-    
+  .scrol{
+    margin-top: 5%;
+  }
+  .scrol h1{
+    text-align: center;
+      color:#F53F7B;
+      font-weight:bold;
+      margin-bottom: 5%;
+  }
+    #card-title{
+      text-align: center;
+      font-weight: bold;
+      color: #4862C4;
+    }
+    #page2{
+      border-radius: 100%;
+        height: 60px;
+        width: 60px;
+        background-color:black;
+        color: black;
+        margin-top: 5%;
+    }
+    .contenair2{
+      margin-top: 5%;
+
+    }
+    #icon{
+      float: right;
+      margin-left: 5%;
+     
+    }
+    #icon1{
+      margin-top: 10%;
+    }
+    .contenair2 h1{
+      text-align: center;
+      color:#F53F7B;
+      font-weight:bold;
+      margin-bottom: 5%;
+      
+    }
+    .contenair2 .card{
+      border: 1px solid black;
+      margin-bottom: 5%;
+      
+      
+    }
+    .contenair2 .card a{
+      color: black;
+      font-weight: bold;
+    }
+    .contenair2 .card i{
+    margin-right: 3px;
+    }
 .event{
     color: #F53F7B;
     font-weight:bold;
@@ -255,7 +318,6 @@
     }
     #col-sm-6{
         margin-top: 10%;
-        width: 20px;
         border: 1px solid black;
     }
     #text2{
@@ -268,6 +330,24 @@
         font-size: 30px;
         font-weight: bold;
         margin-top: 10%;
+    }
+    #voireplus{
+     margin-left: 40%;
+     background-color: #F53F7B;
+    }
+    .contact{
+      margin-top: 10%;
+    }
+    .contact h1{
+      text-align: center;
+      color:#F53F7B;
+      font-weight:bold;
+      margin-bottom: 5%;
+    }
+    #contact{
+      width: 100%;
+      margin-top: 5%;
+      background-color: #F53F7B;
     }
  </style>
 @endsection
