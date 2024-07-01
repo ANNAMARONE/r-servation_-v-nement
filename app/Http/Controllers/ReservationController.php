@@ -10,6 +10,7 @@ use App\Mail\RejectionReservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ConfirmationReservation;
+use Illuminate\Pagination\Paginator;
 
 class ReservationController extends Controller
 {
