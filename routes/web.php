@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', function () {
@@ -74,6 +75,11 @@ Route::get('/header', function () {
 Route::get('/sidebar_admin', function () {
     return view('layouts/sidebar_admin');
 });
+Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
+Route::delete('/suprimerOrganisme/{id}',[OrganismeController::class,'SuprimerOrganisme'])->name('SuprimerOrganisme');
+Route::get('/detailOrgenisme/{id}',[OrganismeController::class,'detailOrganisme'])->name('DetailOrganisme');
+Route::get('compte/rejeter/{id}', [OrganismeController::class, 'rejeter'])->name('compte.rejeter'); // Rejeter une candidature
+Route::get('compte/accepter/{id}', [OrganismeController::class, 'accepter'])->name('compte.accepter'); // Accepter une candidature
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
 Route::view('/', 'welcome');
@@ -87,10 +93,23 @@ Route::view('profile', 'profile')
 
 require __DIR__.'/auth.php';
 
+
+
+
+
+
+
 // users
-
-
 Route::resource('users', UserController::class);
+
+// Dashboard evemetement
+Route::resource('dashboardevenements', DashboardController::class);
+// footer
+Route::get('/footer-example', function () {
+    return view('layouts/footer');
+});
+
+
 
 
 

@@ -48,5 +48,34 @@ class OrganismeController extends Controller
         return redirect()->back()->with('error', 'Une erreur s\'est produite : ' . $e->getMessage());
     }
 }
+public function listeorganisme(){
+    $organismes = Organisme::with('user')->get();
+    $users = User::role('Organismes')->get();
+    return view('admins.ListeOrganisme',compact('organismes','users'));
+}
+public function SuprimerOrganisme($organisme){
+    $users=User::find($organisme);
+    $users->delete();
+    return redirect()->back();
+}
+public function detailOrganisme($organisme){
+    $organisme=Organisme::find($organisme);
+    return view('admins.detailOrganisme',compact('organisme'));
+}
+public function accepter($id)
+    {
+        $candidature = Organisme::findOrFail($id);
+        $candidature->statut = 'accepter';
+        $candidature->save();
+        return redirect('/listeorganismes')->with('message', 'Candidature acceptée et email envoyé.');
+    }
+
+    public function rejeter($id)
+    {
+        $candidature = Organisme::findOrFail($id);
+        $candidature->statut = 'refuser';
+        $candidature->save();
+        return redirect('/listeorganismes')->with('message', 'Candidature rejetée et email envoyé.');
+    }
 
 }

@@ -104,3 +104,19 @@ return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalR
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
