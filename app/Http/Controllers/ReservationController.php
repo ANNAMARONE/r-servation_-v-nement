@@ -6,13 +6,17 @@ use App\Models\User;
 use App\Models\Evenement;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Mail\RejectionReservation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmationReservation;
 
 class ReservationController extends Controller
 {
     public function listeReservation(){
        // Récupérer toutes les réservations avec les relations utilisateurs et événements
        $reservations = Reservation::with('user', 'evenement')->paginate(9);
+       
 
         // Retourner la vue avec les données des réservations
         return view('reservations.listeReservation', compact('reservations'));
@@ -33,9 +37,12 @@ class ReservationController extends Controller
         $reservation->user_id = Auth::id();
         $reservation->evenement_id = $evenement_id;
         $reservation->save();
+        // Envoyez l'email de confirmation
+        Mail::to(Auth::user()->email)->send(new ConfirmationReservation($reservation));
     
         return redirect()->route('evenements.liste')->with('reservation_success', true);
     }
+  
     public function index()
     {
         // Récupère les réservations de l'utilisateur connecté
@@ -46,6 +53,7 @@ class ReservationController extends Controller
     public function rejectReservation(Request $request, $id)
     {
         $reservation = Reservation::findOrFail($id);
+        Mail::to(Auth::user()->email)->send(new RejectionReservation($reservation));
         
         // Mettre à jour le statut de la réservation à 'rejeter'
         $reservation->update(['statut' => 'rejeter']);
