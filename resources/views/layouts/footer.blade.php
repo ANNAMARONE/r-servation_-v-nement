@@ -9,25 +9,26 @@
         /* public/css/app.css */
         footer {
             background-color: black;
-            padding: 20px;
-            text-align: center;
+            padding: 50px;
+            text-align: left;
             color: white;
-            font-size: 14px;
+            font-size: 19px;
             margin-top: 20px;
         }
 
         footer .footer-content {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
         }
 
         footer .footer-section {
-            flex: 1;
+            flex: 1 1 200px;
             margin-right: 20px;
         }
 
         footer .footer-section h4 {
-            font-size: 18px;
+            font-size: 20px;
             margin-bottom: 10px;
         }
 
@@ -51,7 +52,30 @@
 
         .social-icons img {
             width: 30px; /* Ajustez la taille selon vos besoins */
+            height: 30px; /* Make sure the icons are equal in size */
             margin: 0 10px;
+            filter: invert(1); /* Make icons white */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            footer .footer-section {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            footer .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            footer .footer-section {
+                margin-right: 0;
+                text-align: center;
+            }
+            .social-icons {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -63,11 +87,17 @@
     <div class="footer-content">
         <div class="footer-section">
             <h4>Accueil</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare cursus sed nunc eget dictum.</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur <br>
+                adipiscing elit. Sed ornare cursus sed<br>
+                nunc eget dictum  Sed ornare cursus sed<br>
+                nunc eget dictumd nunc eget dictum  Sed<br>
+                ornare cursus sed nunc eget dictum  
+            </p>
             <div class="social-icons">
                 <a href="#"><img src="{{ asset('images/twitter.png') }}" alt="Twitter"></a>
-                <a href="#"><img src="{{ asset('images/facebook.png') }}" alt="Facebook"></a>
-                <a href="#"><img src="{{ asset('images/instagram.png') }}" alt="Instagram"></a>
+                <a href="#"><img src="{{ asset('images/faccebook.png') }}" alt="Facebook"></a>
+                <a href="#"><img src="{{ asset('images/instagram1.png') }}" alt="Instagram"></a>
             </div>
         </div>
         <div class="footer-section">
