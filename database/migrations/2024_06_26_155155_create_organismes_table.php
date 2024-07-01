@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('secteur_activité');
             $table->string('nina');
+            $table->enum('statut', ['accepter', 'refuser'])->default('accepter');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

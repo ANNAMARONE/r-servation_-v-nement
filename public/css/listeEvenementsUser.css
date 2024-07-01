@@ -43,14 +43,19 @@
     font-weight: bold;
 }
 
-.row {
+.card  .row {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 }
-.row p{
+.card  .row p{
     font-size: 18px;
     font-weight: bold;
+}
+.card .row p i{
+    font-size: 30px;
+    color: var(--couleur-secondaire);
+    margin-right: 8px;
 }
 .icons {
     margin-top: 10px;
@@ -64,10 +69,199 @@
 
 .icons a {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 20px;
     text-decoration: none;
     color: #333;
 }
 .icons a i{
     color: var(--couleur-principal);
+    font-size: 30px;
+}
+.informations {
+    height: 620px;
+   
+}
+.informations .modal-body .row img.image{
+    width:480px;
+    height: 490px;
+   border-top-left-radius: 80px;
+   border-bottom-left-radius: 80px;
+   border-top-right-radius: 230.5px;
+}
+.informations .modal-body .row img.star{
+    width:50px;
+   position: absolute;
+   left: 85%;
+   top: 10px;
+}
+.informations .modal-body .row h2, .modal-body .row h2{
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-family: roboto;
+    text-align: center;
+    color: var(--couleur-secondaire);
+    font-weight: bold;
+}
+ .modal-body .row p{
+    width: 90%;
+    font-size: 18px;
+    font-family: roboto;
+    text-align: justify;
+    font-weight: 500;
+}
+ .modal-body .row p i{
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    margin-left: 0;
+}
+ .modal-body .row .date_lieu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-bottom: 30px;
+   
+}
+
+.informations .modal-body .row a.btn-reserver{
+    width: 300px; 
+   height: 50px;
+   background-color: #F53F7B;
+   color: white;
+   text-align: center;
+   border-radius: 8px;
+   font-size: 22px;
+   font-weight: bold;
+   margin-top: 10%;
+}
+.icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--couleur-principal); 
+    color: white;
+    margin-right: 10px;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.info-item strong {
+    margin-right: 5px;
+}
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+.reservation .modal-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.modal-body .row .stars{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ .modal-body .row img.star2{
+    width:50px;
+   position: absolute;
+  left: 90%;
+   top: 10px;
+}
+ .modal-body .row img.star1{
+    width:50px;
+   position: absolute;
+   right: 90%;
+   top: 10px;
+}
+.modal-body .row .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+ .modal-body .row h1{
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-family: roboto;
+    text-align: center;
+    color: var(--couleur-principal);
+    font-weight: bold;
+}
+.modal-body .row .container .date_lieu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    width: 100%;
+    margin-left: 18%;
+    gap: 10%;
+   
+}
+.reservation .modal-body .row .boutons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 60%;
+    gap: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.reservation .modal-body .row button.btn-annuler{
+    width: 200px; 
+   height: 50px;
+   background-color: transparent;
+   color: #F53F7B;
+   border: 1px solid #F53F7B;
+   text-align: center;
+   border-radius: 8px;
+   font-size: 22px;
+   font-weight: bold;
+}
+.reservation .modal-body .row button.btn-valider{
+    width: 200px; 
+   height: 50px;
+   background-color: #F53F7B;
+   color: white;
+   text-align: center;
+   border-radius: 8px;
+   font-size: 22px;
+   font-weight: bold;
+}
+.modal-body .row .stars_end{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20%;
+}
+.modal-body .row .stars_end img.star2{
+    width:50px;
+   position: absolute;
+  left: 90%;
+   top: 90%;
+}
+ .modal-body .row .stars_end img.star1{
+    width:50px;
+   position: absolute;
+   right: 90%;
+   top: 90%;
+} 
+.modal-body .row h3{
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-family: roboto;
+    text-align: center;
+    font-weight: bold;
 }

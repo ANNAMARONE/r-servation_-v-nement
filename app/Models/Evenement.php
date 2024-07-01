@@ -13,7 +13,7 @@ class Evenement extends Model
     ];
     public function reservations()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class)->where('statut', 'accepter');
     }
 
     protected $dates = ['date', 'date_limite']; // Définit les colonnes qui sont des champs de date
