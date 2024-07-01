@@ -10,6 +10,8 @@ use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailsevenementController;
+
 
 
 
@@ -22,6 +24,7 @@ Route::get('/',[EvenementController::class,'evenementVenire']);
 
 
     
+
     // $permission_gestionUtili= Permission::create(['name'=>'GestionUtilisateurs']);
     // $permission_gestionRols= Permission::create(['name'=>'GestionRoles']);
     // $permission_gestionEvenement= Permission::create(['name'=>'GestionEvenements']);
@@ -33,6 +36,8 @@ Route::get('/',[EvenementController::class,'evenementVenire']);
     // $permission_voireTableauboard= Permission::create(['name'=>'VoireTableauBoard']);
     // $permission_CréerEvenement=Permission::create(['name'=>'CréerEvenement']);
 
+
+    // NE PAS DECOMMENTER
     // $rolesAdmin=Role::find(1);
     // $rolesAdmin->givePermissionTo('GestionUtilisateurs');
     // $rolesAdmin->givePermissionTo('GestionRoles');
@@ -88,6 +93,7 @@ Route::get('/sidebar_admin', function () {
 //route pour la liste des evenements
 Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
 
+
 Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -98,20 +104,30 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 
-
-
-
-
-
 // users
 Route::resource('users', UserController::class);
-
 // Dashboard evemetement
 Route::resource('dashboardevenements', DashboardController::class);
 // footer
-Route::get('/footer-example', function () {
-    return view('layouts/footer');
-});
+Route::get('/footer-example', function () {return view('layouts/footer');});
+
+// DetailsEvenement
+// Route pour afficher la liste des événements
+Route::get('evenementsdetails', [DetailsevenementController::class, 'detailsEvenement'])->name('evenements.detailsEvenement');
+// Routes pour les autres opérations CRUD sauf 'index'
+Route::resource('evenements', DetailsevenementController::class)->except(['index']);
+Route::get('/evenements/{id}', [DetailsevenementController::class, 'show'])->name('detailsEvenement');
+
+
+
+
+
+
+
+
+
+
+
 
 
 
