@@ -43,7 +43,32 @@
                     <a class="custom-btn-login nav-link" href="{{ route('login') }}">Connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="custom-btn-register nav-link" href="{{ route('register') }}" >Inscription</a>
+                  
+                    <!-- Button trigger modal -->
+<button class="btn2" type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <a class="custom-btn-register nav-link" >Inscription</a>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Veuillez choisir une option pour vous connecter :</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      
+    <a href="{{ route('register') }}">Se connecter en tant qu'utilisateur</a><br>
+    <a class="btn5" href="{{ route('register_organisme') }}">Se connecter en tant qu'organisme</a>
+      </div>
+      <div class="modal-footer">
+        <button id="btn3" type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
                 </li>
                 
                 @else
@@ -60,7 +85,19 @@
             </ul>
         </div>
     </nav>
-    
+    <style>
+        .btn2{
+            border: none;
+            background-color: white;
+        }
+        #btn3{
+            background-color: #F53F7B;
+        }
+        .btn5{
+            padding-top: 5%;
+            border: 2px solid #F53F7B;
+        }
+    </style>
    </header>
     <div class="main-content">
        

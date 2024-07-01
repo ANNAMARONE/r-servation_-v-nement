@@ -55,7 +55,7 @@ Route::get('/',[EvenementController::class,'evenementVenire']);
     // dump($rolesOrganismes);
     
 
-Route::get('organisme',[OrganismeController::class,'create_organisme']);
+Route::get('organisme',[OrganismeController::class,'create_organisme'])->name('register_organisme');
 Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('organisme');
 Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
 Route::delete('/suprimerOrganisme/{id}',[OrganismeController::class,'SuprimerOrganisme'])->name('SuprimerOrganisme');

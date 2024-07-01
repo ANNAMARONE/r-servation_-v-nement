@@ -81,7 +81,7 @@
 @foreach ($evenements as $evenement)
     <div class="col">
     <div class="card" style="width:400px">
-  <img class="card-img-top" src="{{ $evenement->image}}" alt="Card image">
+  <img id="imagecard" class="card-img-top" src="{{ $evenement->image}}" alt="Card image">
   <div class="card-body">
   <h4 id="card-title" class="card-title">{{ $evenement->nom_evenement}}</h4>
     <a href="#" class="card-link"><i class="fa-solid fa-calendar-days" style="color: #4862C4;"></i>: {{ $evenement->date }}</a>
@@ -261,6 +261,10 @@
       border: 1px solid black;
       margin-bottom: 5%;
       
+      
+    }
+    #imagecard{
+      border-radius:10% 23% 0% 11% / 11% 33% 10% 9% ;
       
     }
     .contenair2 .card a{
