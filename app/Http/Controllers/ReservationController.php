@@ -21,8 +21,7 @@ class ReservationController extends Controller
     public function create($evenement_id)
     {
         $evenement = Evenement::findOrFail($evenement_id);
-        $evenement->nbr_place_restante = $evenement->nbr_place - $evenement->reservations()->count();
-        return view('reservations.create', compact('evenement'));
+        return view('evenements.liste_evenements', compact('evenement'));
     }
 
     public function store(Request $request, $evenement_id)
