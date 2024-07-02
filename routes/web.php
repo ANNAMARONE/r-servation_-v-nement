@@ -101,28 +101,15 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 
-// users
-Route::resource('users', UserController::class);
 
 // footer
 Route::get('/footer-example', function () {return view('layouts/footer');});
-
-//DetailsEvenement
-
-
-
-// Route pour afficher la liste des événements dans le tableau de bord
-//Route::get('/dashboard/evenements', [DashboardController::class, 'index'])->name('dashboardevenements.index');
-
-
+// users
+Route::resource('users', UserController::class);
 // Dashboard evemetement
 Route::resource('dashboardevenements', DashboardController::class);
 // Route pour afficher les détails d'un événement spécifique
-//Route::get('/dashboard/evenements/{id}', [DashboardController::class, 'detailsEvenement'])->name('dashboardevenements.detailsEvenement');
-
 Route::get('/dashboard/evenements/{id}', [DashboardController::class, 'detailsEvenement'])->name('evenements.detailsEvenement');
-
-
 // Route pour supprimer un événement spécifique
 //Route::delete('/dashboard/evenements/{id}', [DashboardController::class, 'destroy'])->name('dashboardevenements.destroy');
 
