@@ -304,12 +304,25 @@
     .icons a i {
         font-size: 25px;
     }
+    .informations {
+        height: 100%;
+    }
     .informations .modal-body .row img.image {
         width: 100%;
         height: auto;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        border-top-right-radius: 130px;
+    }
+    .informations .modal-body .row img.star {
+        width: 30px;
+        position: absolute;
+        left: 90%;
+        top: 10px;
     }
     .informations .modal-body .row h2 {
         font-size: 20px;
+        margin-top: 20px;
     }
     .modal-body .row p {
         font-size: 16px;
@@ -317,6 +330,7 @@
     .modal-body .row .date_lieu {
         flex-direction: column;
         align-items: flex-start;
+        margin-bottom: 5px;
     }
     .reservation .modal-body .row .container .date_lieu {
         flex-direction: column;
