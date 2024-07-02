@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Liste des Evénements')
@@ -11,13 +12,14 @@
     <div class="contenu">
         <div class="tables">
             <div class="table-responsive">
+                
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nom de l'Événement</th>
-                            <th>Lieu</th>
-                            <th>Nombre de Places</th>
-                            <th>Date</th>
+                            <th>Nom </th>
+                            <th class="d-none d-md-table-cell">Lieu</th>
+                            <th class="d-none d-md-table-cell">Nombre de Places</th>
+                            <th class="d-none d-md-table-cell">Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -25,21 +27,21 @@
                         @foreach($evenements as $evenement)
                             <tr>
                                 <td>{{ $evenement->nom_evenement }}</td>
-                                <td>{{ $evenement->lieu }}</td>
-                                <td>{{ $evenement->nbr_place }}</td>
-                                <td>{{ $evenement->date }}</td>
-                                <td>
+                                <td class="d-none d-md-table-cell">{{ $evenement->lieu }}</td>
+                                <td class="d-none d-md-table-cell">{{ $evenement->nbr_place }}</td>
+                                <td class="d-none d-md-table-cell"> {{ \Carbon\Carbon::parse($evenement->date)->format('d-m-Y') }}</td>
+                                <td class="icons">
                                     <!-- Liens d'action avec des icônes -->
-                                    <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-sm btn-primary" title="Modifier"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-sm " title="Modifier"><i class="fas fa-edit"></i></a>
                                     <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" title="Supprimer">
+                                        <button type="submit" class="btn btn-sm " title="Supprimer">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form> 
-                                    <a href="/reservations/liste" class="btn btn-sm btn-info" title="Voir les réservations"><i class="fas fa-list"></i></a>
-                                    <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-sm btn-secondary" title="Voir les détails"><i class="fas fa-info-circle"></i></a>
+                                    <a href="/reservations/liste/{{$evenement->id}}" class="btn btn-sm " title="Voir les réservations"><i class="fas fa-list"></i></a>
+                                    <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-sm" title="Voir les détails"><i class="fas fa-info-circle"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -47,10 +49,8 @@
                 </table>
             </div>
             {{ $evenements->links() }} 
-
         </div>
     </div>
-    
 @endsection
 
 @section('styles')

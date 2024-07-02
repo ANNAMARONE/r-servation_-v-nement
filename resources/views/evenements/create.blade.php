@@ -7,7 +7,6 @@
     <a href="{{ route('evenements.index') }}" class="btn">Retour</a>
 </div>
 <div class="custom-form-container">
-  
     <div class="custom-form row">
         <!-- Colonne pour l'image -->
         <div class="col-md-6">
@@ -48,18 +47,19 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Créer</button>
             </form>
-            
         </div>
     </div>
 </div>
 
+<style>
+
+</style>
 
 @endsection
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+<link rel="stylesheet" href="{{ asset('css/createevenement.css') }}">
 @endsection
 
 @section('scripts')
-
 @endsection

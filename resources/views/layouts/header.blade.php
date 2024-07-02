@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,17 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <!-- sidebar CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     @yield('styles')
 </head>
 <body>
    <header>
-    <nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -43,6 +44,7 @@
                     <a class="custom-btn-login nav-link" href="{{ route('login') }}">Connexion</a>
                 </li>
                 <li class="nav-item">
+
                   
                     <!-- Button trigger modal -->
 <button class="btn2" type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -73,7 +75,6 @@
   </div>
 </div>
                 </li>
-                
                 @else
                 <li class="nav-item">
                     <a class="custom-btn-logout nav-link" href="#" 
@@ -88,6 +89,7 @@
             </ul>
         </div>
     </nav>
+
     <style>
         .btn2{
             border: none;
@@ -101,26 +103,29 @@
             
         }
     </style>
+
    </header>
-    <div class="main-content">
-       
-            @yield('content')
-       
-    </div>  <!-- Bootstrap and jQuery JavaScript -->
+
+   <div class="main-content">
+        @yield('content')
+   </div>
+
+    <!-- Bootstrap and jQuery JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
         $(document).ready(function() {
-            // Récupère l'URL de la page actuelle
+            // Gérer l'ouverture et la fermeture du menu burger
+            $('.navbar-toggler').on('click', function() {
+                $('#navbarNav').toggleClass('show');
+            });
+
+            // Ajouter la classe 'active' au lien actuel
             var url = window.location.href;
-    
-            // Itère sur chaque lien de la navbar
             $('.navbar-nav a.nav-link').each(function() {
-                // Vérifie si l'URL de ce lien correspond à l'URL de la page actuelle
-                if (url === (this.href)) {
-                    // Ajoute la classe 'active' à l'élément parent <li>
+                if (url === this.href) {
                     $(this).closest('li').addClass('active');
                 }
             });
@@ -129,5 +134,4 @@
     @yield('scripts')
     @extends('layouts.footer')
 </body>
-
 </html>

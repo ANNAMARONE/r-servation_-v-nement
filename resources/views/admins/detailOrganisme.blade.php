@@ -73,8 +73,8 @@ margin-left: 80%;
       <td>
                         
                             @if ( $organisme->statut == 'accepter')
-                                <a href="{{ route('compte.accepter', $organisme->id) }}" id="btn1" class="btn btn-success">valider <i class="fa-solid fa-check" style="color: #29AB30;"></i></a><br>
-                                <a href="{{ route('compte.rejeter', $organisme->id) }}" id="btn2" class="btn btn-danger">Rejeter<i class="fa-solid fa-xmark" style="color: #FF0303;"></i></a>
+                                <a href="{{ route('compte.accepter', $organisme->id) }}" id="btn1" class="btn btn-success">valider<i class="fa-solid fa-check" style="color: #29AB30;"></i></a>
+                                <a href="{{ route('compte.rejeter', $organisme->id) }}" id="btn2" class="btn btn-danger">bloquer<i class="fa-solid fa-xmark" style="color: #FF0303;"></i></a>
                             @else
                                 <span>{{ ucfirst( $organisme->statut) }}</span>
                             @endif

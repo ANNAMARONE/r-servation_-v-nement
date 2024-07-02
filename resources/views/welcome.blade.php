@@ -400,6 +400,12 @@
       width: 350px;
       margin-left: 5%;
     }
+    #page2{
+        display: none;
+    }
+    #pages{
+        display: none;
+    }
 }
  </style>
 @endsection
