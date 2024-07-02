@@ -14,15 +14,16 @@ use Illuminate\Pagination\Paginator;
 
 class ReservationController extends Controller
 {
-    public function listeReservation(){
-       // Récupérer toutes les réservations avec les relations utilisateurs et événements
-       $reservations = Reservation::with('user', 'evenement')->paginate(9);
-       
-
+    public function listeReservation($evenement_id) {
+        // Récupérer toutes les réservations pour un événement spécifique avec les relations utilisateurs et événements
+        $reservations = Reservation::where('evenement_id', $evenement_id)
+                                    ->with('user', 'evenement')
+                                    ->paginate(9);
+    
         // Retourner la vue avec les données des réservations
         return view('reservations.listeReservation', compact('reservations'));
-
     }
+    
     public function create($evenement_id)
     {
         $evenement = Evenement::findOrFail($evenement_id);

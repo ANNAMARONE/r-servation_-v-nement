@@ -88,7 +88,7 @@ Route::get('/sidebar_admin', function () {
 });
 
 //route pour la liste des evenements
-Route::get('/reservations/liste', [ReservationController::class, 'listeReservation']);
+Route::get('/reservations/liste/{evenement_id}', [ReservationController::class, 'listeReservation']);
 
 
 Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
