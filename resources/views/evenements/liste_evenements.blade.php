@@ -9,31 +9,35 @@
     <div class="container">
         <h1>Listes des événements</h1>
         <!-- boucle sur tous les événements -->
-        @foreach ($evenements as $evenement)
-            <div class="card">
-                <img src="{{ asset('images/star.jpg') }}" alt="" class="star">
-                <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" class="image">
-                <h2>{{ $evenement->nom_evenement }}</h2>
-                <div class="row">
-                    <p>
-                        <i class="fas fa-calendar-alt"></i> :
-                        {{ \Carbon\Carbon::parse($evenement->date)->format('d-m-Y') }}
-                    </p>
-
-                    <p>
-                        <i class="fas fa-map-marker-alt"></i> :
-                        {{ $evenement->lieu }}
-                    </p>
-                </div>
-                <div class="icons">
-                    <a href="#" data-toggle="modal" data-target="#eventModal-{{ $evenement->id }}">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                    <a href="#" data-toggle="modal" data-target="#reservationModal-{{ $evenement->id }}">
-                        <i class="fas fa-calendar-check"></i>
-                    </a>
+        <div class="row">
+            @foreach ($evenements as $evenement)
+            <div class="col-md-6 mb-4"> 
+                <div class="card">
+                    <img src="{{ asset('images/star.jpg') }}" alt="" class="star">
+                    <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" class="image">
+                    <h2>{{ $evenement->nom_evenement }}</h2>
+                    <div class="row">
+                        <p>
+                            <i class="fas fa-calendar-alt"></i> :
+                            {{ \Carbon\Carbon::parse($evenement->date)->format('d-m-Y') }}
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i> :
+                            {{ $evenement->lieu }}
+                        </p>
+                    </div>
+                    <div class="icons">
+                        <a href="#" data-toggle="modal" data-target="#eventModal-{{ $evenement->id }}">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#reservationModal-{{ $evenement->id }}">
+                            <i class="fas fa-calendar-check"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
+       
+        
 
             <!-- Modal d'informations -->
             <div class="modal fade informations" id="eventModal-{{ $evenement->id }}" tabindex="-1"
@@ -155,7 +159,7 @@
                 </div>
             </div>
         @endforeach
-
+    </div>
         <!-- Modal de félicitations -->
         <div class="modal fade" id="congratsModal" tabindex="-1" aria-labelledby="congratsModalLabel"
             aria-hidden="true">
