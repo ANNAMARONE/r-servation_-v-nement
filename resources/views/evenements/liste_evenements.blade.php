@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="container">
                                     <h1>Valider votre Réservation</h1><br>
-                                    <h2>{{ $evenement->nom_evenement }}</h2>
+                                    <h3>{{ $evenement->nom_evenement }}</h3>
                                     <div class="date_lieu">
                                         <p class="info-item">
                                             <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
@@ -126,7 +126,7 @@
                                     <div class="date_lieu">
                                         <p class="info-item">
                                             <span class="icon-circle"><i class="fas fa-users"></i></span>
-                                            <strong>Nombre de places restantes :</strong>
+                                            <strong>Places restantes :</strong>
                                             {{ $evenement->nbr_place - $evenement->reservations()->count() }}
                                         </p>
                                         <p class="info-item">

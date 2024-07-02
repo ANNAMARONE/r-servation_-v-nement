@@ -194,7 +194,7 @@
     font-size: 18px;
     margin-bottom: 10px;
     width: 100%;
-    margin-left: 18%;
+    margin-left: 20%;
     gap: 10%;
 }
 .reservation .modal-body .row .boutons {
@@ -232,7 +232,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20%;
+    margin-bottom: 25%;
 }
 .modal-body .row .stars_end img.star2 {
     width: 50px;
@@ -255,7 +255,7 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     body{
         overflow-x: hidden;
     }
@@ -331,24 +331,54 @@
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 5px;
+        gap: 0;
+        font-size: 16px;
+    }
+    .modal-body .row img.star2 {
+        width: 30px;
+        position: absolute;
+        left: 90%;
+        top: 10px;
+    }
+    .modal-body .row img.star1 {
+        width: 30px;
+        position: absolute;
+        right: 90%;
+        top: 10px;
+    }
+    .modal-body .row .stars_end img.star2 {
+        width: 30px;
+        position: absolute;
+        left: 90%;
+        top: 90%;
+    }
+    .modal-body .row .stars_end img.star1 {
+        width: 30px;
+        position: absolute;
+        right: 90%;
+        top: 90%;
     }
     .reservation .modal-body .row .container .date_lieu {
         flex-direction: column;
         align-items: flex-start;
+        font-size: 16px;
     }
     .reservation .modal-body .row .boutons {
         flex-direction: column;
         align-items: center;
-        margin-left: 0;
+        justify-content: center;
+       margin-left: 40%;
         gap: 20px;
     }
-    .reservation .modal-body .row button {
-        width: 100%;
-    }
+
     .modal-body .row h1 {
         font-size: 24px;
     }
     .modal-body .row h3 {
         font-size: 16px;
+    }
+    .modal-body .row .stars_end {
+        
+        margin-top: 20%;
     }
 }
