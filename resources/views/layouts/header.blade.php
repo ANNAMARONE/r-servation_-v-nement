@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
+                    <a class="nav-link" href="{{url('/')}}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="liste/evenements">Événements</a>
@@ -59,9 +59,12 @@
       </div>
       <div class="modal-body">
       
-    <a href="{{ route('register') }}">Se connecter en tant qu'utilisateur</a><br>
-    <a class="btn5" href="{{ route('register_organisme') }}">Se connecter en tant qu'organisme</a>
+    <a href="{{ route('register') }}" class="ConnecteUtilisateur">Se connecter en tant qu'utilisateur</a><br>
+    
       </div>
+      <div class="modal-body">
+      <a class="Connecteorganisme" href="{{ route('register_organisme') }}">Se connecter en tant qu'organisme</a>
+        </div>
       <div class="modal-footer">
         <button id="btn3" type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
         
@@ -95,7 +98,7 @@
         }
         .btn5{
             padding-top: 5%;
-            border: 2px solid #F53F7B;
+            
         }
     </style>
    </header>
@@ -124,6 +127,7 @@
         });
     </script>
     @yield('scripts')
+    @extends('layouts.footer')
 </body>
 
 </html>

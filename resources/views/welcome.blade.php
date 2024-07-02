@@ -359,6 +359,6 @@
 @section('scripts')
     <!-- Vous pouvez ajouter des scripts supplémentaires ici -->
 @endsection
-    
+
 </body>
 </html>
