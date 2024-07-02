@@ -1,71 +1,29 @@
+<!-- resources/views/evenements/show.blade.php -->
+
 @extends('layouts.app')
 
-@section('title', 'Tableau de bord')
+@section('content')
+    <div class="container">
+        <div class="card">
+            <div class="card-header">{{ $evenement->nom_evenement }}</div>
+            <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" width="300">
 
+            <div class="card-body">
+                <p><strong>Description:</strong> {{ $evenement->description }}</p>
+                <p><strong>Date:</strong> {{ $evenement->date }}</p>
+                <p><strong>Lieu:</strong> {{ $evenement->lieu }}</p>
+                <p><strong>Date limite d'inscription:</strong> {{ $evenement->date_limite }}</p>
 
+                {{-- <a href="{{ route('dashboardevenements.edit', $evenement->id) }}" class="btn btn-primary">Modifier</a> --}}
 
-<div class="container">
-    <h1>Liste des événements</h1>
-    <!-- Lien pour créer un nouvel événement -->
-    <a href="{{ route('evenements.create') }}" class="btn btn-primary mb-3">Créer un nouvel événement</a>
-
-    <div class="row">
-        @foreach ($evenements as $evenement)
-            <div class="col-md-6 mb-4">
-                <div class="card">
-                    
-                    <img src="{{ $evenement->image }}" class="card-img-top" alt="{{ $evenement->nom_evenement }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $evenement->nom_evenement }}</h5>
-                        <p class="card-text">{{ $evenement->description }}</p>
-                    </div>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Date:</strong> {{ $evenement->date }}</li>
-                        <li class="list-group-item"><strong>Lieu:</strong> {{ $evenement->lieu }}</li>
-                        <li class="list-group-item"><strong>Date limite:</strong> {{ $evenement->date_limite }}</li>
-                    </ul>
-                    <div class="card-body">
-                        <!-- Formulaire pour supprimer l'événement -->
-                        <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </div>
-                </div>
+                <form action="{{ route('dashboardevenements.destroy', $evenement->id) }}" method="POST" style="display: inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')">Supprimer</button>
+                </form>
             </div>
-        @endforeach
+        </div>
     </div>
-</div>
-
- {{-- @section('styles')
-<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-@endsection --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@endsection
 
 
