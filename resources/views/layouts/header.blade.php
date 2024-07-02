@@ -54,16 +54,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Veuillez choisir une option pour vous connecter :</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Veuillez choisir une option pour vous s'inscrire:</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       
-    <a href="{{ route('register') }}" class="ConnecteUtilisateur">Se connecter en tant qu'utilisateur</a><br>
+    <a href="{{ route('register') }}" class="ConnecteUtilisateur">S'inscrire en tant qu'utilisateur</a><br>
     
       </div>
       <div class="modal-body">
-      <a class="Connecteorganisme" href="{{ route('register_organisme') }}">Se connecter en tant qu'organisme</a>
+      <a class="Connecteorganisme" href="{{ route('register_organisme') }}">S'inscrire en tant qu'organisme</a>
         </div>
       <div class="modal-footer">
         <button id="btn3" type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>

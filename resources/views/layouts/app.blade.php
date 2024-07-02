@@ -56,12 +56,12 @@
                 <div class="ml-auto d-flex">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{url('/')}}">
                                 <i class="fas fa-home"></i> Accueil
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="border-right: 1px solid #ccc;">
+                            <a class="nav-link" href="" style="border-right: 1px solid #ccc;">
                                 <i class="fas fa-search"></i> Explorer Événements
                             </a>
                         </li>

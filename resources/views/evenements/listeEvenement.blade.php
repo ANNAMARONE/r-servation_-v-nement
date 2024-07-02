@@ -4,14 +4,7 @@
 @section('title', 'Tableau de bord')
 
 @section('content')
-
-
-
-
-
-
-        
-        
+     
 @endsection
 
 @section('styles')

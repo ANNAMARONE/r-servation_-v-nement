@@ -21,10 +21,6 @@ Route::get('/',[EvenementController::class,'evenementVenire']);
     // $createAmin= Role ::create(['name'=>'Administrateur']);
     // $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
     // $createOrganismes= Role ::create(['name'=>'Organismes']);
-
-
-    
-
     // $permission_gestionUtili= Permission::create(['name'=>'GestionUtilisateurs']);
     // $permission_gestionRols= Permission::create(['name'=>'GestionRoles']);
     // $permission_gestionEvenement= Permission::create(['name'=>'GestionEvenements']);

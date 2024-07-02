@@ -16,7 +16,7 @@
 <div id="card" class="card" style="width: 25rem;">
   <img src="{{asset('img/Group 1171275846.png')}}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Bienvenue sur MyEvent  </h5>
+    <h5 class="card-title">Bienvenue sur <span class="my">My</span> <span class="event">Event </span>  </h5>
     <p class="card-text">Découvrez notre plateforme de gestion de réservations d'événements, conçue pour offrir une expérience fluide aux utilisateurs et simplifier la gestion pour les organisateurs. Explorez une variété d'événements organisés par des associations et organismes, réservez facilement votre place, et profitez de chaque moment grâce à notre interface intuitive.</p>
    
   </div>
@@ -80,7 +80,7 @@
  
 @foreach ($evenements as $evenement)
     <div class="col">
-    <div class="card" style="width:400px">
+    <div id="cardmedia" class="card">
   <img id="imagecard" class="card-img-top" src="{{ $evenement->image}}" alt="Card image">
   <div class="card-body">
   <h4 id="card-title" class="card-title">{{ $evenement->nom_evenement}}</h4>
@@ -306,6 +306,9 @@
         color: black;
         margin-top: 50%;
     }
+    #cardmedia{
+      width: 400px;
+    }
     #imagecarelo{
         margin-top: 8%;
     }
@@ -353,6 +356,51 @@
       margin-top: 5%;
       background-color: #F53F7B;
     }
+    
+@media screen and (max-width: 900px) {
+  .banner{
+    display: block;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 110vh;
+        margin-bottom: 20%;
+  }
+  #card{
+        margin: 0;
+        padding: 0;
+        
+    }
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .contenaire1{
+        padding-top: 40vh;
+        margin:0;
+        text-align: center;
+        width: 90%;
+        margin-left: 5%;
+    }
+    h1{
+      font-size:18px;
+    }
+    #text2{
+        margin-top: 15%;
+      font-size: 18px;
+    }
+    #text1{
+        text-align: center;
+        color:#F53F7B;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10%;
+    }
+    #cardmedia{
+      width: 350px;
+      margin-left: 5%;
+    }
+}
  </style>
 @endsection
 

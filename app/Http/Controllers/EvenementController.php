@@ -86,10 +86,11 @@ $evenements = Evenement::paginate(9);
 return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalReservations', 'evenements'));
 }
 public function evenementVenire(){
-    $evenements = Evenement::all();
+    $evenements = Evenement::take(4)->get();
     return view('welcome', compact('evenements'));
 
 }
+
 }
 
 
