@@ -30,25 +30,42 @@ class ReservationController extends Controller
         return view('evenements.liste_evenements', compact('evenement'));
     }
 
+   
     public function store(Request $request, $evenement_id)
-    {
-        $evenement = Evenement::findOrFail($evenement_id);
-    
-        // Logique de création de réservation
-        $reservation = new Reservation();
-        $reservation->user_id = Auth::id();
-        $reservation->evenement_id = $evenement_id;
-        $reservation->save();
-        // Envoyez l'email de confirmation
-        Mail::to(Auth::user()->email)->send(new ConfirmationReservation($reservation));
-    
-        return redirect()->route('evenements.liste')->with('reservation_success', true);
+{
+    $evenement = Evenement::findOrFail($evenement_id);
+
+    // Vérifier si la date limite de l'événement n'est pas dépassée
+    if (now()->greaterThan($evenement->date_limite)) {
+        return redirect()->route('evenements.liste')->withErrors(['error' => 'La date limite pour réserver cet événement est dépassée.']);
     }
+
+    // Vérifier si l'utilisateur a déjà postulé pour cet événement
+    $existingReservation = Reservation::where('user_id', Auth::id())
+                                       ->where('evenement_id', $evenement_id)
+                                       ->first();
+
+    if ($existingReservation) {
+        return redirect()->route('evenements.liste')->withErrors(['error' => 'Vous avez déjà réservé pour cet événement.']);
+    }
+
+    // Logique de création de réservation
+    $reservation = new Reservation();
+    $reservation->user_id = Auth::id();
+    $reservation->evenement_id = $evenement_id;
+    $reservation->save();
+
+    // Envoyez l'email de confirmation
+    Mail::to(Auth::user()->email)->send(new ConfirmationReservation($reservation));
+
+    return redirect()->route('evenements.liste')->with('reservation_success', true);
+}
+
   
     public function index()
     {
         // Récupère les réservations de l'utilisateur connecté
-        $reservations = Reservation::where('user_id', Auth::id())->get();
+        $reservations = Reservation::where('user_id', Auth::id())->paginate(2);
 
         return view('reservations.mes_reservations', ['reservations' => $reservations]);
     }

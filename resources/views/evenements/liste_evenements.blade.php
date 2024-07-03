@@ -6,6 +6,15 @@
     <div class="banner">
         <img src="{{ asset('images/evenement.png') }}" alt="banner">
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="container">
         <h1>Listes des événements</h1>
         <!-- boucle sur tous les événements -->
@@ -28,10 +37,12 @@
                     </div>
                     <div class="icons">
                         <a href="#" data-toggle="modal" data-target="#eventModal-{{ $evenement->id }}">
-                            <i class="fas fa-info-circle"></i>
+                            <i class="material-icons">visibility</i>
+
                         </a>
                         <a href="#" data-toggle="modal" data-target="#reservationModal-{{ $evenement->id }}">
-                            <i class="fas fa-calendar-check"></i>
+                            {{-- <i class="fas fa-calendar-check"></i> --}}
+                            <i class="material-icons">event_seat</i>
                         </a>
                     </div>
                 </div>
@@ -75,12 +86,12 @@
                                     <div class="date_lieu">
                                         <p class="info-item">
                                             <span class="icon-circle"><i class="fas fa-users"></i></span>
-                                            <strong>Nombre de places :</strong> <br>{{ $evenement->nbr_place }}
+                                            <strong>Nombre de places :</strong>{{ $evenement->nbr_place }}
                                         </p>
                                         <p class="info-item">
                                             <span class="icon-circle"><i class="fas fa-calendar-times"></i></span>
                                             <strong>Date limite :</strong>
-                                            <br>{{ \Carbon\Carbon::parse($evenement->date_limite)->format('d-m-Y') }}
+                                            {{ \Carbon\Carbon::parse($evenement->date_limite)->format('d-m-Y') }}
                                         </p>
                                     </div>
                                     <div class="text-center">
@@ -180,8 +191,8 @@
                             </div>
 
                             <div class="container">
-                                <h1 class="text-center">Félicitations <i class="fas fa-party"></i> <i
-                                        class="fas fa-glass-cheers"></i><i class="fas fa-glass-cheers"></i>
+                                <h1 class="text-center">Félicitations <i class="material-icons">celebration</i> <i class="material-icons">celebration</i>
+                                    <i class="material-icons">celebration</i>
                                 </h1><br>
                                 <h3>Votre réservation a bien été prise en compte</h3>
                                 <h3>Veuillez vérifier votre adresse email pour la confirmation de la réservation.</h3>
@@ -209,6 +220,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/listeEvenementsUser.css') }}">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 @endsection
 
 @section('scripts')

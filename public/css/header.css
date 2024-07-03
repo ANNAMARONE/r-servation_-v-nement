@@ -28,6 +28,9 @@
 .navbar-nav li.nav-item a.nav-link:hover {
     color: var(--couleur-principal);
 }
+.nav-item.active .nav-link {
+    color: var(--couleur-principal);
+}
 
 .navbar-nav li.nav-item a.custom-btn-login {
     background-color: transparent; 
