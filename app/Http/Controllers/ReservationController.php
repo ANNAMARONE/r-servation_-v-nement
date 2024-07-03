@@ -69,16 +69,34 @@ class ReservationController extends Controller
 
         return view('reservations.mes_reservations', ['reservations' => $reservations]);
     }
-    public function rejectReservation(Request $request, $id)
-    {
-        $reservation = Reservation::findOrFail($id);
-        Mail::to(Auth::user()->email)->send(new RejectionReservation($reservation));
+    // public function rejectReservation(Request $request, $id)
+    // {
+    //     $reservation = Reservation::findOrFail($id);
+    //     Mail::to(Auth::user()->email)->send(new RejectionReservation($reservation));
         
-        // Mettre à jour le statut de la réservation à 'rejeter'
-        $reservation->update(['statut' => 'rejeter']);
+    //     // Mettre à jour le statut de la réservation à 'rejeter'
+    //     $reservation->update(['statut' => 'rejeter']);
 
-        // Redirection vers la page précédente avec un message de succès
-        return back()->with('success', 'Réservation rejetée avec succès.');
-    }
+    //     // Redirection vers la page précédente avec un message de succès
+    //     return back()->with('success', 'Réservation rejetée avec succès.');
+    // }
+    public function rejectReservation(Request $request, $id)
+{
+    // Récupérer la réservation
+    $reservation = Reservation::findOrFail($id);
+
+    // Récupérer l'utilisateur associé à la réservation
+    $userAssociatedWithReservation = $reservation->user;
+
+    // Envoyer l'e-mail de rejet à l'utilisateur associé
+    Mail::to($userAssociatedWithReservation->email)->send(new RejectionReservation($reservation));
+
+    // Mettre à jour le statut de la réservation à 'rejeter'
+    $reservation->update(['statut' => 'rejeter']);
+
+    // Redirection vers la page précédente avec un message de succès
+    return back()->with('success', 'Réservation rejetée avec succès.');
+}
+
 
 }
