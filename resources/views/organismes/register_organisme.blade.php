@@ -59,13 +59,11 @@
             <div>{{ $message }}</div>
         @enderror
     </div>
-    <div>
-        <button type="submit">S'inscrire</button>
-    </div>
+   
     </div>
     <div>
   
-    <div>
+    <div class="input3">
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="saisire votre Email">
         @error('email')
@@ -100,6 +98,9 @@
         @error('logo')
             <div>{{ $message }}</div>
         @enderror
+    </div>
+    <div>
+        <button type="submit">S'inscrire</button>
     </div>
     <input type="hidden" id="role" name="role" value="Organismes">
    
