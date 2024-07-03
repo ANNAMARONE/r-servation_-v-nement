@@ -42,22 +42,22 @@ public function show($id){
      return redirect()->route('evenements.index')->with('success', 'Événement créé avec succès.');
  }
 
- // Affiche le formulaire d'édition pour un événement existant
- public function edit($id)
- {
-     $evenement = Evenement::findOrFail($id); // Récupère l'événement par son ID ou retourne une erreur 404 si non trouvé
-     return view('evenements.edit', compact('evenement')); // Retourne la vue d'édition avec les données de l'événement
- }
+   // Affiche le formulaire d'édition pour un événement existant
+   public function edit($id)
+   {
+       $evenement = Evenement::findOrFail($id); // Récupère l'événement par son ID ou retourne une erreur 404 si non trouvé
+       return view('evenements.edit', compact('evenement')); // Retourne la vue d'édition avec les données de l'événement
+   }
 
- // Met à jour un événement existant dans la base de données
- public function update(EvenementRequest $request, $id) // Utilise la Form Request pour valider les données
- {
-     $evenement = Evenement::findOrFail($id); // Récupère l'événement par son ID ou retourne une erreur 404 si non trouvé
-     $evenement->update($request->validated()); // Met à jour l'événement avec les données validées
+   // Met à jour un événement existant dans la base de données
+   public function update(EvenementRequest $request, $id) // Utilise la Form Request pour valider les données
+   {
+       $evenement = Evenement::findOrFail($id); // Récupère l'événement par son ID ou retourne une erreur 404 si non trouvé
+       $evenement->update($request->validated()); // Met à jour l'événement avec les données validées
 
-     // Redirige vers la liste des événements avec un message de succès
-     return redirect()->route('evenements.index')->with('success', 'Événement mis à jour avec succès.');
- }
+       // Redirige vers la liste des événements avec un message de succès
+       return redirect()->route('evenements.index')->with('success', 'Événement mis à jour avec succès.');
+   }
 
  // Supprime un événement existant de la base de données
  public function destroy($id)
@@ -100,7 +100,11 @@ $evenements = Evenement::paginate(9);
 // Retourner la vue avec toutes les données nécessaires
 return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalReservations', 'evenements'));
 }
+public function evenementVenire(){
+    $evenements = Evenement::paginate(4);
+    return view('welcome', compact('evenements'));
 
+}
 }
 
 

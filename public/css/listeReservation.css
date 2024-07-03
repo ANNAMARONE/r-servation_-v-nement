@@ -1,17 +1,33 @@
-:root {
-    --couleur-principal: #F53F7B;
-    --couleur-secondaire: #4862C4;
-}
-
-h1 {
+h1{
     font-family: 'Roboto';
     font-size: 30px;
     font-weight: bold;
 }
 
-.bouton {
+.contenu{
+    background-color: var(--couleur-principal);
+    width: 98%;
+    margin-top: 8%;
+    height: 100%;
+}
+.tables{
+    background-color: white;
+    width:100%; 
+    height: 100%;
+    border-top-right-radius: 200px;
+    border-top: 8px solid #F53F7B;
+   
+}
+.table{
+    width: 90%;
+}
+ .table,.table th,.table td{
+    border: none;
+ }
+
+ .bouton {
     text-align: center; 
-    float: right;
+    float: left;
 }
 
 .bouton .btn {
@@ -28,48 +44,15 @@ h1 {
 .bouton .btn:hover {
     background-color: var(--couleur-secondaire); 
 }
-
-.contenu {
-    background-color: var(--couleur-principal);
-    width: 98%;
-    margin-top: 8%;
-    height: 100%;
-}
-
-.tables {
-    background-color: white;
-    width: 100%; 
-    height: 100%;
-    border-top-right-radius: 200px;
-    border-top: 8px solid #F53F7B;
-    border-right: 20px solid #F53F7B;
-}
-
-.table {
-    width: 95%;
-}
-
-.table, .table th, .table td {
-    border: none;
-}
-
 /* Responsive Styles */
 @media (max-width: 768px) {
     h1 {
         font-size: 22px;
         margin-bottom: 20px;
     }
-    .bouton {
-        margin-bottom: 20px;
-    }
-    .bouton .btn {
-        padding: 8px 16px;
-        font-size: 14px;
-        margin-right: 10px;
-    }
-
+    
     .contenu {
-        margin-top: 25%;
+        margin-top: 5%;
     }
     .table {
         width: 80%;
@@ -83,3 +66,5 @@ h1 {
         display: flex;
     }
 }
+
+
