@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.sidebar_admin')
 
 @section('title', 'Liste des utilisateurs')
 

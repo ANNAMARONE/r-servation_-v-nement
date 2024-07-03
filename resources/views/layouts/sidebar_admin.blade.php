@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,19 +22,19 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="dashboardevenements" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboardevenements') ? 'active' : '' }}">
                     <i class="fas fa-tachometer-alt mr-2"></i> 
                     <span>Tableau de bord</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('evenements*') ? 'active' : '' }}">
                     <i class="fas fa-calendar-alt mr-2"></i> 
                     <span>Événements</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{ route('users.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('users*') ? 'active' : '' }}">
                     <i class="fas fa-users mr-2"></i>
                     <span>Utilisateurs</span>
                 </a>
-                <a href="{{url('/listeorganismes')}}" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{ url('/listeorganismes') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('listeorganismes') ? 'active' : '' }}">
                     <i class="fas fa-users mr-2"></i>
                     <span>Organismes</span>
                 </a>
@@ -58,22 +57,20 @@
                 <a class="navbar-brand ml-3" href="#"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                 <div class="ml-auto d-flex">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
                             <a class="nav-link" href="#">
                                 <i class="fas fa-home"></i> Accueil
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->is('explorer*') ? 'active' : '' }}">
                             <a class="nav-link" href="#" style="border-right: 1px solid #ccc;">
                                 <i class="fas fa-search"></i> Explorer Événements
                             </a>
                         </li>
                     </ul>
-                     <!-- RÉCUPERER LE NOM DU USER CONNECTÉ -->
                     {{-- <span class="navbar-text">
                         Hello {{ Auth::user()->name }}
                     </span> --}}
-                    
                 </div>
             </nav>
 
@@ -93,19 +90,18 @@
     <!-- js pour cacher le sidebar et gérer les liens actives -->
     <script>
         $(document).ready(function() {
-    // Toggle sidebar
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+            // Toggle sidebar
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
 
-    // Active link handling
-    $(".list-group-item").click(function() {
-        $(".list-group-item").removeClass("active");
-        $(this).addClass("active");
-    });
-});
-
+            // Active link handling
+            $(".list-group-item").click(function() {
+                $(".list-group-item").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
     </script>
     @yield('scripts')
 </body>
