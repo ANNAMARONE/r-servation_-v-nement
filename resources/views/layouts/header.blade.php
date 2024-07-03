@@ -8,12 +8,18 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     @yield('styles')
+    <style>
+        .nav-link.active {
+            color: #F53F7B !important;
+        }
+    </style>
 </head>
 <body>
    <header>
@@ -27,24 +33,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="liste/evenements">Événements</a>
+                    <a class="nav-link {{ request()->is('liste/evenements') ? 'active' : '' }}" href="/liste/evenements">Événements</a>
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="/reservations">Mes réservations</a>
+                        <a class="nav-link {{ request()->is('reservations') ? 'active' : '' }}" href="/reservations">Mes réservations</a>
                     </li>
                 @endauth
             </ul>
             <ul class="navbar-nav ml-auto">
                 @guest
                 <li class="nav-item">
-                    <a class="custom-btn-login nav-link" href="{{ route('login') }}">Connexion</a>
+                    <a class="custom-btn-login nav-link {{ request()->is('login') ? 'active' : '' }}" href="{{ route('login') }}">Connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="custom-btn-register nav-link" href="{{ route('register') }}">Inscription</a>
+                    <a class="custom-btn-register nav-link {{ request()->is('register') ? 'active' : '' }}" href="{{ route('register') }}">Inscription</a>
                 </li>
                 @else
                 <li class="nav-item">
@@ -76,14 +82,6 @@
             // Gérer l'ouverture et la fermeture du menu burger
             $('.navbar-toggler').on('click', function() {
                 $('#navbarNav').toggleClass('show');
-            });
-
-            // Ajouter la classe 'active' au lien actuel
-            var url = window.location.href;
-            $('.navbar-nav a.nav-link').each(function() {
-                if (url === this.href) {
-                    $(this).closest('li').addClass('active');
-                }
             });
         });
     </script>
