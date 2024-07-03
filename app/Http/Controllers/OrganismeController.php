@@ -65,7 +65,7 @@ public function detailOrganisme($organisme){
 public function accepter($id)
     {
         $candidature = Organisme::findOrFail($id);
-        $candidature->statut = 'accepter';
+        $candidature->statut = 'valider';
         $candidature->save();
         return redirect('/listeorganismes')->with('message', 'Candidature acceptée et email envoyé.');
     }
@@ -73,7 +73,7 @@ public function accepter($id)
     public function rejeter($id)
     {
         $candidature = Organisme::findOrFail($id);
-        $candidature->statut = 'refuser';
+        $candidature->statut = 'bloquer';
         $candidature->save();
         return redirect('/listeorganismes')->with('message', 'Candidature rejetée et email envoyé.');
     }

@@ -83,6 +83,22 @@
     color: white;
     border-color: var(--couleur-secondaire);
 }
+.ConnecteUtilisateur{
+background-color: #4862C4;
+color: white;
+text-decoration: none;
+padding:15px;
+border-radius: 15px;
+margin-bottom: 10px;
+}
+.Connecteorganisme{
+    background-color: #F53F7B;
+    color: white;
+    text-decoration: none;
+    padding:15px;
+    border-radius: 15px;
+    margin-bottom: 10px;  
+}
 
 /* Positionnement initial du menu burger en dehors de l'écran à droite */
 @media (max-width: 992px) {

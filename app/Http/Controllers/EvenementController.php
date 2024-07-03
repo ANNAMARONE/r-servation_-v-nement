@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Evenement;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EvenementRequest;
 
 class EvenementController extends Controller
@@ -29,15 +30,19 @@ public function show($id){
  // Affiche le formulaire pour créer un nouvel événement
  public function create()
  {
-     return view('evenements.create'); // Retourne la vue de création d'un événement
+    $user = Auth::user();
+     $organismeId = $user->organisme_id;
+   
+     return view('evenements.create',compact('user','organismeId')); // Retourne la vue de création d'un événement
  }
 
  // Enregistre un nouvel événement dans la base de données
  public function store(EvenementRequest $request) // Utilise la Form Request pour valider les données
  {
      // Crée un nouvel événement avec les données validées
+    
      Evenement::create($request->validated());
-
+     
      // Redirige vers la liste des événements avec un message de succès
      return redirect()->route('evenements.index')->with('success', 'Événement créé avec succès.');
  }
@@ -101,10 +106,15 @@ $evenements = Evenement::paginate(9);
 return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalReservations', 'evenements'));
 }
 public function evenementVenire(){
+
+    $evenements = Evenement::take(4)->get();
+
     $evenements = Evenement::paginate(4);
+
     return view('welcome', compact('evenements'));
 
 }
+
 }
 
 
