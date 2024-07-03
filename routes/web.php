@@ -14,14 +14,13 @@ use App\Http\Controllers\DashboardController;
 
 
 
+
 Route::get('/',[EvenementController::class,'evenementVenire']); 
+  
+
     // $createAmin= Role ::create(['name'=>'Administrateur']);
     // $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
     // $createOrganismes= Role ::create(['name'=>'Organismes']);
-
-
-    
-
     // $permission_gestionUtili= Permission::create(['name'=>'GestionUtilisateurs']);
     // $permission_gestionRols= Permission::create(['name'=>'GestionRoles']);
     // $permission_gestionEvenement= Permission::create(['name'=>'GestionEvenements']);
@@ -57,7 +56,7 @@ Route::get('/',[EvenementController::class,'evenementVenire']);
     // dump($rolesOrganismes);
     
 
-Route::get('organisme',[OrganismeController::class,'create_organisme']);
+Route::get('organisme',[OrganismeController::class,'create_organisme'])->name('register_organisme');
 Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('organisme');
 Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
 Route::delete('/suprimerOrganisme/{id}',[OrganismeController::class,'SuprimerOrganisme'])->name('SuprimerOrganisme');

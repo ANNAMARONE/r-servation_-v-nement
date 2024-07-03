@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -23,18 +24,18 @@
          
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="dashboard" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboard') ? 'active' : '' }}">
                     <i class="fas fa-tachometer-alt mr-2"></i> 
                     <span>Tableau de bord</span>
                 </a>
-                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('evenements*') ? 'active' : '' }}">
                     <i class="fas fa-calendar-alt mr-2"></i> 
                     <span>Événements</span>
                 </a>
-                <a href="" class="list-group-item list-group-item-action d-flex align-items-center">
+                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('reservations*') ? 'active' : '' }}">
                     <i class="fas fa-book mr-2"></i>
                     <span>Réservations</span>
-                </a>
+                </a>                
              
                 <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
                     @csrf
@@ -55,17 +56,20 @@
                 <a class="navbar-brand ml-3" href="#"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                 <div class="ml-auto d-flex">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+
+                        <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
                             <a class="nav-link" href="#">
                                 <i class="fas fa-home"></i> Accueil
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->is('explorer*') ? 'active' : '' }}">
                             <a class="nav-link" href="#" style="border-right: 1px solid #ccc;">
+
                                 <i class="fas fa-search"></i> Explorer Événements
                             </a>
                         </li>
                     </ul>
+                    
                      <!-- RÉCUPERER LE NOM DU USER CONNECTÉ -->
                      @auth
                     <span class="navbar-text">

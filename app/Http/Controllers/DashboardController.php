@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Evenement;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -41,9 +42,11 @@ public function detailsEvenement($id)
 {
     // Trouver l'événement spécifique par son identifiant ($id)
     $evenement = Evenement::findOrFail($id);
-    
+    $user = User::find($evenement->user_id);
+    $evenementsListe = Evenement::take(3)->get();
     // Retourner la vue 'evenements.show' avec les détails de l'événement trouvé
-    return response()->view('evenements.detailsEvenement', compact('evenement'));
+    return response()->view('evenements.detailsEvenement', compact('evenement','user','evenementsListe'));
 }
+
 }
 
