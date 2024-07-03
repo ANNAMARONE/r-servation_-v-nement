@@ -10,6 +10,7 @@ use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AfficherController;
 
 
 
@@ -111,6 +112,16 @@ Route::resource('dashboardevenements', DashboardController::class);
 Route::get('/dashboard/evenements/{id}', [DashboardController::class, 'detailsEvenement'])->name('evenements.detailsEvenement');
 // Route pour supprimer un événement spécifique
 //Route::delete('/dashboard/evenements/{id}', [DashboardController::class, 'destroy'])->name('dashboardevenements.destroy');
+
+//Pour liste evenement
+// Route::get('afficherevenement', [AfficherController::class, 'index'])->name('afficherevenement.index1');
+// Route::get('afficherevenement/{evenement}', [AfficherController::class, 'show'])->name('afficherevenement.show1');
+
+
+Route::get('afficherevenement', [EvenementController::class, 'indexx'])->name('afficherevenement.index1');
+Route::get('afficherevenement/{evenement}', [EvenementController::class, 'showw'])->name('afficherevenement.show1');
+
+
 
 
 
