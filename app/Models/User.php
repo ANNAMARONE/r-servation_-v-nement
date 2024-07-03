@@ -10,9 +10,13 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
+    // public function organisme()
+    // {
+    //     return $this->belongsTo(Organisme::class);
+    // }
     public function organisme()
     {
-        return $this->belongsTo(Organisme::class);
+        return $this->hasOne(Organisme::class);
     }
     /**
      * Les attributs qui peuvent être assignés en masse.

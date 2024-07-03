@@ -36,16 +36,30 @@ public function show($id){
      return view('evenements.create',compact('user','organismeId')); // Retourne la vue de création d'un événement
  }
 
- // Enregistre un nouvel événement dans la base de données
- public function store(EvenementRequest $request) // Utilise la Form Request pour valider les données
- {
-     // Crée un nouvel événement avec les données validées
-    
-     Evenement::create($request->validated());
-     
-     // Redirige vers la liste des événements avec un message de succès
-     return redirect()->route('evenements.index')->with('success', 'Événement créé avec succès.');
- }
+public function store(EvenementRequest $request)
+{
+    // Récupère l'utilisateur connecté
+    $user = Auth::user();
+
+    // Récupère l'organisme associé à l'utilisateur connecté
+    $organisme = $user->organisme;
+
+    if (!$organisme) {
+        return redirect()->back()->with('error', 'L\'utilisateur connecté n\'est pas associé à un organisme.');
+    }
+
+    // Crée un nouvel événement avec les données validées et l'ID de l'organisme
+    Evenement::create(array_merge(
+        $request->validated(),
+        ['organisme_id' => $organisme->id]
+    ));
+
+    // Redirige vers la liste des événements avec un message de succès
+    return redirect()->route('evenements.index')->with('success', 'Événement créé avec succès.');
+}
+
+
+
 
    // Affiche le formulaire d'édition pour un événement existant
    public function edit($id)

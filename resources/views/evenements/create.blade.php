@@ -45,7 +45,8 @@
                     <label for="date_limite">Date limite d'inscription</label>
                     <input type="datetime-local" class="form-control" id="date_limite" name="date_limite" required placeholder="Sélectionnez la date limite d'inscription">
                 </div>
-               
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
                 <button type="submit" class="btn btn-primary">Créer</button>
             </form>
         </div>
@@ -59,7 +60,7 @@
 @endsection
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/createevenement.css') }}">
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
 @endsection
 
 @section('scripts')

@@ -9,7 +9,7 @@ use Carbon\Carbon;
 class Evenement extends Model
 {
     protected $fillable = [
-        'nom_evenement', 'image', 'date', 'lieu', 'description', 'nbr_place', 'date_limite','user_id'
+        'nom_evenement', 'image', 'date', 'lieu', 'description', 'nbr_place', 'date_limite','organisme_id'
     ];
     public function reservations()
     {
