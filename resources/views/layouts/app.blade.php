@@ -25,22 +25,23 @@
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
                 <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboard') ? 'active' : '' }}">
-                    <i class="fas fa-tachometer-alt mr-2"></i> 
+                    {{-- <i class="fas fa-tachometer-alt mr-2"></i>  --}}
+                    <i class="material-icons">dashboard</i>
                     <span>Tableau de bord</span>
                 </a>
                 <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('evenements*') ? 'active' : '' }}">
-                    <i class="fas fa-calendar-alt mr-2"></i> 
+                    <i class="material-icons">event</i>
                     <span>Événements</span>
                 </a>
                 <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('reservations*') ? 'active' : '' }}">
-                    <i class="fas fa-book mr-2"></i>
+                    <i class="material-icons">event_seat</i>
                     <span>Réservations</span>
                 </a>                
              
                 <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
                     @csrf
                     <button type="submit" class="btn btn-link p-0 d-flex align-items-center">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <i class="material-icons">logout </i>
                         <span>Déconnexion</span>
                     </button>
                 </form>

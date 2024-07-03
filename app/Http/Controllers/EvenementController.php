@@ -77,7 +77,7 @@ public function show($id){
 public function listeEvenementDashboard(Request $request)
 {
 // Vérifier s'il y a un organisme spécifié dans la requête
-$organismeId = $request->input('organisme_id');
+$organismeId = $request->input('user_id');
 
 // Définir les variables pour les statistiques
 $totalEvenements = null;
@@ -86,16 +86,16 @@ $totalReservations = null;
 
 // Si un organisme est spécifié, calculer les statistiques pour cet organisme
 if ($organismeId) {
-$totalEvenements = Evenement::where('organisme_id', $organismeId)->count();
+$totalEvenements = Evenement::where('user_id', $organismeId)->count();
 
 $totalParticipants = User::whereHas('reservations', function ($query) use ($organismeId) {
 $query->whereHas('evenement', function ($query) use ($organismeId) {
-$query->where('organisme_id', $organismeId);
+$query->where('user_id', $organismeId);
 });
 })->count();
 
 $totalReservations = Reservation::whereHas('evenement', function ($query) use ($organismeId) {
-$query->where('organisme_id', $organismeId);
+$query->where('user_id', $organismeId);
 })->count();
 }
 

@@ -102,7 +102,7 @@
         <div class="contenair2">
             <h1>Quelques Evénements à venir</h1>
 
-                <div class="row" style="width:100%; margin-left: 7%; margin-right:auto; align-items:center">
+                <div class="row" style="width:100%; margin-left: 5%; margin-right:auto; align-items:center">
                     @foreach ($evenements as $evenement)
                         <div class="col-md-6 mb-4">
                             <div class="card">

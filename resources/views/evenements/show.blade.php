@@ -3,6 +3,9 @@
 @section('title', "Détails de l'événement")
 
 @section('content')
+<div class="bouton">
+    <a href="{{ route('evenements.index') }}" class="btn">Retour</a>
+</div><br>
 <div class="contenu">
     <div class="tables">
         <div class="container mt-5">
@@ -11,7 +14,7 @@
                 @auth
                 <div class="col-md-6">
                     <h1>{{ $evenement->nom_evenement }}</h1>
-                    <h2>{{ auth()->user()->name }}</h2>
+                    <h2 >Organisé par: <span style="color: #F53F7B">{{ auth()->user()->name }}</span></h2>
                     <p>{{ $evenement->description }}</p>  @endauth 
                     <div class="image-container">
                         <img src="{{ asset('images/banner.png') }}" class="img-fluid" alt="Image avec texte">

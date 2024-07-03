@@ -26,8 +26,9 @@ h1{
  }
 
  .bouton {
-    text-align: center; 
-    float: left;
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .bouton .btn {
