@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('organismes', function (Blueprint $table) {
-            //
-            $table->string('statut', 50)->change();
+            $table->enum('statut', ['bloquer', 'valider'])->default('valider')->after('nina');
         });
     }
 
@@ -24,7 +23,6 @@ return new class extends Migration
     {
         Schema::table('organismes', function (Blueprint $table) {
             //
-            $table->enum('statut', ['accepter', 'refuser'])->change();
         });
     }
 };
