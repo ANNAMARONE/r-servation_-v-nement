@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,11 +9,13 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-    use HasRoles;
-
+    use HasFactory, Notifiable, HasRoles;
+    public function organisme()
+    {
+        return $this->belongsTo(Organisme::class);
+    }
     /**
-     * The attributes that are mass assignable.
+     * Les attributs qui peuvent être assignés en masse.
      *
      * @var array<int, string>
      */
@@ -22,10 +23,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Les attributs qui doivent être cachés pour la sérialisation.
      *
      * @var array<int, string>
      */
@@ -35,17 +37,21 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Les attributs qui doivent être convertis à d'autres types.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    /**
+     * Définition de la relation avec le modèle Reservation.
+     * Un utilisateur peut avoir plusieurs réservations.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function reservations()
     {
         return $this->hasMany(Reservation::class);

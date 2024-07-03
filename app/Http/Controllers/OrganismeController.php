@@ -17,37 +17,65 @@ class OrganismeController extends Controller
     }
 
     public function storeOrganisme(OrganismeRequest $request)
-    {
-        // Créer l'utilisateur
+{
+    try {
+ 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
-
-        // Gérer le téléchargement du logo
-        $logoPath = null;
+        ]);     
         if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('logo', 'public');
+            $logoPath = $request->file('logo')->store('logos', 'public');
         }
 
-        // Créer l'organisme
-        $organisme=Organisme::create([
+     
+        Organisme::create([
             'user_id' => $user->id,
             'description' => $request->description,
             'adresse' => $request->adresse,
             'secteur_activité' => $request->secteur_activité,
             'logo' => $logoPath,
             'nina' => $request->nina,
+            
         ]);
-        dump($organisme);
 
-        // Assigner le rôle à l'utilisateur
-        $user->assignRole($request->roles);
-
-        // Déclencher l'événement Registered
+        $user->assignRole($request->role);
         event(new Registered($user));
-return redirect('/','compt créer avec succé');
-        // Rediriger avec un message de succès
+
+        return redirect('/')->with('success', 'Compte créé avec succès');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Une erreur s\'est produite : ' . $e->getMessage());
     }
+}
+public function listeorganisme(){
+    $organismes = Organisme::with('user')->get();
+    $users = User::role('Organismes')->get();
+    return view('admins.ListeOrganisme',compact('organismes','users'));
+}
+public function SuprimerOrganisme($organisme){
+    $users=User::find($organisme);
+    $users->delete();
+    return redirect()->back();
+}
+public function detailOrganisme($organisme){
+    $organisme=Organisme::find($organisme);
+    return view('admins.detailOrganisme',compact('organisme'));
+}
+public function accepter($id)
+    {
+        $candidature = Organisme::findOrFail($id);
+        $candidature->statut = 'valider';
+        $candidature->save();
+        return redirect('/listeorganismes')->with('message', 'Candidature acceptée et email envoyé.');
+    }
+
+    public function rejeter($id)
+    {
+        $candidature = Organisme::findOrFail($id);
+        $candidature->statut = 'bloquer';
+        $candidature->save();
+        return redirect('/listeorganismes')->with('message', 'Candidature rejetée et email envoyé.');
+    }
+
 }

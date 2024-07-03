@@ -2,19 +2,25 @@
 
 use App\Http\Controllers\OrganismeController;
 
+use App\Http\Controllers\PortailController;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 
-Route::get('/', function () {
+
+
+
+Route::get('/',[EvenementController::class,'evenementVenire']); 
+  
+
     // $createAmin= Role ::create(['name'=>'Administrateur']);
     // $createUtlisateur= Role ::create(['name'=>'Utilisateur']);
     // $createOrganismes= Role ::create(['name'=>'Organismes']);
-
-    return view('welcome');
     // $permission_gestionUtili= Permission::create(['name'=>'GestionUtilisateurs']);
     // $permission_gestionRols= Permission::create(['name'=>'GestionRoles']);
     // $permission_gestionEvenement= Permission::create(['name'=>'GestionEvenements']);
@@ -26,6 +32,8 @@ Route::get('/', function () {
     // $permission_voireTableauboard= Permission::create(['name'=>'VoireTableauBoard']);
     // $permission_CréerEvenement=Permission::create(['name'=>'CréerEvenement']);
 
+
+    // NE PAS DECOMMENTER
     // $rolesAdmin=Role::find(1);
     // $rolesAdmin->givePermissionTo('GestionUtilisateurs');
     // $rolesAdmin->givePermissionTo('GestionRoles');
@@ -47,19 +55,77 @@ Route::get('/', function () {
     // dump($rolesUtilisateur);
     // dump($rolesOrganismes);
     
-});
-Route::get('organisme',[OrganismeController::class,'create_organisme']);
-Route::post('organismes',[OrganismeController::class,'storeOrganisme'])->name('organisme');
 
-Route::view('dashboard', 'dashboard')
+Route::get('organisme',[OrganismeController::class,'create_organisme'])->name('register_organisme');
+Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('organisme');
+Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
+Route::delete('/suprimerOrganisme/{id}',[OrganismeController::class,'SuprimerOrganisme'])->name('SuprimerOrganisme');
+Route::get('/detailOrgenisme/{id}',[OrganismeController::class,'detailOrganisme'])->name('DetailOrganisme');
+Route::get('compte/rejeter/{id}', [OrganismeController::class, 'rejeter'])->name('compte.rejeter'); // Rejeter une candidature
+Route::get('compte/accepter/{id}', [OrganismeController::class, 'accepter'])->name('compte.accepter'); // Accepter une candidature
+
+
+
+Route::resource('evenements', EvenementController::class);
+Route::get('liste/evenements', [EvenementController::class, 'listeEvenements'])->name('evenements.liste');
+Route::get('/reservation/create/{evenement}', [ReservationController::class, 'create'])->name('reservation.create');
+Route::post('/reservation/store/{evenement}', [ReservationController::class, 'store'])->name('reservation.store');
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+Route::put('/reservations/reject/{id}', [ReservationController::class, 'rejectReservation'])->name('reservations.reject');
+
+
+
+
+Route::get('/sidebar', function () {
+    return view('layouts/app');
+});
+Route::get('/header', function () {
+    return view('layouts/header');
+});
+Route::get('/sidebar_admin', function () {
+    return view('layouts/sidebar_admin');
+});
+
+//route pour la liste des evenements
+Route::get('/reservations/liste/{evenement_id}', [ReservationController::class, 'listeReservation']);
+
+
+Route::get('dashboard',[EvenementController::class, 'listeEvenementDashboard'] )
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
 require __DIR__.'/auth.php';
-Route::get('/sidebar', function () {
-    return view('layouts/app');
-});
+
+
+
+// footer
+Route::get('/footer-example', function () {return view('layouts/footer');});
+// users
+Route::resource('users', UserController::class);
+// Dashboard evemetement
+Route::resource('dashboardevenements', DashboardController::class);
+// Route pour afficher les détails d'un événement spécifique
+Route::get('/dashboard/evenements/{id}', [DashboardController::class, 'detailsEvenement'])->name('evenements.detailsEvenement');
+// Route pour supprimer un événement spécifique
+//Route::delete('/dashboard/evenements/{id}', [DashboardController::class, 'destroy'])->name('dashboardevenements.destroy');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

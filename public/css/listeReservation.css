@@ -1,0 +1,70 @@
+h1{
+    font-family: 'Roboto';
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.contenu{
+    background-color: var(--couleur-principal);
+    width: 98%;
+    margin-top: 8%;
+    height: 100%;
+}
+.tables{
+    background-color: white;
+    width:100%; 
+    height: 100%;
+    border-top-right-radius: 200px;
+    border-top: 8px solid #F53F7B;
+   
+}
+.table{
+    width: 90%;
+}
+ .table,.table th,.table td{
+    border: none;
+ }
+
+ .bouton {
+    text-align: center; 
+    float: left;
+}
+
+.bouton .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--couleur-principal);
+    color: white; 
+    text-decoration: none; 
+    border-radius: 8px;
+    transition: background-color 0.3s ease; 
+    margin-right: 20px;
+}
+
+.bouton .btn:hover {
+    background-color: var(--couleur-secondaire); 
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .contenu {
+        margin-top: 5%;
+    }
+    .table {
+        width: 80%;
+    }
+    
+  table i{
+    font-size: 16px;
+  }
+    table .icons{
+  
+        display: flex;
+    }
+}
+
+

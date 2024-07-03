@@ -1,0 +1,121 @@
+:root {
+    --couleur-principal: #F53F7B;
+    --couleur-secondaire: #4862C4;
+}
+
+
+.navbar-nav.mr-auto {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+
+.navbar-nav.ml-auto {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.navbar-brand {
+    margin-right: auto;
+}
+.navbar-nav li.nav-item a.nav-link {
+    color: black; 
+    transition: color 0.3s; 
+}
+
+.navbar-nav li.nav-item a.nav-link:hover {
+    color: var(--couleur-principal);
+}
+.nav-item.active .nav-link {
+    color: var(--couleur-principal);
+}
+
+.navbar-nav li.nav-item a.custom-btn-login {
+    background-color: transparent; 
+    color:#F53F7B;
+    border: 1px solid var(--couleur-principal);
+    height: 40px;
+    width: 120px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-right: 8px;
+    text-align: center;
+}
+
+.navbar-nav li.nav-item a.custom-btn-login:hover {
+    background-color: var(--couleur-secondaire); 
+    color: white;
+    border-color: var(--couleur-secondaire); 
+}
+
+.navbar-nav li.nav-item a.custom-btn-register {
+    background-color: var(--couleur-principal); 
+    color: white;
+    border: 1px solid var(--couleur-principal);
+    border-radius: 8px;
+    font-size: 16px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+}
+
+.navbar-nav li.nav-item a.custom-btn-register:hover {
+    background-color: var(--couleur-secondaire);
+    color: white;
+    border-color: var(--couleur-secondaire); 
+}
+
+.navbar-nav li.nav-item a.custom-btn-logout {
+    background-color: transparent; 
+    color: #F53F7B;
+    border: 1px solid var(--couleur-principal);
+    border-radius: 8px;
+    font-size: 16px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+}
+
+.navbar-nav li.nav-item a.custom-btn-logout:hover {
+    background-color: var(--couleur-secondaire); 
+    color: white;
+    border-color: var(--couleur-secondaire);
+}
+.ConnecteUtilisateur{
+background-color: #4862C4;
+color: white;
+text-decoration: none;
+padding:15px;
+border-radius: 15px;
+margin-bottom: 10px;
+}
+.Connecteorganisme{
+    background-color: #F53F7B;
+    color: white;
+    text-decoration: none;
+    padding:15px;
+    border-radius: 15px;
+    margin-bottom: 10px;  
+}
+
+/* Positionnement initial du menu burger en dehors de l'écran à droite */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 55px;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: white;
+    }
+
+    .navbar-collapse.show {
+        right: 0;
+    }
+    .navbar-nav{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

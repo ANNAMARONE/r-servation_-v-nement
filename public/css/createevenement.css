@@ -1,0 +1,145 @@
+/* .custom-form-container {
+    width: 98%;
+   margin-left: auto;
+   margin-right: auto;
+    margin-top: 20px;
+
+} */
+
+/* .custom-form {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 30px;
+   
+} */
+
+/* .custom-form img {
+    width: 700px;
+    height: 800px;
+} */
+
+/* .formulaire{
+    width: 534px;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+} */
+
+.custom-form h1 {
+    /* margin-bottom: 20px;
+    font-weight: bold; */
+    color: #F53F7B;
+}
+
+/* .custom-form label {
+    color: #000;
+    text-align: left;
+} */
+
+/* .custom-form .form-group {
+    
+    margin-left: auto;
+   margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.custom-form 
+.btn-primary {
+    background-color: #F53F7B;
+    color: #fff;
+    border: none;
+    width: 300px;
+    padding: 8px;
+    border-radius: 8px;
+
+    
+} */
+
+/* .custom-form input[type="text"],
+.custom-form input[type="datetime-local"],
+.custom-form input[type="number"] {
+    height: 50px;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="datetime-local"],
+.custom-form textarea,
+.custom-form input[type="number"] {
+    
+    width: 300px;
+  
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    
+} */
+.bouton {
+    text-align: center; 
+    float: left;
+}
+
+/* .bouton .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--couleur-principal);
+    color: white; 
+    text-decoration: none; 
+    border-radius: 8px;
+    transition: background-color 0.3s ease; 
+    margin-right: 20px; 
+}*/
+
+.bouton .btn:hover {
+    background-color: var(--couleur-secondaire); 
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .custom-form {
+        flex-direction: column; /* Dispose les enfants en colonne sur les écrans de 768px ou moins */
+        align-items: center; /* Centre les enfants horizontalement */
+    }
+
+    .col-md-6 {
+        width: 100%; /* La largeur de l'élément est de 100% de la largeur du parent */
+        margin-bottom: 20px; /* Ajoute une marge inférieure de 20px */
+    }
+
+    .custom-form img {
+        max-width: 100%; /* La largeur maximale de l'image est de 100% de la largeur du parent */
+        height: auto; /* Maintient le ratio de l'image en ajustant automatiquement la hauteur */
+    }
+
+    .formulaire {
+        width: 100%; /* La largeur de l'élément est de 100% de la largeur du parent */
+        padding: 15px; /* Ajoute un padding interne de 15px autour du contenu de l'élément */
+    }
+
+    .custom-form .form-group {
+        width: 100%; /* La largeur de l'élément est de 100% de la largeur du parent */
+        margin-bottom: 15px; /* Ajoute une marge inférieure de 15px */
+    }
+
+    .custom-form .btn-primary {
+        width: 100%; /* La largeur du bouton est de 100% de la largeur du parent */
+        max-width: none; /* Supprime la largeur maximale du bouton */
+    }
+
+    .custom-form input[type="text"],
+    .custom-form input[type="datetime-local"],
+    .custom-form input[type="number"],
+    .custom-form textarea {
+        width: 100%; /* La largeur de l'élément est de 100% de la largeur du parent */
+        max-width: none; /* Supprime la largeur maximale de l'élément */
+    }
+}
