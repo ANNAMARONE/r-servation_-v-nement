@@ -499,7 +499,8 @@
                 width: 100%;
                 margin-top: 5%;
                 background-color: #F53F7B;
-                color: white
+                color: white;
+                border-radius: 8px;
             }
             .bouton {
     text-align: center; 
