@@ -48,7 +48,7 @@ class ReservationController extends Controller
     public function index()
     {
         // Récupère les réservations de l'utilisateur connecté
-        $reservations = Reservation::where('user_id', Auth::id())->get();
+        $reservations = Reservation::where('user_id', Auth::id())->paginate(2);
 
         return view('reservations.mes_reservations', ['reservations' => $reservations]);
     }
