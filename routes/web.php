@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\OrganismeController;
 
+use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\PortailController;
+use App\Http\Controllers\RoleController;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
@@ -55,16 +57,17 @@ Route::get('/',[EvenementController::class,'evenementVenire']);
     // dump($rolesUtilisateur);
     // dump($rolesOrganismes);
     
-
+Route::resource('permissions', PermissionsController::class);
 Route::get('organisme',[OrganismeController::class,'create_organisme'])->name('register_organisme');
 Route::post('/envoie',[OrganismeController::class,'storeOrganisme'])->name('organisme');
-Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme']);
+Route::get('/listeorganismes',[OrganismeController::class,'listeorganisme'])->name('liste_organismes');
 Route::delete('/suprimerOrganisme/{id}',[OrganismeController::class,'SuprimerOrganisme'])->name('SuprimerOrganisme');
 Route::get('/detailOrgenisme/{id}',[OrganismeController::class,'detailOrganisme'])->name('DetailOrganisme');
-Route::get('compte/rejeter/{id}', [OrganismeController::class, 'rejeter'])->name('compte.rejeter'); // Rejeter une candidature
-Route::get('compte/accepter/{id}', [OrganismeController::class, 'accepter'])->name('compte.accepter'); // Accepter une candidature
+Route::put('bloquer/{id}',[OrganismeController::class,'bloquer'])->name('organismes.bloquer');
+Route::put('activer/{id}',[OrganismeController::class,'activer'])->name('organismes.activer');
 
 
+Route::resource('roles',RoleController::class);
 
 Route::resource('evenements', EvenementController::class);
 Route::get('liste/evenements', [EvenementController::class, 'listeEvenements'])->name('evenements.liste');
@@ -74,6 +77,8 @@ Route::get('/reservations', [ReservationController::class, 'index'])->name('rese
 Route::put('/reservations/reject/{id}', [ReservationController::class, 'rejectReservation'])->name('reservations.reject');
 
 
+Route::get('roles/{id}/permissions', [RoleController::class, 'editPermissions'])->name('roles.editPermissions');
+Route::post('roles/{id}/permissions', [RoleController::class, 'updatePermissions'])->name('roles.updatePermissions');
 
 
 Route::get('/sidebar', function () {

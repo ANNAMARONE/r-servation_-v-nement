@@ -17,6 +17,7 @@
             <h1>Créer un événement</h1>
             <form action="{{ route('evenements.store') }}" method="POST">
                 @csrf
+                 
                 <div class="form-group">
                     <label for="nom_evenement">Nom de l'événement</label>
                     <input type="text" class="form-control" id="nom_evenement" name="nom_evenement" required placeholder="Entrez le nom de l'événement">
@@ -45,7 +46,7 @@
                     <label for="date_limite">Date limite d'inscription</label>
                     <input type="datetime-local" class="form-control" id="date_limite" name="date_limite" required placeholder="Sélectionnez la date limite d'inscription">
                 </div>
-                <input type="hidden" name="user_id" value="{{ $user->id}}">
+               
                 <button type="submit" class="btn btn-primary">Créer</button>
             </form>
         </div>

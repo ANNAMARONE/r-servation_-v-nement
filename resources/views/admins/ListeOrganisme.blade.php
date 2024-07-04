@@ -1,48 +1,41 @@
 @extends('layouts.sidebar_admin')
 
 @section('title', 'Tableau de bord')
-
 @section('content')
-    <p>Liste des Organismes</p>
-    <div class="contenu">
-        <div class="tables">
-            <div class="table-responsive">
-                
-            <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
+<p>Liste des Organismes</p>
+<div class="container">
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success mt-3">
+            {{ $message }}
+        </div>
+    @endif
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger mt-3">
+            {{ $message }}
+        </div>
+    @endif
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
                     <th>logo</th>
                     <th>nom</th>
                     <th>nina</th>
                     <th>statut</th>
                     <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-         <style>
-            img{
-                border-radius: 100%;
-            }
-            .statut{
-                border: 1px solid green;
-                width: 10%;
-                
-                background-color: #F53F7B;
-                color: white;
-            }
-         </style>
-                @foreach( $organismes as  $organisme)
+            </tr>
+        </thead>
+        <tbody>
+        @foreach( $organismes as  $organisme)
                     <tr>
                     <td><a href="{{Route('DetailOrganisme',$organisme->id)}}">
-                    <img src="{{('storage/' . $organisme->logo) }}" alt="Logo de {{ $organisme->user->name }}" width="80">
+                    <img src="{{('storage/' . $organisme->logo) }}" alt="Logo de {{ $organisme->name }}" width="80">
                         </a>
                     </td>
-                    <td>{{ $organisme->user->name }}</td>
+                    <td>{{ $organisme->name}}</td>
                         <td>{{ $organisme->nina}}</td>
-                        <td class="statut">{{ $organisme->statut}}</td>
+                        <td><p class="statut">{{ $organisme->statut}}</p></td>
                         <td>
-                            <form action="{{Route('SuprimerOrganisme', $organisme->user->id)}}" method="post">
+                            <form action="{{Route('SuprimerOrganisme', $organisme->id)}}" method="post">
                                 @csrf
                                @method('DELETE')
                           <button type="submit"><i class="fas fa-trash"></i></button>
@@ -51,16 +44,25 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-   </div>
-@endsection
-
-@section('styles')
-  
-@endsection
-
-@section('scripts')
-   
+                
+            @endforeach
+        </tbody>
+    </table>
+</div>
+<style>
+            img{
+                border-radius: 100%;
+            }
+            .statut{
+                border: 1px solid green;
+                width: 50%;
+                text-align: center;
+                background-color: #F53F7B;
+                color: white;
+                border:none;
+                border-radius:20px;
+                padding:8px;
+                font-weight: bold;
+            }
+         </style>
 @endsection

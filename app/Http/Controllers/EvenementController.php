@@ -30,10 +30,10 @@ public function show($id){
  // Affiche le formulaire pour créer un nouvel événement
  public function create()
  {
-    $user = Auth::user();
-     $organismeId = $user->organisme_id;
+    
    
-     return view('evenements.create',compact('user','organismeId')); // Retourne la vue de création d'un événement
+ 
+     return view('evenements.create'); // Retourne la vue de création d'un événement
  }
 
  // Enregistre un nouvel événement dans la base de données
@@ -41,6 +41,7 @@ public function show($id){
  {
      // Crée un nouvel événement avec les données validées
     
+
      Evenement::create($request->validated());
      
      // Redirige vers la liste des événements avec un message de succès
@@ -106,11 +107,7 @@ $evenements = Evenement::paginate(9);
 return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalReservations', 'evenements'));
 }
 public function evenementVenire(){
-
     $evenements = Evenement::take(4)->get();
-
-    $evenements = Evenement::paginate(4);
-
     return view('welcome', compact('evenements'));
 
 }
