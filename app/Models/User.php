@@ -17,7 +17,7 @@ class User extends Authenticatable
     // }
     public function organisme()
     {
-        return $this->hasOne(Organisme::class);
+        return $this->hasOne(Organisme::class);}
 
     /**
      * Les attributs qui peuvent être assignés en masse.

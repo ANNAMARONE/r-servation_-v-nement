@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="contenaire1 " style="margin-top: -15%">
+        <div class="contenaire1 " style="margin-top: -15px">
             <div class="row" style=" display:flex;">
                 <div class="col-sm-6" style="height: 450px">
                     <div class="card" style="height: 400px">
@@ -126,9 +126,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                          {{ $evenements->links() }}
-                      </div>
+                        
                     @endforeach
 
                 </div>
