@@ -30,12 +30,12 @@ $register = function () {
     $validated = $this->validate();
 
     $validated['password'] = Hash::make($validated['password']);
-
     event(new Registered($user = User::create($validated)));
+    $user->assignRole('utilisateur');
 
     Auth::login($user);
 
-    $this->redirect(route('dashboard', absolute: false), navigate: true);
+    $this->redirect(route('home', absolute: false), navigate: true);
 };
 
 ?>
@@ -90,11 +90,12 @@ $register = function () {
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        <input type="hidden" id="role" name="role" value="utilisateur">
 
         <div class="mt-4">
 
             <button class="button">
-                {{ __('envoyer') }}
+                {{ __('Connecter') }}
             </button>
         </div>
         <a id="link2"class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>

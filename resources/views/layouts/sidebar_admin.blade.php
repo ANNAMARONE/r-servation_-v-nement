@@ -26,7 +26,7 @@
                     <i class="fas fa-tachometer-alt mr-2"></i> 
                     <span>Tableau de bord</span>
                 </a>
-                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('evenements*') ? 'active' : '' }}">
+                <a href="afficherevenement" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('afficherevenement*') ? 'active' : '' }}">
                     <i class="fas fa-calendar-alt mr-2"></i> 
                     <span>Événements</span>
                 </a>
@@ -37,6 +37,10 @@
                 <a href="{{ url('/listeorganismes') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('listeorganismes') ? 'active' : '' }}">
                     <i class="fas fa-users mr-2"></i>
                     <span>Organismes</span>
+                </a>
+                <a href="{{route('roles.index')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is(' roles') ? 'active' : '' }}">
+                    <i class="fas fa-users mr-2"></i>
+                    <span>Gestion Roles</span>
                 </a>
                 <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
                     @csrf
