@@ -31,7 +31,7 @@
                     <img src="{{('storage/' . $organisme->logo) }}" alt="Logo de {{ $organisme->name }}" width="80">
                         </a>
                     </td>
-                    <td>{{ $organisme->name}}</td>
+                    <td>{{ $organisme->user->name}}</td>
                         <td>{{ $organisme->nina}}</td>
                         <td><p class="statut">{{ $organisme->statut}}</p></td>
                         <td>
