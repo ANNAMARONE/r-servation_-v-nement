@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $totalParticipants = 0; // Remplacez par le calcul réel des participants
         $totalReservations = 0; // Remplacez par le calcul réel des réservations
 
-        return view('evenements.dashoardEv', compact('evenements', 'totalEvenements', 'totalParticipants', 'totalReservations'));
+        return view('admins.dashoardEv', compact('evenements', 'totalEvenements', 'totalParticipants', 'totalReservations'));
     }
 // public function show($id)
     // {

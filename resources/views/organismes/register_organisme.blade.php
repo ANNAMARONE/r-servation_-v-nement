@@ -102,7 +102,7 @@
     <div>
         <button type="submit">S'inscrire</button>
     </div>
-    <input type="hidden" id="role" name="role" value="Organismes">
+    <input type="hidden" id="role" name="role" value="organisme">
    
   
     </div>

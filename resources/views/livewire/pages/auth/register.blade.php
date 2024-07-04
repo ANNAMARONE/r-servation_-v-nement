@@ -90,6 +90,7 @@ $register = function () {
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        <input type="hidden" id="role" name="role" value="utilisateur">
 
         <div class="mt-4">
 

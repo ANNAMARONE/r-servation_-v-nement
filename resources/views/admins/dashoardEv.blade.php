@@ -60,8 +60,7 @@
     <!-- Tableau des événements -->
     <div class="contenu mt-4">
         <h3>Événements les plus populaires</h3>
-        {{-- <a href="{{ route('dashboardevenements.create') }}" class="btn btn-success mb-3">Créer un nouvel événement</a> --}}
-        
+       
         <table class="table mt-3">
             <thead>
                 <tr>
@@ -71,14 +70,13 @@
                     <th style="color: #000;">Lieu</th>
                     <th style="color: #000;">Nombre de Places</th>
                     <th style="color: #000;">Limite de réservation</th>
-                    <th style="color: #000;">Actions</th>
                 </tr>
             </thead>
             <tbody>
                  @foreach($evenements as $evenement)
                 <tr>
                     <td> <!-- Affichage de l'image avec lien -->
-                        <a href="{{ route('evenements.detailsEvenement', $evenement->id) }}">
+                        <a href="{{ route('afficherevenement.show1', $evenement->id) }}">
                             <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" width="100">
                         </a>
                     </td>
@@ -87,15 +85,7 @@
                     <td>{{ $evenement->lieu }}</td>
                     <td>{{ $evenement->nbr_place }}</td>
                     <td>{{ $evenement->date_limite }}</td>
-                    <td>
-               <form action="{{ route('dashboardevenements.destroy', $evenement->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
+                   
                 </tr>
                 <tr style="border-top: 2px solid #fff;"></tr> <!-- Ligne horizontale -->
                 @endforeach

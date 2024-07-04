@@ -43,14 +43,14 @@ class OrganismeController extends Controller
         $user->assignRole($request->role);
         event(new Registered($user));
 
-        return redirect('/')->with('success', 'Compte créé avec succès');
+        return redirect('login')->with('success', 'Compte créé avec succès');
     } catch (\Exception $e) {
         return redirect()->back()->with('error', 'Une erreur s\'est produite : ' . $e->getMessage());
     }
 }
 public function listeorganisme(){
     $organismes = Organisme::with('user')->get();
-    $users = User::role('Organismes')->get();
+    $users = User::role('organisme')->get();
     return view('admins.ListeOrganisme',compact('organismes','users'));
 }
 public function SuprimerOrganisme($organisme){

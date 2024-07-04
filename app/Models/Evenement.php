@@ -15,6 +15,10 @@ class Evenement extends Model
     {
         return $this->hasMany(Reservation::class)->where('statut', 'accepter');
     }
+    public function organisme()
+{
+    return $this->belongsTo(Organisme::class);
+}
 
     protected $dates = ['date', 'date_limite']; // Définit les colonnes qui sont des champs de date
 
