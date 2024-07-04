@@ -43,15 +43,17 @@ class OrganismeController extends Controller
         $user->assignRole($request->role);
         event(new Registered($user));
 
-        return redirect('/')->with('success', 'Compte créé avec succès');
+        return redirect('login')->with('success', 'Compte créé avec succès');
     } catch (\Exception $e) {
         return redirect()->back()->with('error', 'Une erreur s\'est produite : ' . $e->getMessage());
     }
 }
 public function listeorganisme(){
     $organismes = Organisme::with('user')->get();
-    $users = User::role('Organismes')->get();
+
+    $users = User::role('organisme')->get();
     return view('admins.ListeOrganisme',compact('organismes','users'));
+
 }
 public function SuprimerOrganisme($organisme){
     $users=User::find($organisme);
@@ -62,20 +64,21 @@ public function detailOrganisme($organisme){
     $organisme=Organisme::find($organisme);
     return view('admins.detailOrganisme',compact('organisme'));
 }
-public function accepter($id)
+public function bloquer($id)
     {
-        $candidature = Organisme::findOrFail($id);
-        $candidature->statut = 'valider';
-        $candidature->save();
-        return redirect('/listeorganismes')->with('message', 'Candidature acceptée et email envoyé.');
+        $organisme = Organisme::find($id);
+        $organisme->statut = 'bloquer';
+        $organisme->save();
+
+        return redirect()->route('liste_organismes')->with('success', 'Compte Organisme bloqué avec succès.');
     }
 
-    public function rejeter($id)
+    public function activer($id)
     {
-        $candidature = Organisme::findOrFail($id);
-        $candidature->statut = 'bloquer';
-        $candidature->save();
-        return redirect('/listeorganismes')->with('message', 'Candidature rejetée et email envoyé.');
-    }
+        $organisme = Organisme::find($id);
+        $organisme->statut = 'activer';
+        $organisme->save();
 
+        return redirect()->route('liste_organismes')->with('success', 'Compte Organisme activé avec succès.');
+    }
 }

@@ -4,10 +4,9 @@
 
 @section('content')
     <div class="container">
-        <h1>Liste des utilisateurs</h1>
+        <h1 style="font-weight: bold">Liste des utilisateurs</h1>
 
-        <!-- Affiche un lien pour créer un nouvel utilisateur -->
-        <a href="{{ route('users.create') }}">Ajout utilisateur</a>
+        
 
         <!-- Tableau responsive pour afficher les utilisateurs -->
         <div class="table-responsive">

@@ -9,12 +9,19 @@ use Carbon\Carbon;
 class Evenement extends Model
 {
     protected $fillable = [
-        'nom_evenement', 'image', 'date', 'lieu', 'description', 'nbr_place', 'date_limite','user_id'
+        'nom_evenement', 'image', 'date', 'lieu', 'description', 'nbr_place', 'date_limite','organisme_id'
     ];
     public function reservations()
     {
         return $this->hasMany(Reservation::class)->where('statut', 'accepter');
     }
+
+    public function organisme(){
+        return $this->belongsTo(Organisme::class);
+    }
+public function user(){
+    return $this->belongsTo(User::class);
+}
 
     protected $dates = ['date', 'date_limite']; // Définit les colonnes qui sont des champs de date
 

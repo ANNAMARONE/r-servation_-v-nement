@@ -32,16 +32,17 @@
                                 <td class="d-none d-md-table-cell"> {{ \Carbon\Carbon::parse($evenement->date)->format('d-m-Y') }}</td>
                                 <td class="icons">
                                     <!-- Liens d'action avec des icônes -->
-                                    <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-sm " title="Modifier"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-sm" title="Voir les détails"><i class="material-icons">visibility</i></a>
+                                    <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-sm " title="Modifier"><i class="material-icons">edit</i></a>
+                                    <a href="/reservations/liste/{{$evenement->id}}" class="btn btn-sm " title="Voir les réservations"><i class="material-icons">event_seat</i></a>
                                     <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm " title="Supprimer">
-                                            <i class="fas fa-trash-alt"></i>
+                                            <i class="material-icons" >delete</i>
                                         </button>
                                     </form> 
-                                    <a href="/reservations/liste/{{$evenement->id}}" class="btn btn-sm " title="Voir les réservations"><i class="fas fa-list"></i></a>
-                                    <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-sm" title="Voir les détails"><i class="fas fa-info-circle"></i></a>
+                                   
                                 </td>
                             </tr>
                         @endforeach

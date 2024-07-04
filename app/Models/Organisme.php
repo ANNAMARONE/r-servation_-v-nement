@@ -15,11 +15,23 @@ class Organisme extends Model
         'adresse',
         'secteur_activité',
         'nina',
-        'user_id'
-
+        'user_id',
+        'statut'
     ];
-    public function users()
+
+    // Optional: Add a scope to filter active organismes
+    public function scopeActive($query)
     {
-        return $this->hasMany(User::class);
+        return $query->where('statut', 'activer');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function evenement(){
+        return $this->hasMany(Evenement::class);
+
     }
 }

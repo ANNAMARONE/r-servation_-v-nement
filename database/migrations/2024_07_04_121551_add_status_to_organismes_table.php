@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::table('organismes', function (Blueprint $table) {
             //
-            DB::table('organismes')->where('statut', 'accepter')->update(['statut' => 'valider']);
-            DB::table('organismes')->where('statut', 'refuser')->update(['statut' => 'bloquer']);
+            $table->string('statut')->default('activer'); 
         });
     }
 
@@ -25,9 +24,7 @@ return new class extends Migration
     {
         Schema::table('organismes', function (Blueprint $table) {
             //
-            DB::table('organismes')->where('statut', 'valider')->update(['statut' => 'accepter']);
-            DB::table('organismes')->where('statut', 'bloquer')->update(['statut' => 'refuser']);
-        
+            $table->dropColumn('statut');
         });
     }
 };

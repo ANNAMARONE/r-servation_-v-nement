@@ -56,6 +56,20 @@ h1{
  .table,.table th,.table td{
     border: none;
  }
+
 .table td img{
     width: 100px;
+    height: 100px;
+}
+p{
+    margin-top: 20%;
+    
+}
+p i {
+    font-size: 30px;
+   margin-right: 8px;
+}
+p span{
+    font-size: 30px;
+    font-weight: bold;
 }

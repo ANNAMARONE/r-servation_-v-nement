@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('organismes', function (Blueprint $table) {
             //
-            $table->enum('statut', ['valider', 'bloquer'])->change();
+            $table->dropColumn('statut');
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('organismes', function (Blueprint $table) {
             //
-            $table->enum('statut', ['accepter', 'refuser'])->change();
+            $table->string('statut')->default('active');
         });
     }
 };

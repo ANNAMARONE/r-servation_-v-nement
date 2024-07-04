@@ -12,7 +12,11 @@
                 <div class="card widget1">
                     <div class="card-body">
                         <h5 class="card-title">Nombre d'événements</h5>
-                        <p class="card-text">{{ $totalEvenements }}</p>
+                        <p class="card-text d-flex align-items-center justify-content-center" >
+                            <i class="material-icons">event</i> 
+                            <span>{{ $totalEvenements }}</span>
+                        </p>
+                        
                     </div>
                 </div>
             </div>
@@ -22,7 +26,10 @@
                 <div class="card widget2">
                     <div class="card-body">
                         <h5 class="card-title">Nombre de participants</h5>
-                        <p class="card-text">{{ $totalParticipants }}</p>
+                        <p class="card-text d-flex align-items-center justify-content-center" >
+                            <i class="fas fa-users "></i>
+                            <span>{{ $totalParticipants }}</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -32,7 +39,10 @@
                 <div class="card widget1">
                     <div class="card-body">
                         <h5 class="card-title">Nombre de réservations</h5>
-                        <p class="card-text">{{ $totalReservations }}</p>
+                        <p class="card-text d-flex align-items-center justify-content-center" >
+                            <i class="material-icons">event_seat</i>
+                            <span>{{ $totalReservations }}</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -57,7 +67,7 @@
                     <tbody>
                         @foreach($evenements as $evenement)
                             <tr>
-                                <td><img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}"></td>
+                                <td><img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" ></td>
                                 <td>{{ $evenement->nom_evenement }}</td>
                                 <td>{{ $evenement->nbr_place }}</td>
                                 <td>{{ $evenement->date }}</td>

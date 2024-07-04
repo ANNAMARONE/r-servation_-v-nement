@@ -9,11 +9,14 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+
     use HasFactory, Notifiable, HasRoles;
-    public function organisme()
-    {
-        return $this->belongsTo(Organisme::class);
-    }
+
+    // public function organisme()
+    // {
+    //     return $this->belongsTo(Organisme::class);
+    // }
+  
     /**
      * Les attributs qui peuvent être assignés en masse.
      *
@@ -46,6 +49,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * Définition de la relation avec le modèle Organisme.
+     * Un utilisateur peut avoir un organisme associé.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function organisme()
+    {
+        return $this->hasOne(Organisme::class);
+    }
+  
+    
     /**
      * Définition de la relation avec le modèle Reservation.
      * Un utilisateur peut avoir plusieurs réservations.

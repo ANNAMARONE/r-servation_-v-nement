@@ -17,13 +17,13 @@ class ReservationController extends Controller
     public function listeReservation($evenement_id) {
         // Récupérer toutes les réservations pour un événement spécifique avec les relations utilisateurs et événements
         $reservations = Reservation::where('evenement_id', $evenement_id)
+                                    ->where('statut', '!=', 'rejeter') // Exclure les réservations rejetées
                                     ->with('user', 'evenement')
                                     ->paginate(9);
     
         // Retourner la vue avec les données des réservations
         return view('reservations.listeReservation', compact('reservations'));
     }
-    
     public function create($evenement_id)
     {
         $evenement = Evenement::findOrFail($evenement_id);
@@ -69,16 +69,24 @@ class ReservationController extends Controller
 
         return view('reservations.mes_reservations', ['reservations' => $reservations]);
     }
+   
     public function rejectReservation(Request $request, $id)
-    {
-        $reservation = Reservation::findOrFail($id);
-        Mail::to(Auth::user()->email)->send(new RejectionReservation($reservation));
-        
-        // Mettre à jour le statut de la réservation à 'rejeter'
-        $reservation->update(['statut' => 'rejeter']);
+{
+    // Récupérer la réservation
+    $reservation = Reservation::findOrFail($id);
 
-        // Redirection vers la page précédente avec un message de succès
-        return back()->with('success', 'Réservation rejetée avec succès.');
-    }
+    // Récupérer l'utilisateur associé à la réservation
+    $userAssociatedWithReservation = $reservation->user;
+
+    // Envoyer l'e-mail de rejet à l'utilisateur associé
+    Mail::to($userAssociatedWithReservation->email)->send(new RejectionReservation($reservation));
+
+    // Mettre à jour le statut de la réservation à 'rejeter'
+    $reservation->update(['statut' => 'rejeter']);
+
+    // Redirection vers la page précédente avec un message de succès
+    return back()->with('success', 'Réservation rejetée avec succès.');
+}
+
 
 }
