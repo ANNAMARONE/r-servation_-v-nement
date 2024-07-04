@@ -18,6 +18,7 @@ class Organisme extends Model
         'user_id',
         'statut'
     ];
+
     // Optional: Add a scope to filter active organismes
     public function scopeActive($query)
     {
@@ -31,5 +32,6 @@ class Organisme extends Model
     }
     public function evenement(){
         return $this->hasMany(Evenement::class);
+
     }
 }

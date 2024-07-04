@@ -90,37 +90,42 @@ public function store(EvenementRequest $request)
      return redirect()->route('evenements.index')->with('success', 'Événement supprimé avec succès.');
  }
 
-public function listeEvenementDashboard(Request $request)
-{
-// Vérifier s'il y a un organisme spécifié dans la requête
-$organismeId = $request->input('user_id');
-
-// Définir les variables pour les statistiques
-$totalEvenements = null;
-$totalParticipants = null;
-$totalReservations = null;
-
-// Si un organisme est spécifié, calculer les statistiques pour cet organisme
-if ($organismeId) {
-$totalEvenements = Evenement::where('user_id', $organismeId)->count();
-
-$totalParticipants = User::whereHas('reservations', function ($query) use ($organismeId) {
-$query->whereHas('evenement', function ($query) use ($organismeId) {
-$query->where('user_id', $organismeId);
-});
-})->count();
-
-$totalReservations = Reservation::whereHas('evenement', function ($query) use ($organismeId) {
-$query->where('user_id', $organismeId);
-})->count();
-}
-
-// Récupérer la liste des événements paginés
-$evenements = Evenement::paginate(9);
-
-// Retourner la vue avec toutes les données nécessaires
-return view('dashboard', compact('totalEvenements', 'totalParticipants', 'totalReservations', 'evenements'));
-}
+ public function listeEvenementDashboard(Request $request)
+ {
+     // Récupérer l'utilisateur connecté
+     $user = $request->user();
+     
+     // Vérifier si l'utilisateur a le rôle 'organisme'
+     if ($user->hasRole('organisme')) {
+         // Récupérer l'organisme de l'utilisateur connecté
+         $organisme = $user->organisme; // Assurez-vous que la relation est définie correctement
+         
+         // Récupérer les événements de l'organisme connecté
+         $evenements = Evenement::where('organisme_id', $organisme->id)->paginate(9);
+         
+         // Calculer le nombre total d'événements de l'organisme
+         $totalEvenements = Evenement::where('organisme_id', $organisme->id)->count();
+         
+         // Calculer le nombre total de participants (réservations acceptées) pour tous les événements de l'organisme
+         $totalParticipants = Reservation::whereIn('evenement_id', $evenements->pluck('id'))
+                                          ->where('statut', 'accepter')
+                                          ->count();
+         
+         // Calculer le nombre total de réservations pour tous les événements de l'organisme
+         $totalReservations = Reservation::whereIn('evenement_id', $evenements->pluck('id'))
+                                          ->count();
+     } else {
+         // Si l'utilisateur n'est pas un organisme, retourner des valeurs par défaut
+         $evenements = collect();
+         $totalEvenements = 0;
+         $totalParticipants = 0;
+         $totalReservations = 0;
+     }
+     
+     // Retourner la vue avec toutes les données nécessaires
+     return view('dashboard', compact('evenements', 'totalEvenements', 'totalParticipants', 'totalReservations'));
+ }
+ 
 public function evenementVenire(){
     $evenements = Evenement::take(4)->get();
     return view('welcome', compact('evenements'));

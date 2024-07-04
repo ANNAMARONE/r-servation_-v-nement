@@ -26,7 +26,7 @@
                     <i class="fas fa-tachometer-alt mr-2"></i> 
                     <span>Tableau de bord</span>
                 </a>
-                <a href="{{ route('evenements.index') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('evenements*') ? 'active' : '' }}">
+                <a href="afficherevenement" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('afficherevenement*') ? 'active' : '' }}">
                     <i class="fas fa-calendar-alt mr-2"></i> 
                     <span>Événements</span>
                 </a>
