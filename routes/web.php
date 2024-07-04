@@ -15,7 +15,7 @@ use App\Http\Controllers\AfficherController;
 
 
 // Routes publiques accessibles à tous
-Route::get('/', [EvenementController::class, 'evenementVenire']); 
+Route::get('/', [EvenementController::class, 'evenementVenire'])->name('home'); 
 Route::get('liste/evenements', [EvenementController::class, 'listeEvenements'])->name('evenements.liste'); 
 Route::get('organisme', [OrganismeController::class, 'create_organisme'])->name('register_organisme');
 Route::post('/envoie', [OrganismeController::class, 'storeOrganisme'])->name('organisme');

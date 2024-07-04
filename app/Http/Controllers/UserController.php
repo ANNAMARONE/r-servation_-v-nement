@@ -25,25 +25,8 @@ class UserController extends Controller // Définit la classe UserController qui
     return view('users.index', compact('users')); // Retourne la vue 'users.index' avec les utilisateurs
 }
 
-    // public function store(Request $request) // Définit la méthode store pour créer un nouvel utilisateur
-    // {
-    //     $request->validate([ // Valide les données du formulaire avec les règles spécifiées
-    //         'name' => 'required', // Le champ 'name' est requis
-    //         'email' => 'required|email|unique:users,email', // Le champ 'email' est requis, doit être une adresse email valide et unique dans la table 'users'
-    //         'address' => 'nullable|string', // Le champ 'address' peut être nullable (optionnel), mais s'il est rempli, il doit être de type string
-    //     ]);
 
-    //     User::create([ // Crée un nouvel utilisateur dans la base de données avec les données validées
-    //         'name' => $request->name, // Assignation du champ 'name' depuis la requête
-    //         'email' => $request->email, // Assignation du champ 'email' depuis la requête
-    //         'address' => $request->address, // Assignation du champ 'address' depuis la requête
-    //     ]);
-    //     $user->assignRole('utilisateur');
-
-    //     return redirect()->route('users.index')->with('success', 'User created successfully.'); // Redirige vers la route 'users.index' avec un message de succès en session
-    // }
-
-    public function store(Request $request)
+public function store(Request $request)
 {
     $request->validate([
         'name' => 'required',
@@ -51,17 +34,19 @@ class UserController extends Controller // Définit la classe UserController qui
         'address' => 'nullable|string',
     ]);
 
+    // Create the user
     $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'address' => $request->address,
     ]);
 
-    $user->assignRole('utilisateur'); // Attribution du rôle 'utilisateur'
-   
+    // Assign the role 'utilisateur' to the user
+    $user->assignRole('utilisateur');
 
-    return redirect()->route('users.index')->with('success', 'User created successfully.');
+    return redirect('/')->with('success', 'User created successfully.');
 }
+
     public function destroy(User $user) // Définit la méthode destroy pour supprimer un utilisateur spécifique
     {
         $user->delete(); // Supprime l'utilisateur spécifié depuis la base de données
