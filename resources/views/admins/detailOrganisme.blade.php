@@ -24,11 +24,21 @@ margin-left: 80%;
     #btn1{
       background-color:#B6DCB8;
       color: black;
+      width:80%;
+      padding: 10px;
+      border: none;
+      margin: 10px;
+      border-radius: 15px;
+
     }
     #btn2{
       background-color:rgb(255, 3, 3,26%);
       color: black;
       margin: 10px;
+      width:80%;
+      padding: 10px;
+      border: none;
+      border-radius: 15px;
     }
     #row2{
       margin-left: 20px;
@@ -50,45 +60,32 @@ margin-left: 80%;
      <p>{{ $organisme->description}} </p>
     </div>
     <div class="col">
+      
     <div class="container mt-2">
-  <button id="liste" type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#myModal">
+    <div id="liste" class="dropdown">
+  <button class="btn btn-secondary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
   <i class='fas fa-grip-vertical' style='font-size:24px'></i>
   </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  <li>
+       <form action="{{ route('organismes.activer', $organisme->id) }}" method="POST">
+              @csrf
+              @method('PUT')
+              <button type="submit" id="btn2">Activer  <i class="fa-solid fa-check-double" style="color: #29AB30;"></i></button>
+       </form>
+              </li> 
+    <li> 
+      <form action="{{ route('organismes.bloquer', $organisme->id) }}" method="POST">
+               @csrf
+               @method('PUT')
+              <button type="submit" id="btn1">Bloquer <i class="fa-solid fa-xmark" style="color: #FF0303;"></i> </button>
+                </form>
+              </li>
+  
+  </ul>
+</div>
 </div>
 
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-     
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-       
-      <td>
-                        
-                            @if ( $organisme->statut == 'accepter')
-                                <a href="{{ route('compte.accepter', $organisme->id) }}" id="btn1" class="btn btn-success">valider<i class="fa-solid fa-check" style="color: #29AB30;"></i></a>
-                                <a href="{{ route('compte.rejeter', $organisme->id) }}" id="btn2" class="btn btn-danger">bloquer<i class="fa-solid fa-xmark" style="color: #FF0303;"></i></a>
-                            @else
-                                <span>{{ ucfirst( $organisme->statut) }}</span>
-                            @endif
-     </td>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">fermer</button>
-      </div>
-
-    </div>
-  </div>
-</div>
     </div>
   </div>
   <div id="row" class="row">
