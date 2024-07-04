@@ -114,8 +114,8 @@ Route::get('/dashboard/evenements/{id}', [DashboardController::class, 'detailsEv
 //Route::delete('/dashboard/evenements/{id}', [DashboardController::class, 'destroy'])->name('dashboardevenements.destroy');
 
 //Pour liste evenement
-// Route::get('afficherevenement', [AfficherController::class, 'index'])->name('afficherevenement.index1');
-// Route::get('afficherevenement/{evenement}', [AfficherController::class, 'show'])->name('afficherevenement.show1');
+// le 1 a supprimer Route::get('afficherevenement', [AfficherController::class, 'index'])->name('afficherevenement.index1');
+// le 1 a supprimer Route::get('afficherevenement/{evenement}', [AfficherController::class, 'show'])->name('afficherevenement.show1');
 
 
 Route::get('afficherevenement', [EvenementController::class, 'indexx'])->name('afficherevenement.index1');

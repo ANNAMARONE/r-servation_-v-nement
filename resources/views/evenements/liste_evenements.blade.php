@@ -15,6 +15,8 @@
         </ul>
     </div>
 @endif
+
+
     <div class="container">
         <h1>Listes des événements</h1>
         <!-- boucle sur tous les événements -->
