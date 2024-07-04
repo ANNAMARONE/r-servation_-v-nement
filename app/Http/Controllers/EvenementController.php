@@ -48,8 +48,11 @@ public function store(EvenementRequest $request)
     if (!$organisme) {
         return redirect()->back()->with('error', 'L\'utilisateur connecté n\'est pas associé à un organisme.');
     }
+    
+    if ($organisme->statut !== 'active') {
+        return redirect()->route('evenements.index')->with('error', 'Votre organisme n\'est pas actif, vous ne pouvez pas ajouter un événement.');
+    }
 
-    // Crée un nouvel événement avec les données validées et l'ID de l'organisme
     Evenement::create(array_merge(
         $request->validated(),
         ['organisme_id' => $organisme->id]
