@@ -2,7 +2,7 @@
 
 @section('title', 'Tableau de bord')
 @section('content')
-<p>Liste des Organismes</p>
+<h1>Liste des Organismes</h1><br>
 <div class="container">
     @if ($message = Session::get('success'))
         <div class="alert alert-success mt-3">

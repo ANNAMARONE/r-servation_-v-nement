@@ -1,7 +1,7 @@
 
 @extends('layouts.sidebar_admin')
 
-@section()
+
 
 
 
@@ -66,4 +66,3 @@
 </style>
 </body>
 </html>
-@endsection

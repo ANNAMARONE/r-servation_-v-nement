@@ -25,10 +25,10 @@ class DashboardController extends Controller
     }
     
 // public function show($id)
-    // {
-    //     $evenement = Evenement::findOrFail($id);
-    //     return view('evenements.show', compact('evenement'));
-    // }
+//     {
+//         $evenement = Evenement::findOrFail($id);
+//         return view('evenements.detailsEvenement', compact('evenement'));
+//     }
 public function destroy($id)
     {
         // Supprimer l'événement
@@ -45,7 +45,7 @@ public function destroy($id)
  * @param  int  $id
  * @return \Illuminate\Http\Response
  */
-public function detailsEvenement($id)
+public function show($id)
 {
     // Trouver l'événement spécifique par son identifiant ($id)
     $evenement = Evenement::findOrFail($id);

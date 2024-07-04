@@ -31,7 +31,7 @@
                 <td><a href="{{Route('roles.editPermissions',$role->id)}}">{{ $role->name }}</a></td>
                 <td>
                     <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning">Modifier</a>
-                    @if (!in_array($role->name, ['Administrateur','Utilisateur', 'Organismes']))
+                    @if (!in_array($role->name, ['admin','utilisateur', 'organismes']))
                     <form action="{{ route('roles.destroy', $role->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')

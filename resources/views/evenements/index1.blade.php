@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Événement {{ $index + 1 }}:<br>{{ $evenement->nom_evenement }}</h5>
                     <p class="card-text">{{ Str::limit($evenement->description, 80) }}</p>
-                    <a href="{{ route('afficherevenement.show1', $evenement->id) }}" class="btn btn-custom" style="border: 2px solid #E91F63; color: #E91F63;">Voir plus</a>
+                    <a href="{{ route('dashboardevenements.show', $evenement->id) }}" class="btn btn-custom" style="border: 2px solid #E91F63; color: #E91F63;">Voir plus</a>
                 </div>
             </div>
         </div>

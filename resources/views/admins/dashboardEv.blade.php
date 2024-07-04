@@ -76,7 +76,7 @@
                 @foreach($evenements as $evenement)
                 <tr>
                     <td> <!-- Affichage de l'image avec lien -->
-                        <a href="{{ route('afficherevenement.show1', $evenement->id) }}">
+                        <a href="{{ route('dashboardevenements.show', $evenement->id) }}">
                             <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" width="100">
                         </a>
                     </td>

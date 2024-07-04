@@ -65,7 +65,7 @@ class RoleController extends Controller
             return redirect()->route('roles.index')->with('error', 'Role not found.');
         }
 
-        $protectedRoles = ['Administrateur','Utilisateur', 'Organismes'];
+        $protectedRoles = ['admin','utilisateur', 'organisme'];
 
         if (in_array($role->name, $protectedRoles)) {
             return redirect()->route('roles.index')->with('error', 'Ce rôle ne peut pas être supprimé.');

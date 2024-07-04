@@ -38,6 +38,10 @@
                     <i class="fas fa-users mr-2"></i>
                     <span>Organismes</span>
                 </a>
+                <a href="{{route('roles.index')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is(' roles') ? 'active' : '' }}">
+                    <i class="fas fa-users mr-2"></i>
+                    <span>Gestion Roles</span>
+                </a>
                 <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
                     @csrf
                     <button type="submit" class="btn btn-link p-0 d-flex align-items-center">
