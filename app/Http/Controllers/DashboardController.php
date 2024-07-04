@@ -10,13 +10,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $evenements = Evenement::paginate(10); // Pagination
+        $totalUsers = User::whereDoesntHave('roles', function ($query) {
+            $query->where('name', 'admin')->orWhere('name', 'organisme');
+        })->count();
+    
+        $totalOrganismes = User::role('organisme')->count();
+    
         $totalEvenements = Evenement::count();
-        $totalParticipants = 0; // Remplacez par le calcul réel des participants
-        $totalReservations = 0; // Remplacez par le calcul réel des réservations
-
-        return view('admins.dashoardEv', compact('evenements', 'totalEvenements', 'totalParticipants', 'totalReservations'));
+    
+      
+        $evenements = Evenement::paginate(10);
+    
+        return view('admins.dashboardEv', compact('evenements', 'totalEvenements', 'totalUsers', 'totalOrganismes'));
     }
+    
 // public function show($id)
     // {
     //     $evenement = Evenement::findOrFail($id);
