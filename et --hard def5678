@@ -1,0 +1,42 @@
+[33m583aabd[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/gestion_organisme[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{0}: pull origin develop: Fast-forward
+[33m4ea5ac4[m HEAD@{1}: checkout: moving from main to feature/gestion_organisme
+[33m4e76003[m[33m ([m[1;32mmain[m[33m)[m HEAD@{2}: checkout: moving from feature/gestion_organisme to main
+[33m4ea5ac4[m HEAD@{3}: pull origin develop: Fast-forward
+[33m07afa70[m[33m ([m[1;31morigin/feature/gestion_organisme[m[33m)[m HEAD@{4}: commit: récupération de la clé étrangère de l'organisme dans la table evenement
+[33ma232651[m HEAD@{5}: commit (merge): responsiviter des formulaire d'inscription et de connection
+[33m6e87417[m HEAD@{6}: commit: responsivité de la page d'accueil
+[33m253adfa[m HEAD@{7}: pull origin develop --no-rebase: Merge made by the 'ort' strategy.
+[33mbcd4fff[m HEAD@{8}: commit: ajout du popovers pour choisir une option d'inscription
+[33m6de11d0[m HEAD@{9}: commit (merge): integration de la page d'acceuil
+[33mefe7154[m HEAD@{10}: commit: integration de la page d'acceuil
+[33m803eb16[m HEAD@{11}: commit (merge): integration de la page d'acceuil
+[33m864a705[m HEAD@{12}: commit: integration de la page d'acceuil
+[33m455bfbb[m HEAD@{13}: commit: integration de la page d'acceuil
+[33m6ee901b[m HEAD@{14}: pull origin develop: Fast-forward
+[33me84bdeb[m HEAD@{15}: commit: fin de l'integration de la fonctionnalité gestion organisme
+[33md65d145[m HEAD@{16}: commit: integration de la page détail organisme
+[33m850029c[m HEAD@{17}: commit: integration de la page liste evenement
+[33m0f3f4a7[m HEAD@{18}: pull origin develop: Fast-forward
+[33m651728e[m HEAD@{19}: commit: création de compte de l'organisme
+[33mf885ab2[m HEAD@{20}: checkout: moving from main to feature/gestion_organisme
+[33m4e76003[m[33m ([m[1;32mmain[m[33m)[m HEAD@{21}: commit: création de compte de l'organisme
+[33mf4a7c43[m HEAD@{22}: checkout: moving from feature/gestion_organisme to main
+[33mf885ab2[m HEAD@{23}: commit: création de compte de l'organisme
+[33m15c6528[m HEAD@{24}: checkout: moving from feature/gestion_organisme to feature/gestion_organisme
+[33m15c6528[m HEAD@{25}: commit (merge): stilisation un formulaire de création de compte
+[33mcc05331[m[33m ([m[1;32mdevelop[m[33m)[m HEAD@{26}: checkout: moving from develop to feature/gestion_organisme
+[33mcc05331[m[33m ([m[1;32mdevelop[m[33m)[m HEAD@{27}: commit: stylisation du formulaire de creation de compte de l'organisme
+[33m6a90488[m HEAD@{28}: commit: gestion authentification
+[33maa02010[m HEAD@{29}: pull origin develop: Fast-forward
+[33m18768ab[m HEAD@{30}: pull origin develop: Fast-forward
+[33m75012a2[m HEAD@{31}: checkout: moving from main to develop
+[33mf4a7c43[m HEAD@{32}: checkout: moving from develop to main
+[33m75012a2[m HEAD@{33}: checkout: moving from main to develop
+[33mf4a7c43[m HEAD@{34}: merge develop: Merge made by the 'ort' strategy.
+[33mbdfc9cd[m HEAD@{35}: checkout: moving from develop to main
+[33m75012a2[m HEAD@{36}: commit: création de compte et authentification avec spatie
+[33m9b4c235[m HEAD@{37}: pull origin main --no-rebase: Merge made by the 'ort' strategy.
+[33mfbb5c81[m HEAD@{38}: checkout: moving from main to develop
+[33mbdfc9cd[m HEAD@{39}: commit: création de compte et authentification avec spatie
+[33m199d4b2[m HEAD@{40}: pull origin develop --no-rebase: Merge made by the 'ort' strategy.
+[33m4bc9ca6[m HEAD@{41}: clone: from https://github.com/ANNAMARONE/r-servation_-v-nement.git

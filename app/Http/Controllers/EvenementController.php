@@ -37,6 +37,7 @@ public function show($id){
  }
 
 
+
 public function store(EvenementRequest $request)
 {
     // Récupère l'utilisateur connecté
@@ -47,20 +48,19 @@ public function store(EvenementRequest $request)
 
     if (!$organisme) {
         return redirect()->back()->with('error', 'L\'utilisateur connecté n\'est pas associé à un organisme.');
+    } elseif ($organisme->statut !== 'activer') {
+        return redirect()->route('evenements.index')->with('error', 'Votre organisme n\'est pas actif, vous ne pouvez pas ajouter un événement.');
+    } else {
+        // Crée l'événement avec les données validées et l'ID de l'organisme
+        Evenement::create(array_merge(
+            $request->validated(),
+            ['organisme_id' => $organisme->id]
+        ));
     }
-
-    // Crée un nouvel événement avec les données validées et l'ID de l'organisme
-    Evenement::create(array_merge(
-        $request->validated(),
-        ['organisme_id' => $organisme->id]
-    ));
 
     // Redirige vers la liste des événements avec un message de succès
     return redirect()->route('evenements.index')->with('success', 'Événement créé avec succès.');
 }
-
-
-
 
 
    // Affiche le formulaire d'édition pour un événement existant

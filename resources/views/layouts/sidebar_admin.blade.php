@@ -60,21 +60,10 @@
                 </button>
                 <a class="navbar-brand ml-3" href="#"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                 <div class="ml-auto d-flex">
-                    <ul class="navbar-nav">
-                        <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-home"></i> Accueil
-                            </a>
-                        </li>
-                        <li class="nav-item {{ request()->is('explorer*') ? 'active' : '' }}">
-                            <a class="nav-link" href="#" style="border-right: 1px solid #ccc;">
-                                <i class="fas fa-search"></i> Explorer Événements
-                            </a>
-                        </li>
-                    </ul>
-                    {{-- <span class="navbar-text">
+                    
+                     <span class="navbar-text">
                         Hello {{ Auth::user()->name }}
-                    </span> --}}
+                    </span> 
                 </div>
             </nav>
 

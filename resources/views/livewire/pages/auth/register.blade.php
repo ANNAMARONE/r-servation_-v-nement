@@ -67,6 +67,7 @@ $register = function () {
             <x-text-input wire:model="email" id="email" class="block mt-1 w-full" id="registeinput" type="email" name="email" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+        
 
         <!-- Password -->
         <div class="mt-4">

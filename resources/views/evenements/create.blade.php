@@ -9,11 +9,8 @@
 <div class="custom-form-container">
     <div class="custom-form row">
         <!-- Colonne pour l'image -->
-        <div class="col-md-6">
-            <img src="{{ asset('images/ajouterform.jpg') }}" alt="image bi" class="img-fluid">
-        </div>
         <!-- Colonne pour le formulaire -->
-        <div class="col-md-6 formulaire">
+        <div class="col-md-8 formulaire">
             <h1>Créer un événement</h1>
             <form action="{{ route('evenements.store') }}" method="POST">
                 @csrf
