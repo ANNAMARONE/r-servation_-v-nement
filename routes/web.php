@@ -45,7 +45,7 @@ Route::middleware(['auth', 'role:organisme'])->group(function () {
 // Routes pour l'admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('users', UserController::class);
-    Route::get('/listeorganismes', [OrganismeController::class, 'listeorganisme']);
+    Route::get('/listeorganismes', [OrganismeController::class, 'listeorganisme'])->name('liste_organismes');
     Route::delete('/suprimerOrganisme/{id}', [OrganismeController::class, 'SuprimerOrganisme'])->name('SuprimerOrganisme');
     Route::get('/detailOrgenisme/{id}', [OrganismeController::class, 'detailOrganisme'])->name('DetailOrganisme');
     Route::get('compte/rejeter/{id}', [OrganismeController::class, 'rejeter'])->name('compte.rejeter'); // Rejeter une candidature
