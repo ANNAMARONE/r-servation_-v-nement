@@ -1,182 +1,103 @@
-<!-- resources/views/evenements/show.blade.php -->
 @extends('layouts.sidebar_admin')
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <h1>{{ $evenement->nom_evenement }}</h1>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <p><strong><i class="fa-solid fa-location-dot" style="color: #4862C4;"></i></strong>
-                                        {{ $evenement->lieu }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 22rem;">
-                                <img src="{{ $evenement->image }}" class="card-img-top"
-                                    alt="{{ $evenement->nom_evenement }}">
-                                <div class="card-body">
-                                    <p class="card-text">{{ $evenement->description }}</p>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
+@section('content')
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col">
+            <h1>{{ $evenement->nom_evenement }}</h1>
+              <div class="card" style="width: 22rem;">
+                <img src="{{ $evenement->image }}" class="card-img-top" alt="{{ $evenement->nom_evenement }}">
+                <div class="card-body">
+                    <p class="card-text">{{ $evenement->description }}</p>
                 </div>
             </div>
-            <div class="col" id="col2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h1>Detail Événemen</h1>
-                            <hr>
+        </div>
+        <div class="col" id="col2">
+            <div class="container">
+                <h1>Detail Événement</h1>
+                <hr>
+                <div class="container mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="{{ asset('img/Group 1171275785.png') }}" width="80px" height="80px" alt="">
                         </div>
-
-                    </div>
-                    <div class="row">
                         <div class="col">
-                            <div class="container" id="container1">
-                                <div class="row">
-                                    <div class="col">
-                                        <img src="{{ asset('img/Group 1171275785.png') }}" width="80px" height="80px"
-                                            alt="">
-                                    </div>
-                                    <div class="col">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h5>organiser par</h5>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    {{-- {{$user->name}} --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h5>Organisé par</h5>
+                            {{ $organisme }}
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="container mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="{{ asset('img/Group 1171275741.png') }}" width="80px" height="80px" alt="">
+                        </div>
+                        <div class="col">
+                            <h5>Date et heure:</h5>
+                            {{ $evenement->date }}
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="col">
-                            <div class="container" id="container1">
-                                <div class="row">
-                                    <div class="col">
-                                        <img src="{{ asset('img/Group 1171275741.png') }}" width="80px" height="80px"
-                                            alt="">
-                                    </div>
-                                    <div class="col">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h5>date et heur:</h5>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    {{ $evenement->date }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="container mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="{{ asset('img/Group 1171275742.png') }}" width="80px" height="80px" alt="">
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
                         <div class="col">
-                            <div class="container" id="container1">
-                                <div class="row">
-                                    <div class="col">
-                                        <img src="{{ asset('img/Group 1171275742.png') }}" width="80px" height="80px"
-                                            alt="">
-                                    </div>
-                                    <div class="col">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h5>Localisation</h5>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    {{ $evenement->lieu }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h5>Localisation</h5>
+                            {{ $evenement->lieu }}
                         </div>
                     </div>
                 </div>
                 <form action="{{ route('dashboardevenements.destroy', $evenement->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button id="btn6" type="submit" class="btn"
-                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')">
-                        <i class="fa-solid fa-trash-can" style="color: #F44336;"></i>
+                    <button id="btn6" type="submit" class="btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')">
+                        <i class="fas fa-trash-alt" style="color: red"></i>
                     </button>
                 </form>
             </div>
         </div>
+    </div>
 
-    </div>
-    </div>
+    <div class="bouton">
+        <a href="{{ route('afficherevenement.index1') }}" class="btn">Retour</a>
+    </div><br>
+
     <div class="evenement">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach ($evenementsListe as $evenements)
-                <div class="col">
-                    <div class="card h-100">
-                        <img id="imagelist" src="{{ $evenements->image }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $evenements->nom_evenement }}</h5>
-                            <p class="card-text">date:{{ $evenements->date }}</p>
-                        </div>
-                        <hr>
-                        <div class="card-body">
-                            <a id="card3" href="#" class="card-link">date de limite:<br>
-                                {{ $evenements->date_limite }}</a>
-                            <a href="#" class="card-link"><i class="fa-solid fa-location-dot"
-                                    style="color: #4862C4;"></i>{{ $evenements->lieu }}</a>
-                        </div>
+            @foreach ($evenementsListe as $evenement)
+            <div class="col">
+                <div class="card h-100">
+                    <img id="imagelist" src="{{ $evenement->image }}" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ $evenement->nom_evenement }}</h5>
+                        <p class="card-text">{{ $evenement->date->format('j F Y \à H\hi') }}</p>
                     </div>
-
+                    <div class="card-footer">
+                        <a href="#" class="card-link">{{ $evenement->date_limite }}</a>
+                        <a href="#" class="card-link"><i class="fa-solid fa-location-dot" style="color: #4862C4;"></i>{{ $evenement->lieu }}</a>
+                    </div>
                 </div>
+            </div>
             @endforeach
-
-
         </div>
     </div>
+    
+</div>
 @endsection
+
 <style>
+    /* Votre style existant reste inchangé */
     #container1 {
         margin-top: 5%;
-
     }
 
     #col2 {
-
         height: 500px;
         margin-top: 10%;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
     }
 
     h5 {
@@ -197,27 +118,40 @@
 
     #imagelist {
         border-radius: 15px;
-        width: 95%;
-
+        width: 100%;
     }
-
+     .card-img-top{
+        height: 250px;
+     }
     .d-inline {
         float: right;
     }
 
     #btn6 {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        ;
+    }
+    .card-footer{
+        display: flex;
+        justify-content: space-between
     }
 
-    /* a {
-        justify-content: space-between;
-        margin: 10px;
-        color: black;
-        text-decoration: none;
-    } */
+    .bouton {
+        text-align: center;
+        float: left;
+    }
 
-    #card3 {
-        margin: 10px;
+    .bouton .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--couleur-principal);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        margin-right: 20px;
+    }
+
+    .bouton .btn:hover {
+        background-color: var(--couleur-secondaire);
     }
 </style>

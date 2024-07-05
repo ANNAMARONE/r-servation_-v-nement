@@ -6,8 +6,6 @@
     <div class="container">
         <h1 style="font-weight: bold">Liste des utilisateurs</h1>
 
-        
-
         <!-- Tableau responsive pour afficher les utilisateurs -->
         <div class="table-responsive">
             <table class="table">
@@ -15,7 +13,7 @@
                     <tr>
                         <th scope="col">Nom</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Adresse</th>
+                        <th scope="col">Rôle</th> <!-- Ajout d'une colonne pour les rôles -->
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -28,9 +26,12 @@
 
                             <!-- Affiche l'email de l'utilisateur -->
                             <td>{{ $user->email }}</td>
-
-                            <!-- Affiche l'adresse de l'utilisateur -->
-                            <td>{{ $user->address }}</td>
+                            <!-- Affiche les rôles de l'utilisateur -->
+                            <td>
+                                @foreach ($user->roles as $role)
+                                    {{ $role->name }}<br>
+                                @endforeach
+                            </td>
 
                             <!-- Actions disponibles pour chaque utilisateur -->
                             <td>

@@ -9,22 +9,17 @@ use Illuminate\Http\Request; // Importe la classe Request depuis le namespace Il
 
 class UserController extends Controller // Définit la classe UserController qui étend Controller
 {
-    // public function index() // Définit la méthode index pour afficher tous les utilisateurs
-    // {
-    //     $users = User::all(); // Récupère tous les utilisateurs depuis la base de données
-    //     return view('users.index', compact('users')); // Retourne la vue 'users.index' avec les utilisateurs
-    // }
+    
 
     public function index()
-{
-    // Récupère les utilisateurs qui n'ont pas les rôles 'admin' ou 'organisme'
-    $users = User::whereDoesntHave('roles', function($query) {
-        $query->whereIn('name', ['admin', 'organisme']);
-    })->get();
-
-    return view('users.index', compact('users')); // Retourne la vue 'users.index' avec les utilisateurs
-}
-
+    {
+        // Récupère les utilisateurs qui n'ont pas les rôles 'admin' ou 'organisme'
+        $users = User::whereDoesntHave('roles', function($query) {
+            $query->whereIn('name', ['admin', 'organisme']);
+        })->get();
+    
+        return view('users.index', compact('users')); // Retourne la vue 'users.index' avec les utilisateurs
+    }
 
 public function store(Request $request)
 {

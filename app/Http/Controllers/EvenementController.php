@@ -147,11 +147,9 @@ public function evenementVenire(){
         $evenements = Evenement::all();
         return view('evenements.index1', compact('evenements'));
     }
+   
+    
 
-    public function showw(Evenement $evenement)
-    {
-        return view('evenements.show1', compact('evenement'));
-    }
 
 
 

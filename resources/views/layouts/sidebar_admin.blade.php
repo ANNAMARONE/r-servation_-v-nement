@@ -23,7 +23,7 @@
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
                 <a href="dashboardevenements" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboardevenements') ? 'active' : '' }}">
-                    <i class="fas fa-tachometer-alt mr-2"></i> 
+                    <i class="material-icons">dashboard</i>
                     <span>Tableau de bord</span>
                 </a>
                 <a href="afficherevenement" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('afficherevenement*') ? 'active' : '' }}">
@@ -39,7 +39,7 @@
                     <span>Organismes</span>
                 </a>
                 <a href="{{route('roles.index')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is(' roles') ? 'active' : '' }}">
-                    <i class="fas fa-users mr-2"></i>
+                    <i class="material-icons">folder_supervised</i>
                     <span>Gestion Roles</span>
                 </a>
                 <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
@@ -68,7 +68,7 @@
             </nav>
 
             <div class="main-content">
-                <div class="container-fluid">
+                <div class="container-fluid" >
                     @yield('content')
                 </div>
             </div>

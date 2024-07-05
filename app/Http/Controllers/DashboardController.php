@@ -51,8 +51,9 @@ public function show($id)
     $evenement = Evenement::findOrFail($id);
     $user = User::find($evenement->user_id);
     $evenementsListe = Evenement::take(3)->get();
+    $organisme = $evenement->organisme->user->name;
     // Retourner la vue 'evenements.show' avec les détails de l'événement trouvé
-    return response()->view('evenements.detailsEvenement', compact('evenement','user','evenementsListe'));
+    return response()->view('evenements.detailsEvenement', compact('evenement','user','evenementsListe','organisme'));
 }
 
 }
