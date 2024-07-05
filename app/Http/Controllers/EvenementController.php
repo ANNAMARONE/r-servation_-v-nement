@@ -27,15 +27,26 @@ public function show($id){
     $evenement =Evenement::find($id);
     return view('evenements.show', compact('evenement'));
 }
- // Affiche le formulaire pour créer un nouvel événement
- public function create()
- {
-    
-   
+//  // Affiche le formulaire pour créer un nouvel événement
+//  public function create()
+//  {
  
-     return view('evenements.create'); // Retourne la vue de création d'un événement
- }
+//      return view('evenements.create'); // Retourne la vue de création d'un événement
+//  }
 
+public function create()
+{
+     // Récupère l'utilisateur connecté
+     $user = Auth::user();
+     // Récupère l'organisme associé à l'utilisateur connecté
+     $organisme = $user->organisme;
+    if ($organisme->statut === 'activer') {
+        return view('evenements.create'); // Afficher le formulaire de création d'événement
+    } else {
+        // Rediriger ou afficher un message d'erreur, selon votre logique
+        return redirect('evenements')->with('error', 'Vous n\'êtes pas autorisé à créer un événement. Votre compte a été desactivé.');
+    }
+}
 
 
 public function store(EvenementRequest $request)
@@ -48,9 +59,7 @@ public function store(EvenementRequest $request)
 
     if (!$organisme) {
         return redirect()->back()->with('error', 'L\'utilisateur connecté n\'est pas associé à un organisme.');
-    } elseif ($organisme->statut !== 'activer') {
-        return redirect()->route('evenements.index')->with('error', 'Votre organisme n\'est pas actif, vous ne pouvez pas ajouter un événement.');
-    } else {
+    }else {
         // Crée l'événement avec les données validées et l'ID de l'organisme
         Evenement::create(array_merge(
             $request->validated(),
