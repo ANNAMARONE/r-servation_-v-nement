@@ -33,7 +33,7 @@ class EnsureUserHasRole
             } elseif ($user->hasRole('organisme')) {
                 return redirect()->route('dashboard');
             } elseif ($user->hasRole('utilisateur')) {
-                return redirect('/');
+                return redirect()->route('home');
             } else {
                 abort(403, 'Unauthorized action.'); // Redirection par défaut pour les autres cas non gérés
             }
