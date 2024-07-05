@@ -84,22 +84,46 @@
     border-color: var(--couleur-secondaire);
 }
 .ConnecteUtilisateur{
-background-color: #4862C4;
-color: white;
+background-color: transparent;
+border: 1px solid #4862C4;
+color: #4862C4;
 text-decoration: none;
 padding:15px;
-border-radius: 15px;
+border-radius: 8px;
 margin-bottom: 10px;
 }
-.Connecteorganisme{
+.ConnecteUtilisateur:hover{
+    background-color: #4862C4;
+    color: white;
+    text-decoration: none;
+    padding:15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    }
+    .Connecteorganisme{
+        background-color: transparent;
+        border: 1px solid #F53F7B;
+        color: #F53F7B;
+        text-decoration: none;
+        padding:15px;
+        border-radius: 8px;
+        margin-bottom: 10px;  
+    }
+.Connecteorganisme:hover{
     background-color: #F53F7B;
     color: white;
     text-decoration: none;
     padding:15px;
-    border-radius: 15px;
+    border-radius: 8px;
     margin-bottom: 10px;  
 }
 
+#btn3 {
+    background-color: #F53F7B;
+    border-radius: 8px;
+    color: white;
+    
+}
 /* Positionnement initial du menu burger en dehors de l'écran à droite */
 @media (max-width: 992px) {
     .navbar-collapse {

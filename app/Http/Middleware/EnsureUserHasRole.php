@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -8,34 +7,34 @@ use Illuminate\Support\Facades\Auth;
 
 class EnsureUserHasRole
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string  $role
-     * @return mixed
-     */
     public function handle($request, Closure $next, $role)
     {
-        // Vérifie si l'utilisateur est connecté
+        // Vérifier si l'utilisateur est connecté
         if (!Auth::check()) {
-            return redirect('/login'); // Rediriger vers la page de connexion si non connecté
+            // Stocker l'URL de retour dans la session
+            session(['redirectUrl' => $request->fullUrl()]);
+            // Redirection vers la page de connexion
+            return redirect()->guest('/login');
         }
 
-        $user = Auth::user(); // Définir la variable $user
+        $user = Auth::user();
 
-        // Vérifie si l'utilisateur a le rôle spécifié
-        if (! $user->hasRole($role)) {
+        // Vérifier si l'utilisateur a le rôle spécifié
+        if (!$user->hasRole($role)) {
             // Gérer la redirection en fonction du rôle manquant
             if ($user->hasRole('admin')) {
-                return redirect()->route('dashboardevenements.index');
+                return redirect()->route('dashboard_admin');
             } elseif ($user->hasRole('organisme')) {
                 return redirect()->route('dashboard');
             } elseif ($user->hasRole('utilisateur')) {
-                return redirect('/');
+                // Vérifier s'il y a une URL de redirection enregistrée
+                $redirectUrl = session('redirectUrl');
+                if ($redirectUrl) {
+                    return redirect()->intended($redirectUrl); // Rediriger vers l'URL d'origine
+                }
+                return redirect()->route('home'); // Rediriger vers la page d'accueil par défaut
             } else {
-                abort(403, 'Unauthorized action.'); // Redirection par défaut pour les autres cas non gérés
+                abort(403, 'Unauthorized action.');
             }
         }
 

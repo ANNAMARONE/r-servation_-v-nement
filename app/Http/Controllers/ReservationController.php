@@ -24,11 +24,26 @@ class ReservationController extends Controller
         // Retourner la vue avec les données des réservations
         return view('reservations.listeReservation', compact('reservations'));
     }
-    public function create($evenement_id)
-    {
-        $evenement = Evenement::findOrFail($evenement_id);
-        return view('evenements.liste_evenements', compact('evenement'));
-    }
+    // public function create($evenement_id)
+    // {
+    //     $evenement = Evenement::findOrFail($evenement_id);
+    //     return view('evenements.liste_evenements', compact('evenement'));
+    // }
+
+//     public function create($evenement_id)
+// {
+//     // Vérifie si l'utilisateur est connecté
+//     if (!Auth::check()) {
+//         // Redirige vers la page de connexion avec un message d'erreur
+//         return redirect('/login')->with('error', 'Vous devez être connecté pour créer un événement.');
+//     }
+
+//     // Récupère l'événement
+//     $evenement = Evenement::findOrFail($evenement_id);
+    
+//     // Retourne la vue avec l'événement
+//     return view('evenements.liste_evenements', compact('evenement'));
+// }
 
    
     public function store(Request $request, $evenement_id)

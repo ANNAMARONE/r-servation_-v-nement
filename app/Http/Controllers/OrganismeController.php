@@ -82,3 +82,4 @@ public function bloquer($id)
         return redirect()->route('liste_organismes')->with('success', 'Compte Organisme activé avec succès.');
     }
 }
+ 

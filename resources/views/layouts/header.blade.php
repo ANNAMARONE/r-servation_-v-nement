@@ -87,7 +87,7 @@
                                                 en tant qu'organisme</a>
                                         </div>
                                         <div class="modal-footer">
-                                            <button id="btn3" type="button" class="btn btn-secondary"
+                                            <button id="btn3" type="button" class="btn "
                                                 data-bs-dismiss="modal">fermer</button>
 
                                         </div>
@@ -95,9 +95,7 @@
                                 </div>
                             </div>
 
-                            {{-- <a class="custom-btn-register nav-link {{ request()->is('register') ? 'active' : '' }}"
-                                href="{{ route('register') }}">Inscription</a> --}}
-
+                       
                         </li>
                     @else
                         <li class="nav-item">
@@ -122,6 +120,7 @@
 
             #btn3 {
                 background-color: #F53F7B;
+                
             }
 
             .btn5 {
