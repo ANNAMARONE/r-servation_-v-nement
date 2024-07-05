@@ -32,7 +32,7 @@
                 <td>
                     <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning">Modifier</a>
                     @if (!in_array($role->name, ['admin','utilisateur', 'organismes']))
-                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST" style="display:inline-block;">
+                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">suprimer</button>

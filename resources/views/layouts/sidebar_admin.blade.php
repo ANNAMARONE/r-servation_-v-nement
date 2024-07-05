@@ -22,11 +22,11 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="dashboardevenements" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboardevenements') ? 'active' : '' }}">
+                <a href="dashboard_admin" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboard_admin') ? 'active' : '' }}">
                     <i class="material-icons">dashboard</i>
                     <span>Tableau de bord</span>
                 </a>
-                <a href="afficherevenement" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('afficherevenement*') ? 'active' : '' }}">
+                <a href="dashboardevenements" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboardevenements*') ? 'active' : '' }}">
                     <i class="fas fa-calendar-alt mr-2"></i> 
                     <span>Événements</span>
                 </a>
@@ -38,11 +38,11 @@
                     <i class="fas fa-users mr-2"></i>
                     <span>Organismes</span>
                 </a>
-                <a href="{{route('roles.index')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is(' roles') ? 'active' : '' }}">
+                <a href="{{route('roles.index')}}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('roles*') ? 'active' : '' }}">
                     <i class="material-icons">folder_supervised</i>
                     <span>Gestion Roles</span>
                 </a>
-                <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto"id="logout">
+                <form method="POST" action="{{route('logout')}}" class="list-group-item list-group-item-action d-flex align-items-center mt-auto" id="logout">
                     @csrf
                     <button type="submit" class="btn btn-link p-0 d-flex align-items-center">
                         <i class="fas fa-sign-out-alt mr-2"></i>
@@ -60,15 +60,12 @@
                 </button>
                 <a class="navbar-brand ml-3" href="#"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                 <div class="ml-auto d-flex">
-                    
-                     <span class="navbar-text">
-                        Hello {{ Auth::user()->name }}
-                    </span> 
+                    <span class="navbar-text">Hello {{ Auth::user()->name }}</span> 
                 </div>
             </nav>
 
             <div class="main-content">
-                <div class="container-fluid" >
+                <div class="container-fluid">
                     @yield('content')
                 </div>
             </div>

@@ -23,7 +23,7 @@ class EnsureUserHasRole
         if (!$user->hasRole($role)) {
             // Gérer la redirection en fonction du rôle manquant
             if ($user->hasRole('admin')) {
-                return redirect()->route('dashboardevenements.index');
+                return redirect()->route('dashboard_admin');
             } elseif ($user->hasRole('organisme')) {
                 return redirect()->route('dashboard');
             } elseif ($user->hasRole('utilisateur')) {

@@ -59,10 +59,10 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div><br>
 
     <div class="bouton">
-        <a href="{{ route('afficherevenement.index1') }}" class="btn">Retour</a>
+        <a href="{{ route('dashboardevenements.index') }}" class="btn">Retour</a>
     </div><br>
 
     <div class="evenement">
@@ -143,8 +143,8 @@
     .bouton .btn {
         display: inline-block;
         padding: 10px 20px;
-        background-color: var(--couleur-principal);
-        color: white;
+        border: 1px solid #F53F7B;
+        color: #F53F7B;
         text-decoration: none;
         border-radius: 8px;
         transition: background-color 0.3s ease;
@@ -152,6 +152,7 @@
     }
 
     .bouton .btn:hover {
-        background-color: var(--couleur-secondaire);
+        background-color: var(--couleur-principal);
+        color: white
     }
 </style>

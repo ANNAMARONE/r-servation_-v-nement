@@ -38,7 +38,7 @@
                             <form action="{{Route('SuprimerOrganisme', $organisme->id)}}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
                                 @csrf
                                @method('DELETE')
-                          <button type="submit"><i class="fas fa-trash"></i></button>
+                          <button type="submit"><i class="fas fa-trash"style="color: red"></i></button>
                               
                             
                             </form>
@@ -50,7 +50,7 @@
     </table>
 </div>
 <style>
-            img{
+           td img{
                 border-radius: 100%;
             }
             .statut{

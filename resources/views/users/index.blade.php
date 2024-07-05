@@ -40,7 +40,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-link text-dark" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
-                                        <i class="fas fa-trash-alt"></i> <!-- Icône de poubelle -->
+                                        <i class="fas fa-trash-alt" style="color: red"></i> <!-- Icône de poubelle -->
                                     </button>
                                 </form>
                             </td>

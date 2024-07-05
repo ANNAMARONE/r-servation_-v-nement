@@ -48,8 +48,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('compte/rejeter/{id}', [OrganismeController::class, 'rejeter'])->name('compte.rejeter'); // Rejeter une candidature
     Route::get('compte/accepter/{id}', [OrganismeController::class, 'accepter'])->name('compte.accepter'); // Accepter une candidature
     Route::resource('dashboardevenements', DashboardController::class);
-    Route::get('afficherevenement', [EvenementController::class, 'indexx'])->name('afficherevenement.index1');
-    Route::get('afficherevenement/{evenement}', [EvenementController::class, 'showw'])->name('afficherevenement.show1');
+    Route::get('dashboard_admin',[DashboardController::class,'dashboard_admin'])->name('dashboard_admin');
     Route::resource('permissions', PermissionsController::class);
     Route::resource('roles',RoleController::class);
     Route::get('roles/{id}/permissions', [RoleController::class, 'editPermissions'])->name('roles.editPermissions');

@@ -10,6 +10,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $evenements = Evenement::all();
+        return view('evenements.index1', compact('evenements'));
+    }
+    public function dashboard_admin()
+    {
         $totalUsers = User::whereDoesntHave('roles', function ($query) {
             $query->where('name', 'admin')->orWhere('name', 'organisme');
         })->count();
@@ -23,12 +28,7 @@ class DashboardController extends Controller
     
         return view('admins.dashboardEv', compact('evenements', 'totalEvenements', 'totalUsers', 'totalOrganismes'));
     }
-    
-// public function show($id)
-//     {
-//         $evenement = Evenement::findOrFail($id);
-//         return view('evenements.detailsEvenement', compact('evenement'));
-//     }
+
 public function destroy($id)
     {
         // Supprimer l'événement
