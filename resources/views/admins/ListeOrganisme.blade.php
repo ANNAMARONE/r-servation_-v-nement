@@ -28,7 +28,7 @@
         @foreach( $organismes as  $organisme)
                     <tr>
                     <td><a href="{{Route('DetailOrganisme',$organisme->id)}}">
-                    <img src="{{('storage/' . $organisme->logo) }}" alt="Logo de {{ $organisme->name }}" width="80">
+                    <img src="{{ asset('storage/' . $organisme->logo) }}" alt="Logo de {{ $organisme->user->name }}" width="80">
                         </a>
                     </td>
                     <td>{{ $organisme->user->name}}</td>
