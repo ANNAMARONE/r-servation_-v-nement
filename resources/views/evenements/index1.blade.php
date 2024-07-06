@@ -10,12 +10,12 @@
         <div class="col-md-3 mb-4">
             <div class="card card-custom">
                 <div class="image-container">
-                    <img src="{{ $evenement->image }}" class="card-img-top img-fluid" alt="{{ $evenement->nom_evenement }}">
+                    <img src="{{ $evenement->image }}" class="card-img-top img-fluid" alt="{{ $evenement->nom_evenement }}" style="height: 200px">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Événement {{ $index + 1 }}:<br>{{ $evenement->nom_evenement }}</h5>
-                    <p class="card-text">{{ Str::limit($evenement->description, 80) }}</p>
-                    <a href="{{ route('dashboardevenements.show', $evenement->id) }}" class="btn btn-custom" style="border: 2px solid #E91F63; color: #E91F63;">Voir plus</a>
+                    <p class="card-text">{{ Str::limit($evenement->description, 50) }}</p>
+                    <a href="{{ route('dashboardevenements.show', $evenement->id) }}" class="btn btn-custom" >Voir plus</a>
                 </div>
             </div>
         </div>
@@ -56,12 +56,33 @@ body {
 .btn-custom {
     display: inline-block;
     padding: 0.5em 1em;
-    color: #E91F63;
-    border: 2px solid #E91F63;
+    background: transparent;
+    
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
 }
+.card-body a{
+    color: #F53F7B;
+    border: 2px solid #F53F7B;
+    position: absolute; /* Positionne le bouton par rapport au parent .card-body */
+    bottom: 15px; /* Définit la distance du bas */
+    left: 15px; /* Définit la distance de la gauche */
+}
+.card-body a:hover{
+    color: white;
+}
+.btn-custom:hover {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background: #F53F7B;
+    color: white;
+    border: 2px solid #F53F7B;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 
 .image-container {
     height: 200px;

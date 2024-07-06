@@ -4,6 +4,12 @@
 @section('title', 'Liste des Evénements')
 
 @section('content')
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
     <h1 class="mt-4">La liste des Événements</h1>
 
     <div class="bouton">

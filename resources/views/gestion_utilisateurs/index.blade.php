@@ -1,4 +1,4 @@
-
+{{-- 
 @extends('layouts.sidebar_admin')
 
 
@@ -65,4 +65,88 @@
   
 </style>
 </body>
-</html>
+</html> --}}
+@extends('layouts.sidebar_admin')
+
+@section('content')
+<div class="container mt-3">
+    <h2>Liste des permissions</h2>
+
+    <div class="d-flex mb-3" style="gap: 20px">
+      <a href="{{ route('permissions.create') }}" class="btn btn-primary me-2">Ajouter Permissions</a>
+      <a href="{{ route('roles.index') }}" class="btn btn-primary">Voir les rôles</a>
+  </div>
+  
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            {{ $message }}
+        </div>
+    @endif
+
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
+    @endif
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Permissions</th>
+                <th>Supprimer </th>
+                <th>Modifier </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($permissions as $permission)
+            <tr>
+                <td>{{ $permission->name }}</td>
+                <td>
+                    <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger">Supprimer</button>
+                    </form>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary"><a href="{{ route('permissions.edit', $permission->id) }}" >Modifier</a></button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection
+
+<style>
+    #container1 {
+        padding-top: 10rem;
+        margin-left: 20%;
+    }
+    td button{
+      color: white;
+    }
+    td  button a:hover{
+      color: white;
+      text-decoration: none;
+    }
+    .btn-primary {
+        padding: 10px 20px;
+        background: #4862C4;
+        border: 1px solid #4862C4;
+        color: white;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        text-decoration: none; /* Ajout de la décoration pour les liens */
+        display: inline-block; /* Assure que les liens se comportent comme des blocs */
+    }
+
+    .btn-primary:hover {
+        background-color: #3a4eab; /* Légère modification de la couleur au survol */
+        border-color: #3a4eab; /* Adaptation de la couleur de la bordure au survol */
+        color: white; /* Maintien de la couleur du texte au survol */
+        text-decoration: none; /* Assure que la décoration du texte est préservée */
+    }
+
+
+</style>

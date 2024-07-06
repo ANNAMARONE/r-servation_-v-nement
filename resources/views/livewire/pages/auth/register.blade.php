@@ -56,7 +56,7 @@ $register = function () {
         <!-- Name -->
         <h1 class="titre1">Bienvenue sur <span class="my">My</span><span class="event">Event</span></h1> 
         <div>
-            <x-input-label class="registelabel" for="name" :value="__('Name')" />
+            <x-input-label class="registelabel" for="name" :value="__('Nom')" />
             <x-text-input wire:model="name" id="name" class="block mt-1 w-full" id="registeinput"  type="text" name="name" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
@@ -71,7 +71,7 @@ $register = function () {
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label class="registelabel" for="password" :value="__('Password')" />
+            <x-input-label class="registelabel" for="password" :value="__('Mot de passe')" />
 
             <x-text-input wire:model="password" id="password" class="block mt-1 w-full"
                             type="password" id="registeinput"
@@ -83,7 +83,7 @@ $register = function () {
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label class="registelabel" for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label class="registelabel" for="password_confirmation" :value="__('Confirmer le mot de passe')" />
 
             <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full" id="registeinput"
                             type="password"
@@ -96,12 +96,14 @@ $register = function () {
         <div class="mt-4">
 
             <button class="button">
-                {{ __('Connecter') }}
+                {{ __('Inscription') }}
             </button>
         </div>
-        <a id="link2"class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>
-                {{ __('se connecter') }}
-            </a>
+        
+            <div class="my-4" style="display: flex; align-items:center; justify-content:space-between;">
+                <p class="text-lg font-semibold">Vous avez un compte?</p>
+                <p><a href="{{ route('login') }}" class="text-blue-500 hover:underline">Connexion</a></p>
+            </div>
     </form>
     <div>
             <img src="{{asset('images/formimage.png')}}" alt="">
