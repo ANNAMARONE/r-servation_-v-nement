@@ -61,8 +61,3 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 });
 
-// Route pour afficher le profil de l'utilisateur
-Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
-
-// Inclure les routes d'authentification de Brazze
-require __DIR__.'/auth.php';
