@@ -12,14 +12,14 @@
                     <!-- Email Address -->
                     <div class="mb-3 custom-form-group">
                         <x-input-label for="email" :value="__('Email')" class="custom-label"/>
-                        <x-text-input id="email" class="block mt-1 w-full custom-input" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                        <x-text-input id="email" class="block mt-1 w-full custom-input" type="email" name="email"  placeholder="Entrez votre adresse email"  :value="old('email')"  autofocus autocomplete="username" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
                     <!-- Password -->
                     <div class="mb-3 custom-form-group">
                         <x-input-label for="password" :value="__('Mot de passe')" class="custom-label"/>
-                        <x-text-input id="password" class="block mt-1 w-full custom-input" type="password" name="password" required autocomplete="current-password" />
+                        <x-text-input id="password" class="block mt-1 w-full custom-input" type="password" name="password"   placeholder="Entrez votre mot de passe"  autocomplete="current-password" />
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
