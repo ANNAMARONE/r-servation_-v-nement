@@ -98,8 +98,8 @@
 
                 <div class="row" style="width:100%; margin-left: 5%; margin-right:auto; align-items:center">
                     @foreach ($evenements as $evenement)
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
+                        <div class="col-md-4 mb-4">
+                            <div class="card" style="width: 100%; height:470px">
                                 <img src="{{ asset('images/star.jpg') }}" alt="" class="star">
                                 <img src="{{ $evenement->image }}" alt="{{ $evenement->nom_evenement }}" class="image">
                                 <h2>{{ $evenement->nom_evenement }}</h2>
@@ -132,7 +132,7 @@
 
                 </div>
                 <div class="bouton">
-                  <a href="{{ route('evenements.index') }}" class="btn">Voir Plus</a>
+                  <a href="{{ route('evenements.liste') }}" class="btn">Voir Plus</a>
               </div>
         </div>
         <div class="scrol">
@@ -300,15 +300,15 @@
             }
 
             .card img.image {
-                width: 488px;
-                height: 461px;
+                width: 100%;
+                height: 300px;
                 border-top-left-radius: 80px;
                 border-bottom-left-radius: 80px;
-                border-top-right-radius: 230.5px;
+                border-top-right-radius: 170.5px;
             }
 
             .card img.star {
-                width: 50px;
+                width: 40px;
                 position: absolute;
                 left: 85%;
                 top: 10px;
