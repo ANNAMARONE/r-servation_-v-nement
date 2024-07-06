@@ -1,21 +1,26 @@
 <?php
 
-use App\Http\Controllers\OrganismeController;
-
-use App\Http\Controllers\PermissionsController;
-use App\Http\Controllers\PortailController;
-use App\Http\Controllers\RoleController;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Models\Permission;
-use App\Http\Controllers\EvenementController;
-use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AfficherController;
+use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\OrganismeController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\ReservationController;
 
 
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 // Routes publiques accessibles à tous
 Route::get('/', [EvenementController::class, 'evenementVenire'])->name('home'); 
 Route::get('liste/evenements', [EvenementController::class, 'listeEvenements'])->name('evenements.liste'); 
@@ -37,7 +42,7 @@ Route::middleware(['auth', 'role:organisme'])->group(function () {
     Route::resource('evenements', EvenementController::class);
     Route::get('/reservations/liste/{evenement_id}', [ReservationController::class, 'listeReservation']);
     Route::put('/reservations/reject/{id}', [ReservationController::class, 'rejectReservation'])->name('reservations.reject');
-    Route::get('dashboard', [EvenementController::class, 'listeEvenementDashboard'])->name('dashboard');
+    Route::get('dashboard_organisme', [EvenementController::class, 'listeEvenementDashboard'])->name('dashboard_organisme');
 });
 
 
@@ -60,4 +65,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('activer/{id}',[OrganismeController::class,'activer'])->name('organismes.activer');
 
 });
+
+
+require __DIR__.'/auth.php';
+
 

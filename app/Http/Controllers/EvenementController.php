@@ -132,7 +132,7 @@ public function store(EvenementRequest $request)
      }
      
      // Retourner la vue avec toutes les données nécessaires
-     return view('dashboard', compact('evenements', 'totalEvenements', 'totalParticipants', 'totalReservations'));
+     return view('dashboard_organisme', compact('evenements', 'totalEvenements', 'totalParticipants', 'totalReservations'));
  }
  
 public function evenementVenire(){
