@@ -25,7 +25,7 @@ class EnsureUserHasRole
             if ($user->hasRole('admin')) {
                 return redirect()->route('dashboard_admin');
             } elseif ($user->hasRole('organisme')) {
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard_organisme');
             } elseif ($user->hasRole('utilisateur')) {
                 // Vérifier s'il y a une URL de redirection enregistrée
                 $redirectUrl = session('redirectUrl');
@@ -40,4 +40,4 @@ class EnsureUserHasRole
 
         return $next($request);
     }
-}
+} 

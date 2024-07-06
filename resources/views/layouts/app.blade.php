@@ -24,7 +24,7 @@
          
         <div class="border-right" id="sidebar-wrapper">
             <div class="list-group list-group-flush">
-                <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard_organisme') }}" class="list-group-item list-group-item-action d-flex align-items-center {{ request()->is('dashboard_organisme') ? 'active' : '' }}">
                    
                     <i class="material-icons">dashboard</i>
                     <span>Tableau de bord</span>
