@@ -1,3 +1,5 @@
+
+
 <?php
 
 use App\Livewire\Forms\LoginForm;
@@ -39,20 +41,26 @@ $login = function () {
     <form wire:submit="login">
         <!-- Email Address -->
         <h1 class="titre1">Bienvenue sur <span class="my">My</span><span class="event">Event</span></h1> 
-        <div class="mt-4">
+        <div>
             <x-input-label class="registelabel" for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" id="registeinput" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-text-input wire:model="form.email" id="email" id="registeinput" class="block mt-1 w-full" id="registeinput" type="email" name="email" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-input-label class="registelabel" for="password" :value="__('Mot de passe')" />
-            <x-text-input wire:model="password" id="password" id="registeinput" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+            <x-text-input wire:model="form.password" id="password" id="registeinput" class="block mt-1 w-full" id="registeinput"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
         </div>
+
         <!-- Remember Me -->
-        <div class=" mt-4">
+        <div class="block mt-4">
             <label for="remember" class="inline-flex items-center">
                 <input wire:model="form.remember" id="remember" type="checkbox" class="rounded bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Souviens-toi de moi') }}</span>
@@ -67,8 +75,6 @@ $login = function () {
                     {{ __('Mot de passe oublié?') }}
                 </a>
             @endif
-
-           
         </div>
         <div class="my-4" style="display: flex; align-items:center; justify-content:space-between;">
             <p class="text-lg font-semibold">Vous êtes nouveau?</p>
@@ -83,4 +89,3 @@ $login = function () {
 </div> 
 </body>
 </html>
-
