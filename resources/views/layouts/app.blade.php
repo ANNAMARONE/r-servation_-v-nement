@@ -70,6 +70,11 @@
 
             <div class="main-content">
                 <div class="container-fluid">
+                    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
                     @yield('content')
                 </div>
             </div>

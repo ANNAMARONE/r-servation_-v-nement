@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Closure;
@@ -27,8 +28,14 @@ class EnsureUserHasRole
             } elseif ($user->hasRole('organisme')) {
                 return redirect()->route('dashboard_organisme');
             } elseif ($user->hasRole('utilisateur')) {
-
-                return redirect()->route('home');
+                // Redirection après authentification réussie
+                $redirectUrl = session('redirectUrl');
+                if ($redirectUrl) {
+                    // Supprimer l'URL de redirection de la session
+                    session()->forget('redirectUrl');
+                    return redirect()->intended($redirectUrl); // Rediriger vers l'URL d'origine
+                }
+                return redirect()->route('home'); // Rediriger vers la page d'accueil par défaut
 
             } else {
                 abort(403, 'Unauthorized action.');
@@ -37,4 +44,4 @@ class EnsureUserHasRole
 
         return $next($request);
     }
-} 
+}
