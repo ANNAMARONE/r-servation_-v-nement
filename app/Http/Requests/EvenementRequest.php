@@ -27,7 +27,7 @@ class EvenementRequest extends FormRequest
             'nom_evenement' => 'required|string|max:255',
             'description' => 'required|string|max:1000', // Limite la description à 1000 caractères maximum
             'date' => 'required|date|after_or_equal:today',
-            'date_limite' => 'required|date|after_or_equal:date',
+            'date_limite' => 'required|date|before_or_equal:date',
             'lieu' => 'required|string|max:255',
             'nbr_place' => 'required|integer|min:1',
             'image' => 'nullable|url|max:255',
@@ -49,7 +49,7 @@ class EvenementRequest extends FormRequest
             'date.required' => 'La date de l\'événement est obligatoire.',
             'date_limite.required' => 'La date limite d\'inscription est obligatoire.',
             'date.after_or_equal' => 'La date de l\'événement doit être égale ou après aujourd\'hui.',
-        'date_limite.after_or_equal' => 'La date limite d\'inscription doit être égale ou après aujourd\'hui.',
+        'date_limite.before_or_equal' => 'La date limite d\'inscription doit être égale ou après aujourd\'hui.',
             'lieu.required' => 'Le lieu de l\'événement est obligatoire.',
             'nbr_place.required' => 'Le nombre de places est obligatoire.',
             'nbr_place.integer' => 'Le nombre de places doit être un nombre entier.',
