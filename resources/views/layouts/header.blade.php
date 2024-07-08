@@ -29,7 +29,7 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" height="40">
             </a>
-            <button class="navbar-toggler" type="button">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">

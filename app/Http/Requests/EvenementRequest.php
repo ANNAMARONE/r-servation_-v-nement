@@ -30,7 +30,7 @@ class EvenementRequest extends FormRequest
             'date_limite' => 'required|date|after_or_equal:date',
             'lieu' => 'required|string|max:255',
             'nbr_place' => 'required|integer|min:1',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|url|max:255',
         ];
     }
 
@@ -54,8 +54,7 @@ class EvenementRequest extends FormRequest
             'nbr_place.required' => 'Le nombre de places est obligatoire.',
             'nbr_place.integer' => 'Le nombre de places doit être un nombre entier.',
             'nbr_place.min' => 'Le nombre de places doit être d\'au moins :min.',
-            'image.max' => 'Le fichier image ne peut pas dépasser 2048 Ko.',
-            'image.mimes' => 'Le fichier image doit être de type :values.',
+            'image.url' => 'Le champ image doit être une URL valide.',
         ];
     }
 }
